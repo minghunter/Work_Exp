@@ -1,0 +1,33 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>My-DP</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid pt-4 px-4">
+        <div class="row bg-light rounded align-items-top justify-content-center mx-0">
+            <div class="col-md-6 text-center p-4">
+
+                <h1>Welcome, {{ user_info.name }}</h1>
+
+                {% if user_info.name == 'Guest' %}
+                    <p class="mb-4">Please login to have full permission in <b>'MSN projects'</b> section.</p>
+                {% else %}
+                    <p class="mb-4">Please choose the section on the left side to start.</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
