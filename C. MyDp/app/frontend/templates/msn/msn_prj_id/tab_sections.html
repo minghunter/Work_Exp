@@ -1,0 +1,467 @@
+<form id="form_msn_prj_sections" name="model_msn_prj_sections">
+
+    <div class="row g-1 p-2">
+
+        <div class="col-sm-12 col-xl-12">
+            <div id="div_sections_err" class="alert alert-danger" role="alert" hidden="true" ></div>
+        </div>
+
+        <div id="div_join_col" class="col-sm-12 col-xl-5">
+            <div class="form-floating mb-0">
+                <input type="text" class="form-control" id="join_col" name="join_col" value="">
+                <label for="join_col">RID column</label>
+            </div>
+        </div>
+
+        <div id="div_order_col" class="col-sm-12 col-xl-5">
+            <div class="form-floating mb-0">
+                <input type="text" class="form-control" id="order_col" name="order_col" value="">
+                <label for="order_col">Order column (for HUT only)</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <button id="btn_msn_prj_sections" class="btn btn-primary py-3 w-100" onclick="fnc_update_msn_prj_sections(); return false;">Update</button>
+        </div>
+    </div>
+
+    <!--THIS TAB GET SECTIONS DATA FROM MONGODB-->
+
+    <div class="bg-light rounded h-100 p-2">
+
+        {% if user_info.role in ['admin', 'dp'] %}
+            {% set dict_sections = {
+                '1': 'Sec1',
+                '2': 'Sec2',
+                '3': 'Sec3',
+                '4': 'Sec4',
+                '5': 'Sec5'
+            } %}
+        {% endif %}
+        <div class="row g-1 p-0">
+
+            <div class="col-sm-12 col-xl-10">
+                <nav>
+                    <div class="nav nav-tabs" id="div-tab-sections" role="tablist">
+
+                        {% for key, val in dict_sections.items() %}
+
+                            {% set str_selected = '' %}
+                            {% set is_selected = 'false' %}
+
+                            {% if key == '1' %}
+                                {% set str_selected = 'active' %}
+                                {% set is_selected = 'true' %}
+                            {% endif %}
+
+                            <button class="nav-link {{ str_selected }}" id="tab-name-sections-{{ key }}" data-bs-toggle="tab"
+                                    data-bs-target="#tab-content-sections-{{ key }}" type="button" role="tab" aria-controls="tab-name-sections-{{ key }}"
+                                    aria-selected="{{ is_selected }}" hidden="true" onclick="">
+                                {{ val }}
+                            </button>
+
+                        {% endfor %}
+
+
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-sm-12 col-xl-2">
+                <button id="btn_add_sections" class="btn btn-outline-primary py-3 w-100"
+                        onclick="func_show_tab_by_key(2); return false;">Add section</button>
+            </div>
+
+        </div>
+
+        <div class="tab-content pt-3" id="nav-tab-content-sections">
+
+            {% for key, val in dict_sections.items() %}
+
+                {% set str_selected = '' %}
+                {% set is_selected = 'false' %}
+
+                {% if key == '1' %}
+                    {% set str_selected = 'show active' %}
+                {% endif %}
+
+                <div hidden="true" class="tab-pane fade {{ str_selected }}" id="tab-content-sections-{{ key }}" role="tabpanel" aria-labelledby="tab-name-sections-{{ key }}">
+                    <div id="tab-content-sections-{{ key }}-val">
+
+                        <div class="row g-1">
+
+                            <div class="col-sm-12 col-xl-2">
+                                <div class="form-floating mb-0">
+                                    <input type="text" id="sections.{{ key }}.name" name="sections.{{ key }}.name" class="form-control" value=""
+                                    oninput="func_sections_name_input(this, {{ key }});">
+
+                                    <label for="sections.{{ key }}.name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="{% if key != '1' %} col-sm-12 col-xl-8 {% else %} col-sm-12 col-xl-10 {% endif %}">
+                                <div class="form-floating mb-0">
+                                    <input type="text" id="sections.{{ key }}.filter" name="sections.{{ key }}.filter" class="form-control" value="">
+                                    <label for="sections.{{ key }}.filter">Filter</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-2">
+                                {% if key != '1' %}
+                                    <button id="btn_clear_section_value" class="btn btn-outline-danger py-3 w-100"
+                                            onclick="func_clear_tab_by_key({{ key }}); return false;">Clear section info</button>
+                                {% endif %}
+                            </div>
+
+                            <hr class="mt-4 mb-2">
+                            <h5 class="p-1 mb-0">I. ROTATION</h5>
+
+                            <div class="col-sm-12 col-xl-2">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="sections.{{ key }}.rotation.name" name="sections.{{ key }}.rotation.name" value="">
+                                    <label for="sections.{{ key }}.rotation.name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-4">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="sections.{{ key }}.rotation.lbl" name="sections.{{ key }}.rotation.lbl" value="">
+                                    <label for="sections.{{ key }}.rotation.lbl">Label</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="sections.{{ key }}.rotation.qres" name="sections.{{ key }}.rotation.qres" value="">
+                                    <label for="sections.{{ key }}.rotation.qres">Get data from</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-12">
+
+                                {% for cat in [1, 2] %}
+                                    <div class="input-group mb-1">
+                                        <span class="input-group-text">Code {{ cat }}</span>
+                                        <input type="text" id="sections.{{ key }}.rotation.cats.{{ cat }}.0" name="sections.{{ key }}.rotation.cats.{{ cat }}.0" value="" class="form-control">
+
+                                        <span class="input-group-text">get value = </span>
+                                        <input type="text" id="sections.{{ key }}.rotation.cats.{{ cat }}.1" name="sections.{{ key }}.rotation.cats.{{ cat }}.1" value="" class="form-control">
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                            <hr class="mt-4 mb-2">
+                            <h5 class="p-1 mb-0">II. PRODUCT</h5>
+
+                            <div class="col-sm-12 col-xl-3">
+
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="sections.{{ key }}.product.name"
+                                           name="sections.{{ key }}.product.name" value="">
+                                    <label for="sections.{{ key }}.product.name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="sections.{{ key }}.product.lbl"
+                                           name="sections.{{ key }}.product.lbl" value="">
+                                    <label for="sections.{{ key }}.product.lbl">Label</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-6">
+                                {% for cat in [1, 2] %}
+                                    <div class="input-group mb-1">
+                                        <span class="input-group-text">Code {{ cat }}</span>
+                                        <input type="text" class="form-control"
+                                               id="sections.{{ key }}.product.cats.{{ cat }}.0"
+                                               name="sections.{{ key }}.product.cats.{{ cat }}.0"
+                                               value="">
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            {% for i in range(2) %}
+                                <div class="col-sm-12 col-xl-6 p-2">
+                                    {% if i == 0 %}
+                                        <h6 class="p-2 mb-0">1st product questions</h6>
+                                    {% else %}
+                                        <h6 class="p-2 mb-0">2nd product questions</h6>
+                                    {% endif %}
+
+                                    <div class="row g-1">
+                                        {% for j in range(5) %}
+
+                                            <div class="{% if j == 0 %} col-sm-12 col-xl-12 {% else %} col-sm-12 col-xl-6 {% endif %}">
+
+                                                <div class="form-floating mb-0">
+                                                    <input type="text" class="form-control"
+                                                           id="sections.{{ key }}.product.qres.{{ i }}.{{ j }}"
+                                                           name="sections.{{ key }}.product.qres.{{ i }}.{{ j }}"
+                                                           value="">
+
+                                                    <label for="sections.{{ key }}.product.qres.{{ i }}.{{ j }}">{{ j + 1 }}. Get data from</label>
+                                                </div>
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <hr class="mt-4 mb-2">
+                            <h5 class="p-1 mb-0">III. FORCE CHOICE</h5>
+
+                            {% for i in range(5) %}
+                                <div class="{% if i <= 1 %} col-sm-12 col-xl-6 {% else %} col-sm-12 col-xl-4 {% endif %}">
+                                    <div class="form-floating mb-0">
+                                        <input type="text" class="form-control"
+                                               id="sections.{{ key }}.force_choice.qres.0.{{ i }}"
+                                               name="sections.{{ key }}.force_choice.qres.0.{{ i }}"
+                                               value="">
+                                        <label for="sections.{{ key }}.force_choice.qres.0.{{ i }}">{{ i + 1 }}. Force choice question</label>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</form>
+
+
+<script>
+
+    func_sections_name_input = function(section, key) {
+        $(`#tab-name-sections-${key}`).text(section.value);
+    };
+
+    func_show_tab_by_key = function(key) {
+        var next_key = key + 1;
+
+        $(`#tab-name-sections-${key}`).prop('hidden', false);
+        $(`#tab-content-sections-${key}`).prop('hidden', false);
+        $('#btn_add_sections').attr('onclick', `func_show_tab_by_key(${next_key}); return false;`);
+
+        if(key >= 5){
+            $('#btn_add_sections').prop('disabled', true);
+            return false;
+        }
+
+        return true;
+    };
+
+    func_hide_tab_by_key = function(key) {
+
+        if(key == 1){
+            return false;
+        }
+
+        $(`#tab-name-sections-${key}`).prop('hidden', true);
+        $(`#tab-content-sections-${key}`).prop('hidden', true);
+        $('#btn_add_sections').attr('onclick', `func_show_tab_by_key(${key}); return false;`);
+
+        if(key < 5)
+        {
+            $('#btn_add_sections').prop('disabled', false);
+        }
+
+        return true;
+    };
+
+    func_clear_tab_by_key = function(key) {
+
+        if(key == 1){
+            return false;
+        }
+
+        func_hide_tab_by_key(key);
+
+        $(`input[id^='sections\\.${key}']`).each(function (i, el) {
+            $(el).val('');
+        });
+
+        return true;
+    };
+
+    fnc_loading_tab_sections = function(is_loading) {
+
+        fnc_loading(is_loading);
+
+        var $btn = $('#btn_msn_prj_sections');
+        var $form = $("#form_msn_prj_sections :input");
+
+        if(is_loading == true){
+            $form.prop("disabled", true);
+            $btn.removeClass("btn btn-primary py-3 w-25").addClass('btn btn-secondary py-3 w-25');
+            $btn.prop('disabled', true);
+        }
+        else{
+            $form.prop("disabled", false);
+            $btn.removeClass("btn btn-secondary py-3 w-25").addClass('btn btn-primary py-3 w-25');
+            $btn.prop('disabled', false);
+        };
+    };
+
+    fnc_get_msn_prj_sections = function() {
+
+        fnc_loading_tab_sections(true);
+
+        $.ajax({
+            type: "GET",
+            url: `/msn-prj/{{ prj.id }}/tab/sections`,
+            success: function(response) {
+
+                $('#join_col').val(response.join_col);
+
+                //console.log(response.type);
+                if(response.type == 'CLT'){
+                    $('#div_join_col').removeClass("col-sm-12 col-xl-5").addClass('col-sm-12 col-xl-10');
+                    $('#div_order_col').hide();
+                }
+                else{
+                    $('#div_join_col').removeClass("col-sm-12 col-xl-10").addClass('col-sm-12 col-xl-5');
+                    $('#div_order_col').show();
+                    $('#order_col').val(response.order_col);
+                }
+
+                int_last_sec = 999;
+                for(isec in response.sections){
+                    obj_sec = response.sections[isec];
+
+                    $(`#tab-name-sections-${isec}`).prop('hidden', false);
+                    $(`#tab-name-sections-${isec}`).text(obj_sec.name);
+
+                    $(`#tab-content-sections-${isec}`).prop('hidden', false);
+
+                    $(`#sections\\.${isec}\\.name`).val(obj_sec.name);
+                    $(`#sections\\.${isec}\\.filter`).val(obj_sec.filter);
+
+                    //console.log(obj_sec.rotation);
+                    $(`#sections\\.${isec}\\.rotation\\.name`).val(obj_sec.rotation.name);
+                    $(`#sections\\.${isec}\\.rotation\\.lbl`).val(obj_sec.rotation.lbl);
+                    $(`#sections\\.${isec}\\.rotation\\.qres`).val(obj_sec.rotation.qres[0]);
+
+                    for(let icat = 1; icat <= 2; icat++){
+                        $(`#sections\\.${isec}\\.rotation\\.cats\\.${icat}\\.0`).val(obj_sec.rotation.cats[icat][0]);
+                        $(`#sections\\.${isec}\\.rotation\\.cats\\.${icat}\\.1`).val(obj_sec.rotation.cats[icat][1]);
+                    }
+
+                    //console.log(obj_sec.product);
+                    $(`#sections\\.${isec}\\.product\\.name`).val(obj_sec.product.name);
+                    $(`#sections\\.${isec}\\.product\\.lbl`).val(obj_sec.product.lbl);
+
+                    for(let icat = 1; icat <= 2; icat++){
+                        $(`#sections\\.${isec}\\.product\\.cats\\.${icat}\\.0`).val(obj_sec.product.cats[icat][0]);
+
+                        arr_prod = obj_sec.product.qres[icat - 1].split('|');
+                        for(let j = 0; j < arr_prod.length; j++)
+                        {
+                            $(`#sections\\.${isec}\\.product\\.qres\\.${icat - 1}\\.${j}`).val(arr_prod[j]);
+                        }
+                    }
+
+                    //console.log(obj_sec.force_choice);
+                    arr_fc_qres = obj_sec.force_choice.qres[0].split('|');
+                    for(let i = 0; i < arr_fc_qres.length; i++){
+                        $(`#sections\\.${isec}\\.force_choice\\.qres\\.0\\.${i}`).val(arr_fc_qres[i]);
+                    }
+
+                    int_last_sec = parseInt(isec);
+                }
+
+                $('#btn_add_sections').attr('onclick', `func_show_tab_by_key(${int_last_sec + 1}); return false;`);
+
+                setTimeout(() => {fnc_loading_tab_sections(false);}, 1000);
+
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+
+    };
+
+
+    fnc_update_msn_prj_sections = function() {
+
+        var arr_msn_prj_sections = $("#form_msn_prj_sections").serializeArray();
+        var model_msn_prj_sections = {};
+        var obj_sections = {};
+
+        console.log(arr_msn_prj_sections);
+
+        for(i in arr_msn_prj_sections){
+            name = arr_msn_prj_sections[i].name;
+            val = arr_msn_prj_sections[i].value;
+
+            if(name == 'join_col' || name == 'order_col')
+            {
+                model_msn_prj_sections[name] = val;
+            }
+            else{
+                if(val.length > 0){
+                    obj_sections = {...obj_sections,...{[name.replace('sections.', '')]: val}};
+                }
+            }
+
+        };
+
+        model_msn_prj_sections['sections'] = obj_sections;
+
+        console.log(model_msn_prj_sections);
+
+        fnc_loading_tab_sections(true);
+
+        $.ajax({
+            type: "PUT",
+            url: `/msn-prj/{{ prj.id }}/tab/sections`,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(model_msn_prj_sections),
+            processData : false,
+            success: function(response) {
+
+                console.log(response);
+                if(response.is_success == false){
+                    $(`#div_sections_err`).prop('hidden', false);
+                    $(`#div_sections_err`).html(response.stt);
+                }
+                else{
+                    $(`#div_sections_err`).prop('hidden', true);
+                    $(`#div_sections_err`).html(response.stt);
+                }
+
+                setTimeout(() => {fnc_loading_tab_sections(false);}, 1000);
+            },
+            error: function(xhr, status, error) {
+                //alert(error);
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+
+                if(xhr.responseText.indexOf('<title>Signin</title>') != -1){
+                    $(location).prop('href', '/login');
+                }
+            }
+        });
+
+    };
+
+
+</script>
+
+

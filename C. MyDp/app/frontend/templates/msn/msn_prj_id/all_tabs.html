@@ -1,0 +1,160 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title id="title">Loading...</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block sidebar_MSN_prj %}
+    <a href="\msn-prj" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>MSN projects</a>
+{% endblock %}
+
+{% block search_bar %}
+
+    <div class="d-md-flex ms-4 align-items-center justify-content-center">
+        <div id="spinner-msn-prj" class="show text-center">
+            <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status"><span class="sr-only">Loading...</span></div><!-- <span>Loading, please wait...</span>-->
+        </div>
+
+        <div id="alert_succ" class="btn btn-sm btn-sm-square btn-success rounded-pill">&#10004;</div>
+    </div>
+
+    <div class="d-md-flex ms-4 align-items-center justify-content-center mt-2">
+        <h5 id="msn-prj-header">Loading...</h5>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid pt-2 px-4">
+
+        {% if strErr|trim|length %}
+            <div id="err" class="alert alert-danger" role="alert">{{ strErr }}</div>
+        {% endif %}
+
+        {% if user_info.name == 'Guest' %}
+            <div id="login_warning" class="alert alert-warning" role="alert">Please login to have full permission.</div>
+        {% endif %}
+
+    </div>
+
+    {% if user_info.role in ['admin', 'dp'] %}
+        {% set dict_tab = {
+            'info': {'name': 'Info', 'stt': 'active'},
+            'sections': {'name': 'Sections', 'stt': ''},
+            'structure': {'name': 'Structure', 'stt': ''},
+            'add_vars': {'name': 'Addin variables', 'stt': ''},
+            'topline': {'name': 'Topline design', 'stt': ''},
+            'data': {'name': 'Data', 'stt': ''},
+        } %}
+    {% elif user_info.role in ['cs'] %}
+        {% set dict_tab = {
+            'info': {'name': 'Info', 'stt': 'active'},
+            'data': {'name': 'Data', 'stt': ''},
+        } %}
+    {% else %}
+        {% set dict_tab = {
+            'info': {'name': 'Info', 'stt': 'active'},
+        } %}
+    {% endif %}
+
+    <div class="container-fluid pt-2 px-4">
+        <div class="bg-light rounded h-100 p-4">
+            <nav>
+                <div class="nav nav-tabs" id="div-tab-msn-prj" role="tablist">
+
+                    {% for key, val in dict_tab.items() %}
+
+                        {% if val.stt == "active" %}
+                            {% set is_selected = 'true' %}
+                        {% endif %}
+
+                        <button class="nav-link {{ val.stt }}" id="tab-name-{{ key }}" data-bs-toggle="tab"
+                                data-bs-target="#tab-content-{{ key }}" type="button" role="tab" aria-controls="tab-name-{{ key }}"
+                                aria-selected="{{ is_selected }}"
+                                onclick="fnc_get_msn_prj_{{ key }}();">
+                            {{ val.name }}
+                        </button>
+
+                    {% endfor %}
+
+                </div>
+            </nav>
+
+            <div class="tab-content pt-3" id="nav-tab-content-msn-prj">
+
+                {% for key, val in dict_tab.items() %}
+
+                    {% if val.stt == "active" %}
+                        {% set is_selected = 'show active' %}
+                    {% endif %}
+
+                    <div class="tab-pane fade {{ is_selected }}" id="tab-content-{{ key }}" role="tabpanel" aria-labelledby="tab-name-{{ key }}">
+                        <div id="tab-content-{{ key }}-val">
+                            {% if key == 'info' %}
+                                {% include 'msn/msn_prj_id/tab_info.html' %}
+                            {% elif key == 'sections' %}
+                                {% include 'msn/msn_prj_id/tab_sections.html' %}
+                            {% elif key == 'structure' %}
+                                {% include 'msn/msn_prj_id/tab_structure.html' %}
+                            {% else %}
+                                {{ val.name }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_files %}
+
+    <script>
+        setTimeout(() => {
+            const err = document.getElementById('err');
+            if(err != null)
+            {
+                err.style.display = 'none';
+            }
+        }, 3000);
+
+        fnc_loading = function(is_loading) {
+            var $spinner = $('#spinner-msn-prj');
+            var $succ = $('#alert_succ');
+
+
+
+            if(is_loading == true){
+                $spinner.show();
+                $succ.hide();
+
+            }
+            else{
+                $succ.fadeTo("fast", 0);
+                $spinner.hide();
+                $succ.show();
+                $succ.fadeTo("fast", 0.8);
+            };
+        };
+
+        $(window).bind('beforeunload', function(){
+            console.log('Handler for `unload` called.');
+            return '>>>>>Before You Go<<<<<<<< \n Your custom message go here';
+        });
+
+    </script>
+
+    <script src="{{ url_for('static', path='/js/multiselect-dropdown.js') }}"></script>
+
+{% endblock %}

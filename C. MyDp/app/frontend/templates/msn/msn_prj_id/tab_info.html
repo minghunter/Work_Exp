@@ -1,0 +1,253 @@
+<form id="form_msn_prj_info" name="model_msn_prj_info">
+    <div class="row g-1 p-2">
+        <div class="col-sm-12 col-xl-12">
+            <h6 class="bg-light rounded h-100 mt-2">BASIC</h6>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <div class="form-floating mb-0">
+                <input type="text" class="form-control" id="internal_id" name="internal_id" value="">
+                <label for="internal_id">Internal ID</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-5">
+            <div class="form-floating mb-0">
+                <input type="text" class="form-control" id="name" name="name" value="">
+                <label for="name">Name</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <div class="form-floating mb-0">
+                <input type="text" class="form-control" id="categorical" name="categorical" value="">
+                <label for="categorical">Category</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-1">
+            <div class="form-floating mb-0">
+                <select class="form-select" id="type" name="type">
+                    {% for stt in ['CLT', 'HUT'] %}
+                        <option value="{{ stt }}">{{ stt }}</option>
+                    {% endfor %}
+                </select>
+                <label for="type">Type</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <div class="form-floating mb-0">
+                <select class="form-select" id="status" name="status">
+                    {% for stt in ['Completed', 'On Going', 'Pending', 'Cancel'] %}
+                        <option value="{{ stt }}">{{ stt }}</option>
+                    {% endfor %}
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+        <input type="hidden" id="create_date" name="create_date" value="">
+
+        {% if user_info.role != 'Guest' and user_info.role != '' %}
+
+            <div class="col-sm-12 col-xl-12">
+                <h6 class="bg-light rounded h-100 mt-2">ADVANCE</h6>
+            </div>
+
+            {% set detail_prj_info = {
+                "1": "1. Mục tiêu nghiên cứu",
+                "2_1": "2.1. Đối tượng nghiên cứu",
+                "2_2": "2.2. Khu vực nghiên cứu",
+                "2_3": "2.3. Phương pháp nghiên cứu",
+                "2_4": "2.4. Số mẫu nghiên cứu",
+                "3": "3. Thông tin nghiên cứu (OL, JAR, Like/Dislikes, v.v…)",
+                "4": "4. Action Standard",
+                "5": "5. Thời gian thực hiện",
+                "6_1": "6.1. Chú thích mã sản phẩm",
+                "6_2": "6.2. Chú thích mã sản phẩm",
+                "6_3": "6.3. Chú thích mã sản phẩm",
+                "6_4": "6.4. Chú thích mã sản phẩm",
+            } %}
+
+            {% for key, val in detail_prj_info.items() %}
+
+                {% if key in ['1', '3'] %}
+                    {% set str_class = 'col-sm-12 col-xl-12' %}
+                {% else %}
+                    {% set str_class = 'col-sm-12 col-xl-6' %}
+                {% endif %}
+
+                <div class="{{ str_class }}">
+                    <div class="form-floating mb-0">
+                        <input type="text" class="form-control" id="detail_prj_info.{{ key }}" name="detail_prj_info.{{ key }}" value="">
+                        <label for="detail_prj_info.{{ key }}">{{ val }}</label>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+
+        {% endif %}
+
+        <div class="col-sm-12 col-xl-9"></div>
+
+        <div class="col-sm-12 col-xl-3">
+            <button id="btn_msn_prj_info" class="btn btn-primary py-3 w-100 mt-2" onclick="fnc_update_msn_prj_info(); return false;">Update</button>
+        </div>
+
+    </div>
+
+</form>
+
+<script>
+
+    fnc_loading_tab_info = function(is_loading) {
+
+        fnc_loading(is_loading);
+
+        var $btn = $('#btn_msn_prj_info');
+        var $form = $("#form_msn_prj_info :input")
+
+        if(is_loading == true){
+            $form.prop("disabled", true);
+            $btn.removeClass("btn btn-primary py-3 w-25").addClass('btn btn-secondary py-3 w-25');
+            $btn.prop('disabled', true);
+        }
+        else{
+            $form.prop("disabled", false);
+            $btn.removeClass("btn btn-secondary py-3 w-25").addClass('btn btn-primary py-3 w-25');
+            $btn.prop('disabled', false);
+        };
+    };
+
+    fnc_set_title_header = function(obj_prj_info) {
+
+        //console.log(obj_prj_info);
+
+        var str_prj_name_type = `${obj_prj_info.name} | ${obj_prj_info.type}`;
+
+        var txt_color = "";
+        if(obj_prj_info.status == "Completed"){
+            txt_color = 'text-success';
+        }
+        else if(obj_prj_info.status == "Cancel" || obj_prj_info.status == "Pending"){
+            txt_color = 'text-danger';
+        }
+        else if(obj_prj_info.status == "On Going"){
+            txt_color = 'text-warning';
+        }
+
+        var str_prj_stt = `<span class="${txt_color}">${obj_prj_info.status}</span>`;
+
+        var str_prj_header = `${obj_prj_info.internal_id} - ${str_prj_name_type} # ${obj_prj_info.categorical} # ${str_prj_stt}`;
+
+        $('#title').text(str_prj_name_type);
+        $('#msn-prj-header').html(str_prj_header);
+
+    };
+
+
+    fnc_get_msn_prj_info = function() {
+
+
+        fnc_loading_tab_info(true);
+
+        $.ajax({
+            type: "GET",
+            url: `/msn-prj/{{ prj.id }}/tab/info`,
+            success: function(response) {
+
+                for(item in response)
+                {
+                    if(item == 'detail_prj_info'){
+                        for(key in response[item])
+                        {
+                            $(`#${item}\\.${key}`).val(response[item][key]['val']);
+                        }
+                    }
+                    else{
+                        $(`#${item}`).val(response[item]);
+                    }
+                }
+
+                setTimeout(() => {
+                    fnc_loading_tab_info(false);
+                    fnc_set_title_header(response);
+                }, 1000);
+
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+
+    };
+
+    fnc_update_msn_prj_info = function() {
+
+        var arr_msn_prj_info = $("#form_msn_prj_info").serializeArray();
+        var model_msn_prj_info = {};
+        var obj_detail_prj_info = {};
+
+        for(i in arr_msn_prj_info){
+            name = arr_msn_prj_info[i].name;
+            val = arr_msn_prj_info[i].value;
+
+            if(name.indexOf('.') != -1)
+            {
+                arr_name = name.split('.');
+                var obj_name = {};
+                obj_name[String(arr_name[1])] = val;
+                obj_detail_prj_info = {...obj_detail_prj_info,...obj_name};
+            }
+            else {
+                model_msn_prj_info[name] = val;
+            };
+
+        };
+
+        model_msn_prj_info['detail_prj_info'] = obj_detail_prj_info;
+
+        fnc_loading_tab_info(true);
+
+        $.ajax({
+            type: "PUT",
+            url: `/msn-prj/{{ prj.id }}/tab/info`,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(model_msn_prj_info),
+            processData : false,
+            success: function(response) {
+                //console.log(response['stt']);
+
+                setTimeout(() => {
+                    fnc_loading_tab_info(false);
+                    fnc_set_title_header(model_msn_prj_info);
+                }, 1000);
+            },
+            error: function(xhr, status, error) {
+                //alert(error);
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+
+                if(xhr.responseText.indexOf('<title>Signin</title>') != -1){
+                    $(location).prop('href', '/login');
+                }
+            }
+        });
+
+
+
+    };
+
+    $(document).ready(function() {
+        setTimeout(() => {$('#spinner-msn-prj').hide();}, 1000);
+        fnc_get_msn_prj_info();
+    });
+
+</script>

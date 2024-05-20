@@ -1,0 +1,388 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>MSN Projects</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block sidebar_MSN_prj %}
+    <a href="\msn-prj" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>MSN projects</a>
+{% endblock %}
+
+{% block search_bar %}
+    <div class="hovertext" data-hover="Options: has data | type:xxx">
+        <form id="form_search_prj_name" class="d-none d-md-flex ms-4 w-100" action="/msn-prj/search" method="get" enctype="multipart/form-data">
+            <input class="form-control border-0" name="search_prj_name" type="search" placeholder="Search" value="{{ search_prj_name }}">
+        </form>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <!-- PAGE Start -->
+    <div class="container-fluid pt-4 px-4">
+
+        {% if strErr|trim|length %}
+            <div id="err" class="alert alert-danger" role="alert">
+                {{ strErr }}
+            </div>
+        {% endif %}
+
+        {% if user_info.name == 'Guest' %}
+            <div id="login_warning" class="alert alert-warning" role="alert">
+                Please login to have full permission in <b>'MSN projects'</b>.
+            </div>
+        {% endif %}
+
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h4 class="mb-0">MSN Projects</h4>
+                <button type="button" class="btn btn-primary m-2" onclick="showDialog('dialog_add_prj')">Add project</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0 msn-prj-tbl">
+                    <thead>
+                        <tr class="text-dark">
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Res</th>
+                            <th scope="col" width="5%" colspan="3"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for prj in lst_prj %}
+                            <tr>
+
+                                {% if prj.status == "Completed" %}
+                                    {% set txt_color = 'text-success' %}
+                                    {% set btn_dis = 'disabled' %}
+                                {% elif prj.status in ["Cancel"] %}
+                                    {% set txt_color = 'text-danger' %}
+                                {% elif prj.status in ["Pending"] %}
+                                    {% set txt_color = 'text-secondary' %}
+                                {% elif prj.status == "On Going" %}
+                                    {% set txt_color = 'text-warning' %}
+                                    {% set btn_dis = 'disabled' %}
+                                {% endif %}
+
+                                <td><div class="{{ txt_color }}"> {{ prj.internal_id }}</div></td>
+                                <td><div class="{{ txt_color }}"> {{ prj.name }}</div></td>
+                                <td><div class="{{ txt_color }}"> {{ prj.categorical }}</div></td>
+                                <td><div class="{{ txt_color }}"> {{ prj.type }}</div></td>
+                                <td><div class="{{ txt_color }}"> {{ prj.status }}</div></td>
+                                <td><div class="{{ txt_color }}"> {{ prj.lenOfScr }}</div></td>
+                                <td><a class="btn btn-sm btn-primary" href="/msn-prj/{{ prj.id }}/info">Detail</a></td>
+                                <td>
+                                    <form id="form_copy_prj_{{ prj.id }}" action="/msn-prj/copy/{{ prj.id }}" method="get" enctype="multipart/form-data">
+                                        <input type="hidden" name="copy_prj_{{ prj.id }}" value="{{ prj.name }}">
+                                        <input class="btn btn-sm btn-outline-primary" type="submit" value="Copy" onclick="submit_delete_copy_prj('{{ prj.id }}', 'copy');">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form id="form_del_prj_{{ prj.id }}" action="/msn-prj/delete/{{ prj.id }}" method="get" enctype="multipart/form-data">
+                                        <input type="hidden" name="del_prj_{{ prj.id }}" value="{{ prj.name }}">
+                                        <input {{ btn_dis }} class="btn btn-sm btn-outline-danger" type="submit" value="Delete" onclick="submit_delete_copy_prj('{{ prj.id }}', 'del');">
+                                    </form>
+                                </td>
+
+
+
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Pagination-->
+        {% if page_count > 1 %}
+            <div class="bg-light rounded h-100 p-4">
+                <div class="btn-toolbar justify-content-end" role="group">
+
+                    <form action="/msn-prj" method="get" enctype="multipart/form-data">
+
+                        <input type="submit" class="btn-check" name="page" id="btnradio_1st" autocomplete="off" value="1">
+                        <label class="btn btn-outline-primary" for="btnradio_1st"><<</label>
+
+                        {% for i in range(1, page_count + 1) %}
+
+                            {% if i == page_sel %}
+
+                                {% if page_sel == page_count %}
+
+                                    <input type="submit" class="btn-check" name="page" id="btnradio{{ i - 2 }}" autocomplete="off" value="{{ i - 2 }}">
+                                    <label class="btn btn-outline-primary" for="btnradio{{ i - 2 }}">{{ i - 2 }}</label>
+
+                                {% endif %}
+
+                                {% if page_sel == page_count or page_sel != 1 %}
+                                    <input type="submit" class="btn-check" name="page" id="btnradio{{ i - 1 }}" autocomplete="off" value="{{ i - 1 }}">
+                                    <label class="btn btn-outline-primary" for="btnradio{{ i - 1 }}">{{ i - 1 }}</label>
+                                {% endif %}
+
+                                <input type="submit" class="btn-check" name="page" id="btnradio{{ i }}" autocomplete="off" value="{{ i }}">
+                                <label class="btn btn-primary" for="btnradio{{ i }}">{{ i }}</label>
+
+
+                                {% if page_sel == 1 or page_sel != page_count %}
+                                    <input type="submit" class="btn-check" name="page" id="btnradio{{ i + 1 }}" autocomplete="off" value="{{ i + 1 }}">
+                                    <label class="btn btn-outline-primary" for="btnradio{{ i + 1 }}">{{ i + 1 }}</label>
+                                {% endif %}
+
+                                {% if page_sel == 1 %}
+
+                                    <input type="submit" class="btn-check" name="page" id="btnradio{{ i + 2 }}" autocomplete="off" value="{{ i + 2 }}">
+                                    <label class="btn btn-outline-primary" for="btnradio{{ i + 2 }}">{{ i + 2 }}</label>
+
+                                {% endif %}
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                        <input type="submit" class="btn-check" name="page" id="btnradio_last" autocomplete="off" value="{{ page_count }}">
+                        <label class="btn btn-outline-primary" for="btnradio_last">>></label>
+
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+
+        <!--TESTING-->
+        <div class="bg-light text-center rounded p-4">
+
+            <div id="spinner_tbl_msn_prjs" class="show text-center">
+                <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status"><span class="sr-only">Loading...</span></div>
+                <span>Loading, please wait...</span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0 msn-prj-tbl">
+                    <thead>
+                        <tr class="text-dark">
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Res</th>
+                            <th scope="col" width="5%" colspan="3"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_msn_prjs">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--END TESTING-->
+
+    </div>
+
+    <dialog id="dialog_add_prj" class="col-sm-12 col-xl-6">
+
+            <div class="bg-light rounded h-100 p-4">
+
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="mb-2">Add Project</h5>
+                </div>
+
+                <form id="form_add_prj" action="/msn-prj/add" method="get" enctype="multipart/form-data">
+
+                    <div class="row g-0">
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light rounded h-100 p-2">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="internal_id"
+                                           name="internal_id" value="" placeholder="">
+                                    <label for="internal_id">Internal ID</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light rounded h-100 p-2">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="prj_name"
+                                           name="prj_name" value="" placeholder="" oninput="this.value = this.value.toUpperCase()">
+                                    <label for="prj_name">Name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light rounded h-100 p-2">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="prj_cat"
+                                           name="categorical" value="" placeholder="">
+                                    <label for="prj_cat">Category</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light rounded h-100 p-2">
+                                <div class="form-floating mb-0">
+
+                                    <select class="form-select" id="floatingSelect_type"
+                                        aria-label="Floating label select example"
+                                        name="prj_type">
+
+                                        {% for stt in ['CLT', 'HUT'] %}
+
+                                            <option value="{{ stt }}">{{ stt }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                    <label for="floatingSelect_type">Type</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light rounded h-100 p-2">
+                                <div class="form-floating mb-0">
+
+                                    <select class="form-select" id="floatingSelect_status"
+                                        aria-label="Floating label select example"
+                                        name="prj_status">
+
+                                        {% for stt in ['Completed', 'On Going', 'Pending', 'Cancel'] %}
+
+                                            {% if stt == 'On Going' %}
+                                                <option selected value="{{ stt }}">{{ stt }}</option>
+                                            {% else %}
+                                                <option value="{{ stt }}">{{ stt }}</option>
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </select>
+                                    <label for="floatingSelect_status">Status</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+
+                            <div class="row g-0">
+
+                                <div class="col-sm-12 col-xl-6">
+                                    <div class="bg-light rounded h-100 p-2">
+                                        <button type="button" class="btn btn-secondary py-3 w-100" onclick="closeDialog('dialog_add_prj')">Close</button>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-12 col-xl-6">
+                                    <div class="bg-light rounded h-100 p-2">
+                                        <input class="btn btn-primary py-3 w-100" type="submit" value="Add" id="submit_add_prj" onclick="func_submit_add_prj('form_add_prj');">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </dialog>
+    <!-- PAGE End -->
+
+{% endblock %}
+
+{% block js_files %}
+
+    <script type="text/javascript">
+        setTimeout(() => {
+            const err = document.getElementById('err');
+            if(err != null)
+            {
+                err.style.display = 'none';
+            }
+        }, 3000);
+
+
+
+        <!--TESTING-->
+        $(document).ready(function(){
+            fnc_get_msn_prjs = function() {
+                $('#spinner_tbl_msn_prjs').show();
+                $.ajax({
+                    url: '/msn-prj/retrieve',
+                    type: 'GET',
+                    success: function(response) {
+                        console.log(response);
+                        var tbody_msn_prjs = $('#tbody_msn_prjs');
+
+                        for(i in response.lst_prj)
+                        {
+                            var prj = response.lst_prj[i];
+                            var txt_color = "";
+                            var btn_dis = "";
+
+                            if(prj.status == "Completed"){
+                                txt_color = 'text-success';
+                                btn_dis = 'disabled';
+                            }
+                            else if(prj.status == "Cancel"){
+                                txt_color = 'text-danger';
+                            }
+                            else if(prj.status == "Pending"){
+                                txt_color = 'text-secondary';
+                            }
+                            else{
+                                txt_color = 'text-warning';
+                                btn_dis = 'disabled';
+                            }
+
+                            tbody_msn_prjs.append(`<tr class='${txt_color}'>
+                                <td>${prj.internal_id }</td>
+                                <td>${prj.name}</td>
+                                <td>${prj.categorical}</td>
+                                <td>${prj.type}</td>
+                                <td>${prj.status}</td>
+                                <td>${prj.lenOfScr}</td>
+                                <td><a class="btn btn-sm btn-primary" href="/msn-prj/${prj.id}/info">Detail</a></td>
+                                <td>Copy</td>
+                                <td>Delete</td>
+                            </tr>`);
+                        }
+
+                        $('#spinner_tbl_msn_prjs').hide();
+                        clearInterval(get_msn_prjs_timeout);
+                    },
+                    error: function(xhr, status, error) {
+                        clearInterval(get_msn_prjs_timeout);
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(error);
+                    }
+                });
+            }
+            var get_msn_prjs_timeout = setTimeout(fnc_get_msn_prjs, 1000);
+        });
+        
+    </script>
+
+    <script src="{{ url_for('static', path='/js/msn_prj.js') }}"></script>
+
+{% endblock %}

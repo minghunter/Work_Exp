@@ -1,0 +1,544 @@
+<!--{% set lst_qres_name = [] %}-->
+
+<!--{% if prj.detail.scr_cols %}-->
+<!--    {% for key, val in prj.detail.scr_cols.items() %}-->
+<!--        {% if val[2] in ['MA'] %}-->
+<!--            {% if val[0].rsplit('_', 1)[0] not in lst_qres_name %}-->
+<!--                {% set _ = lst_qres_name.append(val[0].rsplit('_', 1)[0]) %}-->
+<!--            {% endif %}-->
+<!--        {% else %}-->
+<!--            {% set _ = lst_qres_name.append(val[0]) %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--{% endif %}-->
+
+<!--{% if prj.detail.plm_to_scr_cols %}-->
+<!--    {% for key, val in prj.detail.plm_to_scr_cols.items() %}-->
+<!--        {% if val[2] in ['MA'] %}-->
+<!--            {% if val[0].rsplit('_', 1)[0] not in lst_qres_name %}-->
+<!--                {% set _ = lst_qres_name.append(val[0].rsplit('_', 1)[0]) %}-->
+<!--            {% endif %}-->
+<!--        {% else %}-->
+<!--            {% set _ = lst_qres_name.append(val[0]) %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--{% endif %}-->
+
+<!--{% if prj.detail.plm_to_prod_cols %}-->
+<!--    {% for key, val in prj.detail.plm_to_prod_cols.items() %}-->
+<!--        {% if val[2] in ['MA'] %}-->
+<!--            {% if val[0].rsplit('_', 1)[0] not in lst_qres_name %}-->
+<!--                {% set _ = lst_qres_name.append(val[0].rsplit('_', 1)[0]) %}-->
+<!--            {% endif %}-->
+<!--        {% else %}-->
+<!--            {% set _ = lst_qres_name.append(val[0]) %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--{% endif %}-->
+
+<!--{% if prj.detail.product_cols %}-->
+<!--    {% for key, val in prj.detail.product_cols.items() %}-->
+<!--        {% if val[3] in ['MA'] %}-->
+<!--            {% if val[0].rsplit('_', 1)[0] not in lst_qres_name %}-->
+<!--                {% set _ = lst_qres_name.append(val[0].rsplit('_', 1)[0]) %}-->
+<!--            {% endif %}-->
+<!--        {% else %}-->
+<!--            {% set _ = lst_qres_name.append(val[0]) %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--{% endif %}-->
+
+<!--{% if prj.detail.fc_cols %}-->
+<!--    {% for key, val in prj.detail.fc_cols.items() %}-->
+<!--        {% if val[2] in ['MA'] %}-->
+<!--            {% if val[0].rsplit('_', 1)[0] not in lst_qres_name %}-->
+<!--                {% set _ = lst_qres_name.append(val[0].rsplit('_', 1)[0]) %}-->
+<!--            {% endif %}-->
+<!--        {% else %}-->
+<!--            {% set _ = lst_qres_name.append(val[0]) %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--{% endif %}-->
+
+<form id="form_topline" action="/msn-prj/update/{{ prj.id }}/topline" method="post" enctype="multipart/form-data">
+    <input type="hidden" id='output_topline' name="output">
+
+    <input type="hidden" id='detail.topline_design.is_display_pct_sign' name="detail.topline_design.is_display_pct_sign" value="{{ prj.detail.topline_design.is_display_pct_sign }}">
+
+    <input type="hidden" id='detail.topline_design.is_jar_scale_3' name="detail.topline_design.is_jar_scale_3" value="{{ prj.detail.topline_design.is_jar_scale_3 }}">
+
+    <div class="row g-0 p-2">
+
+        <div class="col-sm-12 col-xl-4">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-check form-switch">
+
+                    <input class="form-check-input" type="checkbox" role="switch"
+                               id="cbx_is_display_pct_sign" onclick="cbxClick(this, 'detail.topline_design.is_display_pct_sign');">
+                    <label class="form-check-label" for="cbx_is_display_pct_sign">Display percentage sign(%)</label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-check form-switch">
+
+                    <input class="form-check-input" type="checkbox" role="switch"
+                               id="cbx_is_jar_scale_3" onclick="cbxClick(this, 'detail.topline_design.is_jar_scale_3');">
+                    <label class="form-check-label" for="cbx_is_jar_scale_3">Run JAR mean base on scale 3</label>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bg-light rounded h-100 p-2">
+
+        <ul class="nav nav-pills mb-3" id="tl-pills-tab" role="tablist">
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tl-header-tab" data-bs-toggle="pill"
+                    data-bs-target="#tl-header" type="button" role="tab" aria-controls="tl-header"
+                    aria-selected="true">Header</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tl-side-tab" data-bs-toggle="pill"
+                    data-bs-target="#tl-side" type="button" role="tab" aria-controls="tl-side"
+                    aria-selected="false">Side-axis</button>
+            </li>
+
+        </ul>
+
+
+        <div class="tab-content" id="tl-pills-tabContent">
+
+            <div class="tab-pane fade show active" id="tl-header" role="tabpanel" aria-labelledby="tl-header-tab">
+                <div class="bg-light rounded h-100 p-2">
+
+<!--                    TOPLINE HEADER-->
+                    <div class="p-1">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" id="tbl_tl_header">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Label</th>
+                                    <th scope="col">Hidden categories</th>
+                                    <th scope="col">Filter</th>
+                                    <th scope="col" width="25%">Sections</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="detail.topline_design.header">
+
+                                {% if prj.detail.topline_design.header %}
+
+                                    {% for k_hd, v_hd in prj.detail.topline_design.header.items() %}
+
+                                        <tr id="detail.topline_design.header.{{ k_hd }}.row">
+                                            <td>
+                                                <textarea class="form-control" id="detail.topline_design.header.{{ k_hd }}.name"
+                                                          name="detail.topline_design.header.{{ k_hd }}.name" cols="" rows="2">{{ v_hd.name }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.topline_design.header.{{ k_hd }}.lbl"
+                                                          name="detail.topline_design.header.{{ k_hd }}.lbl" cols="" rows="2">{{ v_hd.lbl }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.topline_design.header.{{ k_hd }}.hidden_cats"
+                                                          name="detail.topline_design.header.{{ k_hd }}.hidden_cats" cols="" rows="2">{{ v_hd.hidden_cats }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.topline_design.header.{{ k_hd }}.filter"
+                                                          name="detail.topline_design.header.{{ k_hd }}.filter" cols="" rows="2">{{ v_hd.filter }}</textarea>
+
+                                            </td>
+
+                                            <td>
+
+                                                <input type="hidden"
+                                                       id="detail.topline_design.header.{{ k_hd }}.run_secs"
+                                                       name="detail.topline_design.header.{{ k_hd }}.run_secs" value="{{ v_hd.run_secs }}">
+
+                                                <select class="form-select" multiple aria-label="multiple select"
+                                                        multiselect-search="true" multiselect-select-all="true"
+                                                        multiselect-max-items="5" multiselect-hide-x="false"
+                                                        id="topline_header_secs_{{ k_hd }}"
+                                                        onchange="func_topline_header_secs(this, 'detail.topline_design.header.{{ k_hd }}.run_secs');">
+
+                                                    {% for key, val in prj.detail.sections.items() %}
+
+                                                        {% if v_hd.run_secs|length %}
+                                                            {% if val.name in v_hd.run_secs %}
+                                                                <option selected value="{{ val.name }}">{{ val.name }}</option>
+                                                            {% else %}
+                                                                <option value="{{ val.name }}">{{ val.name }}</option>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            <option selected value="{{ val.name }}">{{ val.name }}</option>
+                                                        {% endif %}
+
+                                                    {% endfor %}
+
+                                                </select>
+
+                                            </td>
+                                            <!--HERE-->
+
+                                            <td width="5%"><button type="button" class="btn btn-outline-danger"
+                                               id="detail.topline_design.header.{{ k_hd }}.btn_del"
+                                               onclick="Del_topline_header_item('detail.topline_design.header.{{ k_hd }}.row');">X</button></td>
+                                        </tr>
+
+                                    {% endfor %}
+
+                                {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-light rounded h-100 p-1">
+
+                        <div class="row g-2 p-0">
+
+                            <div class="col-sm-12 col-xl-3">
+                                <button type="button" class="btn btn-outline-primary py-2 w-25" onclick="Add_topline_header_item('detail.topline_design.header', 'topline_header_secs_1');">+</button>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+<!--                                    <button type="button" class="btn btn-outline-warning w-100" onclick="tableToCSV('tbl_tl_header', 'Topline_header_bulkup')">Export</button>-->
+                                <a type="button" class="btn btn-outline-warning py-2 w-100" href="/msn-prj/tl-bulkup-export/{{ prj.id }}/header">Export</a>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <button type="button" class="btn btn-outline-primary py-2 w-100" onclick="showDialog('dialog_bulkup_topline_header')">Bulk-up header</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tl-side" role="tabpanel" aria-labelledby="tl-side-tab">
+                <div class="bg-light rounded h-100 p-2">
+
+                    <div class="bg-light rounded h-100 p-1" id="group_topline_side_items">
+
+                        {% if prj.detail.topline_design.side %}
+
+                            {% for key, val in prj.detail.topline_design.side.items() %}
+
+                                <div class="row g-0 p-2" id="detail.topline_design.side.{{ key }}">
+
+                                    <div class="d-flex align-items-center justify-content-between p-1">
+                                        <h6 class="mb-1">#{{ key }}</h6>
+                                        <button type="button" class="btn btn-outline-danger" onclick="Del_topline_side_item('detail.topline_design.side.{{ key }}', 'group_topline_side_items');">Delete</button>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+                                            <input type="text" class="form-control" id="detail.topline_design.side.{{ key }}.group_lbl"
+                                                   name="detail.topline_design.side.{{ key }}.group_lbl" value="{{ val.group_lbl }}">
+                                            <label for="detail.topline_design.side.{{ key }}.group_lbl">Group</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+                                            <input type="text" class="form-control" id="detail.topline_design.side.{{ key }}.name"
+                                                   name="detail.topline_design.side.{{ key }}.name" value="{{ val.name }}">
+                                            <label for="detail.topline_design.side.{{ key }}.name">Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+                                            <input type="text" class="form-control" id="detail.topline_design.side.{{ key }}.lbl"
+                                                   name="detail.topline_design.side.{{ key }}.lbl" value="{{ val.lbl }}">
+                                            <label for="detail.topline_design.side.{{ key }}.lbl">Label</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+                                            <select class="form-select" id="detail.topline_design.side.{{ key }}.type"
+                                                    name="detail.topline_design.side.{{ key }}.type"
+                                                    onchange="topline_side_type(this);">
+
+                                                {% for _type in ['OL', 'JR', 'FC', 'SA', 'MA', 'NUM'] %}
+
+                                                    {% if val.type == _type %}
+                                                        <option selected value="{{ _type }}">{{ _type }}</option>
+                                                    {% else %}
+                                                        <option value="{{ _type }}">{{ _type }}</option>
+                                                    {% endif %}
+
+                                                {% endfor %}
+
+                                            </select>
+                                            <label for="detail.topline_design.side.{{ key }}.type">Type</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+
+                                            <div class="form-check form-check-inline form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="detail.topline_design.side.{{ key }}.t2b"
+                                                       name="detail.topline_design.side.{{ key }}.t2b"
+                                                       value="{{ val.t2b }}"
+                                                       onclick="cbxClick(this, 'detail.topline_design.side.{{ key }}.t2b');">
+                                                <label class="form-check-label" for="detail.topline_design.side.{{ key }}.t2b">T2B</label>
+                                            </div>
+                                            <div class="form-check form-check-inline form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="detail.topline_design.side.{{ key }}.b2b"
+                                                       name="detail.topline_design.side.{{ key }}.b2b"
+                                                       value="{{ val.b2b }}"
+                                                       onclick="cbxClick(this, 'detail.topline_design.side.{{ key }}.b2b');">
+                                                <label class="form-check-label" for="detail.topline_design.side.{{ key }}.b2b">B2B</label>
+                                            </div>
+                                            <div class="form-check form-check-inline form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="detail.topline_design.side.{{ key }}.mean"
+                                                       name="detail.topline_design.side.{{ key }}.mean"
+                                                       value="{{ val.mean }}"
+                                                       onclick="cbxClick(this, 'detail.topline_design.side.{{ key }}.mean');">
+                                                <label class="form-check-label" for="detail.topline_design.side.{{ key }}.mean">Mean</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+
+                                            <div class="form-check form-check-inline form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="detail.topline_design.side.{{ key }}.is_count"
+                                                       name="detail.topline_design.side.{{ key }}.is_count"
+                                                       value="{{ val.is_count }}"
+                                                       onclick="cbxClick(this, 'detail.topline_design.side.{{ key }}.is_count');">
+                                                <label class="form-check-label" for="detail.topline_design.side.{{ key }}.is_count">Display count</label>
+                                            </div>
+                                            <div class="form-check form-check-inline form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="detail.topline_design.side.{{ key }}.is_corr"
+                                                       name="detail.topline_design.side.{{ key }}.is_corr"
+                                                       value="{{ val.is_corr }}"
+                                                       onclick="cbxClick(this, 'detail.topline_design.side.{{ key }}.is_corr');">
+                                                <label class="form-check-label" for="detail.topline_design.side.{{ key }}.is_corr">Correlation</label>
+                                            </div>
+                                            <div class="form-check form-check-inline form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="detail.topline_design.side.{{ key }}.is_ua"
+                                                       name="detail.topline_design.side.{{ key }}.is_ua"
+                                                       value="{{ val.is_ua }}"
+                                                       onclick="cbxClick(this, 'detail.topline_design.side.{{ key }}.is_ua');">
+                                                <label class="form-check-label" for="detail.topline_design.side.{{ key }}.is_ua">U&A</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+                                            <input type="text" class="form-control" id="detail.topline_design.side.{{ key }}.ma_cats"
+                                                   name="detail.topline_design.side.{{ key }}.ma_cats" value="{{ val.ma_cats }}">
+                                            <label for="detail.topline_design.side.{{ key }}.ma_cats">MA Categories</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="form-floating p-1">
+                                            <input type="text" class="form-control" id="detail.topline_design.side.{{ key }}.hidden_cats"
+                                                   name="detail.topline_design.side.{{ key }}.hidden_cats" value="{{ val.hidden_cats }}">
+                                            <label for="detail.topline_design.side.{{ key }}.hidden_cats">Hidden categories</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-light rounded h-100 p-0">
+                                        <hr>
+                                    </div>
+
+                                </div>
+
+
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="bg-light rounded h-100 p-1">
+
+                        <div class="row g-2 p-0">
+
+                            <div class="col-sm-12 col-xl-3">
+                                <button type="button" class="btn btn-outline-primary py-2 w-25" onclick="Add_topline_side_item('group_topline_side_items');">+</button>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <a type="button" class="btn btn-outline-warning py-2 w-100" href="/msn-prj/tl-bulkup-export/{{ prj.id }}/side">Export</a>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <button type="button" class="btn btn-outline-primary py-2 w-100" onclick="showDialog('dialog_bulkup_topline_side')">Bulk-up side</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+
+<div class="row g-1 p-3">
+
+    <div class="col-sm-12 col-xl-3">
+        <form id="form_topline_side_auto_generate" action="/msn-prj/tl-side-auto-generate/{{ prj.id }}" method="post" enctype="multipart/form-data">
+            <input class="btn btn-outline-warning py-3 w-100" type="submit" value="Topline side-axis automation" onclick="return confirm('Confirm auto generate side-axis, the original data will be delete?')">
+        </form>
+    </div>
+
+    <div class="col-sm-12 col-xl-3">
+
+    </div>
+
+    <div class="col-sm-12 col-xl-3">
+
+    </div>
+
+    <div class="col-sm-12 col-xl-3">
+        <input class="btn btn-primary py-3 w-100" type="submit" value="Submit topline" form="form_topline" onclick="fnc_submit('topline', false)">
+    </div>
+
+</div>
+
+
+<!--                    dialog for bulkup topline header-->
+<dialog id="dialog_bulkup_topline_header" class="col-sm-12 col-xl-6">
+
+    <div class="bg-light rounded h-100 p-4">
+
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <h5 class="mb-2">Bulk-up topline header</h5>
+        </div>
+
+        <form id="form_bulkup_topline_header" action="/msn-prj/update/{{ prj.id }}/topline" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" id='output_bulkup_topline_header' name="output">
+
+            <div class="align-items-center justify-content-between mb-2">
+
+                <div class="form-floating p-2">
+                    <textarea class="form-control" placeholder="Leave a input here"
+                        id="floatingTextarea_bulkup_topline_header" name="detail.topline_design.header" style="height: 300px"></textarea>
+                    <label for="floatingTextarea_bulkup_topline_header">Leave an input here</label>
+                </div>
+
+            </div>
+
+            <div class="row g-0 p-0">
+                <div class="col-sm-12 col-xl-3"></div>
+                <div class="col-sm-12 col-xl-3"></div>
+
+                <div class="col-sm-12 col-xl-3">
+                    <div class="bg-light rounded h-100 p-2">
+                        <button type="button" class="btn btn-secondary py-3 w-100" onclick="closeDialog('dialog_bulkup_topline_header')">Close</button>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12 col-xl-3">
+                    <div class="bg-light rounded h-100 p-2">
+                        <input class="btn btn-primary py-3 w-100" type="submit" value="Submit" id="submit_bulkup_topline_header" onclick="fnc_submit('bulkup_topline_header', true)">
+                    </div>
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</dialog>
+
+<!--                    dialog for bulkup topline side-->
+<dialog id="dialog_bulkup_topline_side" class="col-sm-12 col-xl-6">
+
+    <div class="bg-light rounded h-100 p-4">
+
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <h5 class="mb-2">Bulk-up topline side</h5>
+        </div>
+
+        <form id="form_bulkup_topline_side" action="/msn-prj/update/{{ prj.id }}/topline" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" id='output_bulkup_topline_side' name="output">
+
+            <div class="align-items-center justify-content-between mb-2">
+
+                <div class="form-floating p-2">
+                    <textarea class="form-control" placeholder="Leave a input here"
+                        id="floatingTextarea_bulkup_topline_side" name="detail.topline_design.side" style="height: 300px"></textarea>
+                    <label for="floatingTextarea_bulkup_topline_side">Leave an input here</label>
+                </div>
+
+            </div>
+
+            <div class="row g-0 p-0">
+                <div class="col-sm-12 col-xl-3"></div>
+                <div class="col-sm-12 col-xl-3"></div>
+
+                <div class="col-sm-12 col-xl-3">
+                    <div class="bg-light rounded h-100 p-2">
+                        <button type="button" class="btn btn-secondary py-3 w-100" onclick="closeDialog('dialog_bulkup_topline_side')">Close</button>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12 col-xl-3">
+                    <div class="bg-light rounded h-100 p-2">
+                        <input class="btn btn-primary py-3 w-100" type="submit" value="Submit" id="submit_bulkup_topline_side" onclick="fnc_submit('bulkup_topline_side', true)">
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</dialog>
+
+{% block js_files %}
+    <script src="{{ url_for('static', path='/js/multiselect-dropdown.js') }}" ></script>
+{% endblock %}

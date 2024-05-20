@@ -1,0 +1,216 @@
+{% set dict_structure = {
+    '1': {'name': 'OE Combine', 'cols': ['#', 'Combined name', '1st column name', '2nd column name', 'Buttons']},
+    '2': {'name': 'Screener', 'cols': ['#', 'Output data column name', 'Rawdata column name', 'Type', 'Buttons']},
+    '3': {'name': 'Placement add to screener', 'cols': ['#', 'Output data column name', 'Rawdata column name', 'Type', 'Buttons']},
+    '4': {'name': 'Placement add to product', 'cols': ['#', 'Output data column name', 'Rawdata column name', 'Type', 'Buttons']},
+    '5': {'name': 'Product', 'cols': ['#', 'Output data column name', 'Rawdata 1st product col name', 'Rawdata 2nd product col name', 'Type', 'Buttons']},
+    '6': {'name': 'Force Choice', 'cols': ['#', 'Output data column name', 'Rawdata column name', 'Type', 'Buttons']},
+} %}
+
+<div class="bg-light rounded h-100 p-2">
+
+    <div class="row g-1 mb-3">
+
+        <div class="col-sm-12 col-xl-3">
+            <button id="btn_structure_export" type="button" class="btn btn-outline-warning py-3 w-100" onclick="alert('Export');">Export <b>OE Combine</b></button>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <button id="btn_structure_bulkup" type="button" class="btn btn-outline-primary py-3 w-100" onclick="alert('Bulk-up');">Bulk-up <b>OE Combine</b></button>
+        </div>
+
+        <div class="col-sm-12 col-xl-3"></div>
+
+        <div class="col-sm-12 col-xl-3">
+            <button id="btn_structure_update" type="button" class="btn btn-primary py-3 w-100" onclick="alert('Update');">Update <b>OE Combine</b></button>
+        </div>
+
+    </div>
+
+    <nav>
+        <div class="nav nav-tabs" id="div-tab-structure" role="tablist">
+
+            {% for key, val in dict_structure.items() %}
+
+                {% set str_selected = '' %}
+                {% set is_selected = 'false' %}
+                {% set is_hidden = 'false' %}
+
+                {% if key == '1' %}
+                    {% set str_selected = 'active' %}
+                    {% set is_selected = 'true' %}
+                {% endif %}
+
+                <button class="nav-link {{ str_selected }}" id="tab-name-structure-{{ key }}" data-bs-toggle="tab"
+                        data-bs-target="#tab-content-structure-{{ key }}" type="button" role="tab" aria-controls="tab-name-structure-{{ key }}"
+                        aria-selected="{{ is_selected }}" onclick="fnc_structure_tab_clicked({{ key }}, '{{ val.name }}');">
+                    {{ val.name }}
+                </button>
+
+            {% endfor %}
+
+        </div>
+    </nav>
+
+    <div class="tab-content pt-3" id="nav-tab-content-structure">
+
+        {% for key, val in dict_structure.items() %}
+
+            {% set str_selected = '' %}
+            {% set is_selected = 'false' %}
+
+            {% if key == '1' %}
+                {% set str_selected = 'show active' %}
+            {% endif %}
+
+            <div class="tab-pane fade {{ str_selected }}" id="tab-content-structure-{{ key }}" role="tabpanel"
+                 aria-labelledby="tab-name-structure-{{ key }}">
+
+                <form id="form_structure_{{ key }}" name="form_structure_{{ key }}">
+
+                    <div class="table-responsive mb-3">
+
+                        <table id="tbl_structure_{{ key }}" class="table text-start align-middle table-bordered table-hover">
+
+                            <thead id="tbl_header_structure_{{ key }}">
+                                <tr class="text-dark">
+                                    {% for colname in val.cols %}
+                                        {% if loop.first or loop.last %}
+                                            <th width="5%" scope="col">{{ colname }}</th>
+                                        {% elif colname == 'Type' %}
+                                            <th width="15%" scope="col">{{ colname }}</th>
+                                        {% else %}
+                                            <th scope="col">{{ colname }}</th>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+
+                            <tbody id="tbl_body_structure_{{ key }}">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+<script>
+
+    fnc_structure_tab_clicked = function(tab_key, tab_name) {
+
+        $('#btn_structure_export').html(`Export <b>${tab_name}</b>`);
+        $('#btn_structure_bulkup').html(`Bulk-up <b>${tab_name}</b>`);
+        $('#btn_structure_update').html(`Update <b>${tab_name}</b>`);
+
+        fnc_get_msn_prj_structure(tab_key, tab_name);
+
+    };
+
+    fnc_loading_tab_structure = function(is_loading, tab_key) {
+
+        fnc_loading(is_loading);
+
+        $(`button[id^='btn_structure_']`).each(function (i, el) {
+            $(el).prop("disabled", is_loading);
+        });
+
+        $(`#form_structure_${tab_key} :input`).prop("disabled", is_loading);
+
+    };
+
+
+    fnc_get_msn_prj_structure = function(tab_key, tab_name) {
+
+        if(tab_key == null){
+            $(`table[id^='tbl_structure_']`).each(function (i, el) {
+                $(el).find("tr:gt(0)").remove();
+                //console.log('remove', el);
+            });
+
+            tab_key = 1;
+            tab_name = 'OE Combine';
+        }
+
+        fnc_loading_tab_structure(true, tab_key);
+
+        $.ajax({
+            type: "GET",
+            url: `/msn-prj/{{ prj.id }}/tab/structure/${tab_key}`,
+            success: function(response) {
+
+                console.log(response);
+
+                obj_data = response.obj_data;
+                str_tr = "";
+                for(i in obj_data){
+
+                    stt = parseInt(i);
+                    str_tr += `<tr><td class="p-3"><b>${stt}</b></td>`;
+
+                    for(j in obj_data[i]){
+
+                        str_el_id = `structure.key${tab_key}.row${stt}.col${j}`;
+
+                        if(tab_key > 1 && parseInt(j) + 1 == obj_data[i].length){
+
+                            arr_sel_opts = ['NONE', 'OL', 'JR', 'FC', 'SA', 'MA', 'NUM', 'OE', 'OTHER'];
+                            str_sel_opts = "";
+
+                            for(opt in arr_sel_opts)
+                            {
+                                if(obj_data[i][j] == arr_sel_opts[opt]){
+                                    str_sel_opts += `<option selected value="${arr_sel_opts[opt]}">${arr_sel_opts[opt]}</option>`;
+                                }
+                                else{
+                                    str_sel_opts += `<option value="${arr_sel_opts[opt]}">${arr_sel_opts[opt]}</option>`;
+                                }
+                            }
+
+                            str_tr += `<td class="p-3">
+                                <select class="form-select" id="${str_el_id}" name="${str_el_id}">
+                                ${str_sel_opts}
+                                </select>
+                            </td>`;
+                        }
+                        else {
+                            str_tr += `<td class="p-1"><textarea class="form-control" id="${str_el_id}" name="${str_el_id}" cols="" rows="">${obj_data[i][j]}</textarea></td>`;
+                        }
+
+                    }
+
+                    str_tr += `<td class="p-3">
+                        <button type="button" class="btn btn-outline-danger W-100" onclick="alert('Remove row ${stt}');">X</button>
+                    </td></tr>`;
+                }
+
+                $(`#tbl_structure_${tab_key}`).find("tr:gt(0)").remove();
+                $(`#tbl_structure_${tab_key} tr:last`).after(str_tr);
+                $(`#tbl_structure_${tab_key}`).find("tr:gt(0)").fadeTo("fast", 0);
+
+                setTimeout(() => {
+                    fnc_loading_tab_structure(false, tab_key);
+                    $(`#tbl_structure_${tab_key}`).find("tr:gt(0)").fadeTo("fast", 1);
+                }, 1000);
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+
+    };
+
+</script>

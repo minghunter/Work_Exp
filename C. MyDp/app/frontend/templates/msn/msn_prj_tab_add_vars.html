@@ -1,0 +1,112 @@
+<form id="form_add_vars" action="/msn-prj/update/{{ prj.id }}/add-vars" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" id='output_add_vars' name="output">
+
+    <div class="bg-light rounded h-100 p-4" id="group_addin_vars">
+
+        {% for key, val in prj.detail.addin_vars.items() %}
+            <div class="row g-0 p-2" id="detail.addin_vars.{{ key }}">
+
+                <h6 class="mb-1">#{{ key }}</h6>
+
+                <div class="d-flex align-items-center justify-content-between p-1">
+                    <button type="button" class="btn btn-outline-warning" onclick="Add_variable('group_addin_vars', 'detail.addin_vars.{{ key }}');">Copy</button>
+                    <button type="button" class="btn btn-outline-danger" onclick="Del_variable('detail.addin_vars.{{ key }}', 'group_addin_vars');">Delete</button>
+                </div>
+
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-1">
+                        <div class="form-floating mb-0">
+                            <input type="text" class="form-control" id="detail.addin_vars.{{ key }}.name"
+                                   name="detail.addin_vars.{{ key }}.name" value="{{ val.name }}" placeholder="">
+                            <label for="detail.addin_vars.{{ key }}.name">Name</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-1">
+                        <div class="form-floating mb-0">
+                            <input type="text" class="form-control" id="detail.addin_vars.{{ key }}.lbl"
+                                   name="detail.addin_vars.{{ key }}.lbl" value="{{ val.lbl }}" placeholder="">
+                            <label for="detail.addin_vars.{{ key }}.lbl">Label</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive p-1">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                            <tr class="text-dark">
+                                <th scope="col">Value</th>
+                                <th scope="col">Label</th>
+                                <th scope="col">Condition</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="detail.addin_vars.{{ key }}.cats">
+
+                            {% if val.cats %}
+
+                                {% for k_cat, v_cat in val.cats.items() %}
+
+                                    <tr id="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.row">
+                                        <td width="10%"><input type="text" class="form-control" id="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.val"
+                                               name="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.val" value="{{ v_cat.val }}" placeholder="" aria-label=""></td>
+
+                                        <td width="30%"><input type="text" class="form-control" id="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.lbl"
+                                               name="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.lbl" value="{{ v_cat.lbl }}" placeholder="" aria-label=""></td>
+
+                                        <td width="55%">
+<!--                                            <input type="text" class="form-control" id="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.condition"-->
+<!--                                               name="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.condition" value="{{ v_cat.condition }}" placeholder="" aria-label="">-->
+
+                                            <textarea class="form-control" id="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.condition"
+                                              name="detail.addin_vars.{{ key }}.cats.{{ k_cat }}.condition"
+                                              cols="" rows="2">{{ v_cat.condition }}</textarea>
+
+                                        </td>
+
+                                        <td width="5%"><button type="button" class="btn btn-outline-danger" onclick="Del_variable_cat('detail.addin_vars.{{ key }}.cats.{{ k_cat }}.row');">X</button></td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            {% else %}
+
+<!--                                                    <tr>-->
+<!--                                                        <td>=></td>-->
+<!--                                                        <td>Add value</td>-->
+<!--                                                        <td></td>-->
+<!--                                                        <td><=</td>-->
+<!--                                                    </tr>-->
+
+                            {% endif %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-1 ">
+                        <button type="button" class="btn btn-outline-primary" onclick="Add_variable_cat('detail.addin_vars.{{ key }}.cats', []);">+</button>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+
+
+        {% endfor %}
+
+    </div>
+
+    <div class="bg-light rounded h-100 p-4">
+        <div class="d-flex align-items-center justify-content-between mb-0">
+            <button type="button" class="btn btn-outline-primary py-3 w-25" onclick="Add_variable('group_addin_vars', '');">Add variable</button>
+            <input class="btn btn-primary py-3 w-25" type="submit" id="submit_add_vars" value="Submit add variables" onclick="fnc_submit('add_vars', false)">
+        </div>
+    </div>
+
+</form>

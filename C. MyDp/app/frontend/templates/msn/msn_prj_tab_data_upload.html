@@ -1,0 +1,119 @@
+<div class="bg-light rounded h-100 p-3">
+
+    <div class="p-0">
+        {% if prj.type == 'HUT' %}
+            <h7>Make sure <b>Screener x 2 = Placement = Main</b></h7>
+        {% else %}
+            <h7>Make sure <b>Screener = Main</b></h7>
+        {% endif %}
+    </div>
+
+    <form id="form_data_clear" action="/msn-prj/data_clear/{{ prj.id }}" method="post" enctype="multipart/form-data">
+
+        <div class="row g-4">
+
+            <div class="col-sm-12 col-xl-4">
+                <table class="table text-start align-middle table-bordered table-hover mb-0 msn-prj-tbl">
+                    <thead>
+                        <tr class="text-dark">
+                            <th scope="col">Screener</th>
+
+                            {% if prj.type == 'HUT' %}
+                                <th scope="col">Placement</th>
+                            {% endif %}
+
+                            <th scope="col">Main</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ prj.lenOfScr }}</td>
+
+                            {% if prj.type == 'HUT' %}
+                                <td>{{ prj.lenOfPlm }}</td>
+                            {% endif %}
+
+                            <td>{{ prj.lenOfMain }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <table class="table text-start align-middle table-bordered table-hover mb-0 msn-prj-tbl">
+                    <thead>
+                        <tr class="text-dark">
+                            <th scope="col" width="50%">Coding</th>
+                            <th scope="col" width="50%">Codelist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ prj.is_has_oe_coding }}</td>
+                            <td>{{ prj.is_has_oe_codelist }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <input class="btn btn-outline-danger py-3 w-100" type="submit" value="Clear data" onclick="fnc_submit_clear_data()">
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="bg-light rounded h-100 p-3">
+
+    <form id="form_data_upload" action="/msn-prj/data_upload/{{ prj.id }}" method="post" enctype="multipart/form-data">
+
+        <div class="row g-4">
+
+            <div class="col-sm-12 col-xl-4">
+                <label for="file_scr" class="form-label">Choose <b>SCREENER</b> file (*.xlsx)</label>
+                <input class="form-control" type="file" id="file_scr" name="file_scr" multiple data-max="1" accept=".xlsx" value="">
+            </div>
+
+            {% if prj.type == 'HUT' %}
+                <div class="col-sm-12 col-xl-4">
+                    <label for="file_plm" class="form-label">Choose <b>PLACEMENT</b> file (*.xlsx)</label>
+                    <input class="form-control" type="file" id="file_plm" name="file_plm" multiple data-max="1" accept=".xlsx" value="">
+                </div>
+            {% endif %}
+
+            <div class="col-sm-12 col-xl-4">
+                <label for="file_main" class="form-label">Choose <b>{% if prj.type == 'HUT' %} CALL BACK {% else %} MAIN {% endif %}</b> file (*.xlsx)</label>
+                <input class="form-control" type="file" id="file_main" name="file_main" multiple data-max="1" accept=".xlsx" value="">
+            </div>
+
+            {% if prj.type != 'HUT' %}
+                <div class="col-sm-12 col-xl-4"></div>
+            {% endif %}
+
+            <div class="col-sm-12 col-xl-4">
+                <label for="file_coding" class="form-label">Choose <b>CODING</b> file (*.csv)</label>
+                <input class="form-control" type="file" id="file_coding" name="file_coding" multiple data-max="1" accept=".csv" value="">
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <label for="file_codelist" class="form-label">Choose <b>CODELIST</b> file (*.csv)</label>
+                <input class="form-control" type="file" id="file_codelist" name="file_codelist" multiple data-max="1" accept=".csv" value="">
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <input class="btn btn-primary py-3 w-100" type="submit" value="Upload">
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+

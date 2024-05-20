@@ -1,0 +1,176 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>{{ prj.name }} | {{ prj.type }}</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block sidebar_MSN_prj %}
+    <a href="\msn-prj" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>MSN projects</a>
+{% endblock %}
+
+{% block search_bar %}
+
+    {% if prj.status == "Completed" %}
+        {% set txt_color = 'text-success' %}
+    {% elif prj.status in ["Cancel", "Pending"] %}
+        {% set txt_color = 'text-danger' %}
+    {% elif prj.status == "On Going" %}
+        {% set txt_color = 'text-warning' %}
+    {% endif %}
+
+    <div class="d-md-flex ms-4 align-items-center justify-content-center mt-2">
+        <h5>{{ prj.internal_id }} - {{ prj.name }} | {{ prj.type }} # {{ prj.categorical }} # <span class="{{ txt_color }}">{{ prj.status }}</span></h5>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid pt-2 px-4">
+
+        {% if strErr|trim|length %}
+            <div id="err" class="alert alert-danger" role="alert">
+                {{ strErr }}
+            </div>
+        {% endif %}
+
+        {% if user_info.name == 'Guest' %}
+            <div id="login_warning" class="alert alert-warning" role="alert">
+                Please login to have full permission in <b>'{{ prj.internal_id }} - {{ prj.name }}'</b>.
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="container-fluid pt-2 px-4">
+
+        <div class="bg-light rounded h-100 p-4">
+
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                    <button class="nav-link {% if tabname == 'info' %} active {% endif %}" id="nav-info-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-info" type="button" role="tab" aria-controls="nav-info"
+                        aria-selected="true" onclick="location.href='/msn-prj/{{ prj.id }}/info'">Info</button>
+
+                    {% if user_info.role in ['admin', 'dp'] %}
+                        <button class="nav-link {% if tabname == 'sec' %} active {% endif %}" id="nav-sections-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-sections" type="button" role="tab" aria-controls="nav-sections"
+                            aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/sec'">Sections</button>
+
+                        <button class="nav-link {% if 'structure' in tabname %} active {% endif %}" id="nav-structure-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-structure" type="button" role="tab" aria-controls="nav-structure"
+                            aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/structure-combine'">Structure</button>
+
+                        <button class="nav-link {% if tabname == 'add-vars' %} active {% endif %}" id="nav-add_vars-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-add_vars" type="button" role="tab" aria-controls="nav-add_vars"
+                            aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/add-vars'">Addin variables</button>
+
+                        <button class="nav-link {% if tabname == 'topline' %} active {% endif %}" id="nav-topline-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-topline" type="button" role="tab" aria-controls="nav-topline"
+                            aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/topline'">Topline design</button>
+
+                    {% endif %}
+
+                    {% if user_info.role in ['admin', 'dp', 'cs'] %}
+
+<!--                        <button class="nav-link {% if tabname == 'openend' %} active {% endif %}" id="nav-openend-tab" data-bs-toggle="tab"-->
+<!--                            data-bs-target="#nav-openend" type="button" role="tab" aria-controls="nav-openend"-->
+<!--                            aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/openend'">Open-end</button>-->
+
+                        <button class="nav-link {% if tabname in ['data-upload', 'data-export-raw', 'data-process-topline', 'data-export-topline'] %} active {% endif %}" id="nav-data-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-data" type="button" role="tab" aria-controls="nav-data"
+                            aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/data-upload'">Data</button>
+
+                    {% endif %}
+
+                </div>
+            </nav>
+
+
+
+            <div class="tab-content pt-3" id="nav-tabContent">
+
+                <!--This is information-->
+                <div class="tab-pane fade {% if tabname == 'info' %} show active {% endif %}" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                    {% if tabname == 'info' %}
+                        {% include 'msn/msn_prj_tab_info.html' %}
+                    {% endif %}
+                </div>
+
+                {% if user_info.role in ['admin', 'dp'] %}
+                    <!--This is sections-->
+                    <div class="tab-pane fade {% if tabname == 'sec' %} show active {% endif %}" id="nav-sections" role="tabpanel" aria-labelledby="nav-sections-tab">
+                        {% if tabname == 'sec' %}
+                            {% include 'msn/msn_prj_tab_sec.html' %}
+                        {% endif %}
+                    </div>
+
+                    <!--This is structure-->
+                    <div class="tab-pane fade {% if 'structure' in tabname %} show active {% endif %}" id="nav-structure" role="tabpanel" aria-labelledby="nav-structure-tab">
+                        {% if 'structure' in tabname %}
+                            {% include 'msn/msn_prj_tab_structure.html' %}
+                        {% endif %}
+                    </div>
+
+                    <!--This is addin variables-->
+                    <div class="tab-pane fade {% if tabname == 'add-vars' %} show active {% endif %}" id="nav-add_vars" role="tabpanel" aria-labelledby="nav-add_vars-tab">
+                        {% if tabname == 'add-vars' %}
+                            {% include 'msn/msn_prj_tab_add_vars.html' %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                {% if user_info.role in ['admin', 'dp', 'cs'] %}
+                    <!--This is topline-->
+                    <div class="tab-pane fade {% if tabname == 'topline' %} show active {% endif %}" id="nav-topline" role="tabpanel" aria-labelledby="nav-topline-tab">
+                        {% if tabname == 'topline' %}
+                            <div id="tl-err"></div>
+                            {% include 'msn/msn_prj_tab_topline.html' %}
+                        {% endif %}
+                    </div>
+
+<!--                    This is Open-end-->
+<!--                    <div class="tab-pane fade {% if tabname == 'openend' %} show active {% endif %}" id="nav-openend" role="tabpanel" aria-labelledby="nav-openend-tab">-->
+<!--                        {% if tabname == 'openend' %}-->
+<!--                            {% include 'msn/msn_prj_tab_openend.html' %}-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+
+                    <!--This is data-->
+                    <div class="tab-pane fade {% if tabname in ['data-upload', 'data-export-raw', 'data-process-topline', 'data-export-topline'] %} show active {% endif %}" id="nav-data" role="tabpanel" aria-labelledby="nav-data-tab">
+                        {% if tabname in ['data-upload', 'data-export-raw', 'data-process-topline', 'data-export-topline'] %}
+                            {% include 'msn/msn_prj_tab_data.html' %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block js_files %}
+
+    <script>
+        setTimeout(() => {
+            const err = document.getElementById('err');
+            if(err != null)
+            {
+                err.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+
+    <script src="{{ url_for('static', path='/js/msn_prj_id.js') }}"></script>
+{% endblock %}

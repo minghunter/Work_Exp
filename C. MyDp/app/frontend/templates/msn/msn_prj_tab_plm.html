@@ -1,0 +1,344 @@
+<div class="bg-light rounded h-100 p-0">
+
+    <div class="bg-light rounded h-100 p-3">
+        <ul class="nav nav-pills mb-0" id="plm-pills-tab" role="tablist">
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {% if tabname not in ['structure-plm_to_prod'] %} active {% endif %}" id="pills-plm_to_scr-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-plm_to_scr" type="button" role="tab" aria-controls="pills-plm_to_scr"
+                    aria-selected="true">Placement to screener</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {% if tabname in ['structure-plm_to_prod'] %} active {% endif %}" id="pills-plm_to_prod-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-plm_to_prod" type="button" role="tab" aria-controls="pills-plm_to_prod"
+                    aria-selected="false">Placement to product</button>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="tab-content" id="plm-pills-tabContent">
+
+        <div class="tab-pane fade {% if tabname not in ['structure-plm_to_prod'] %} show active {% endif %}" id="pills-plm_to_scr" role="tabpanel" aria-labelledby="pills-plm_to_scr-tab">
+
+            <!--Placement to screener | Dialog-->
+
+            <dialog id="dialog_bulkup_plm_to_scr_cols" class="col-sm-12 col-xl-6">
+
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h5 class="mb-2">Bulk-up placement to screener columns</h5>
+                    </div>
+
+                    <form id="form_bulkup_plm_to_scr_cols" action="/msn-prj/update/{{ prj.id }}/structure-plm_to_scr" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" id='output_bulkup_plm_to_scr_cols' name="output">
+
+                        <div class="align-items-center justify-content-between mb-2">
+
+                            <div class="form-floating p-2">
+                                <textarea class="form-control" placeholder="Leave a input here"
+                                    id="floatingTextarea_plm_to_scr_cols" name="detail.plm_to_scr_cols" style="height: 300px"></textarea>
+                                <label for="floatingTextarea_plm_to_scr_cols">Leave an input here</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row g-0 p-0">
+                            <div class="col-sm-12 col-xl-3"></div>
+                            <div class="col-sm-12 col-xl-3"></div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <div class="bg-light rounded h-100 p-2">
+                                    <button type="button" class="btn btn-secondary py-3 w-100" onclick="closeDialog('dialog_bulkup_plm_to_scr_cols')">Close</button>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <div class="bg-light rounded h-100 p-2">
+                                    <input class="btn btn-primary py-3 w-100" type="submit" value="Submit" id="submit_bulkup_plm_to_scr_cols" onclick="fnc_submit('bulkup_plm_to_scr_cols', true)">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </dialog>
+
+            <!--Placement to screener | Form-->
+
+            <form id="form_plm_to_scr_cols" action="/msn-prj/update/{{ prj.id }}/structure-plm_to_scr" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" id='output_plm_to_scr_cols' name="output">
+
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" id="tbl_plm_to_scr_col">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th width="5%" scope="col">#</th>
+                                    <th scope="col">Output data column name</th>
+                                    <th scope="col">Rawdata column name</th>
+                                    <th width="15%" scope="col">Type</th>
+                                    <th width="5%" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% if prj.detail.plm_to_scr_cols %}
+
+                                    {% for key, val in prj.detail.plm_to_scr_cols.items() %}
+
+                                        <tr id="detail.plm_to_scr_cols.{{ key }}">
+                                            <td width="5%">{{ key }}</td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.plm_to_scr_cols.{{ key }}.0"
+                                                          name="detail.plm_to_scr_cols.{{ key }}.0" cols="" rows="">{{ val[0] }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.plm_to_scr_cols.{{ key }}.1"
+                                                          name="detail.plm_to_scr_cols.{{ key }}.1" cols="" rows="">{{ val[1] }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <select class="form-select" id="detail.plm_to_scr_cols.{{ key }}.2" name="detail.plm_to_scr_cols.{{ key }}.2">
+
+                                                    {% for qre_type in ['NONE', 'OL', 'JR', 'FC', 'SA', 'MA', 'NUM', 'OE', 'OTHER'] %}
+
+                                                        {% if val[2] == qre_type %}
+                                                            <option selected value="{{ qre_type }}">{{ qre_type }}</option>
+                                                        {% else %}
+                                                            <option value="{{ qre_type }}">{{ qre_type }}</option>
+                                                        {% endif %}
+
+                                                    {% endfor %}
+
+                                                </select>
+                                            </td>
+
+                                            <td width="5%"><input type="button" class="btn btn-outline-danger" value="X"
+                                                       onclick="Del_Row('detail.plm_to_scr_cols.{{ key }}', '{{ key }} - {{ val[0] }}');"></td>
+                                        </tr>
+
+                                    {% endfor %}
+
+                                {% else %}
+
+                                    <tr>
+                                        <td>=></td>
+                                        <td>Bulk it up</td>
+                                        <td><=</td>
+                                    </tr>
+
+                                {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="row g-2 p-0">
+
+                        <div class="col-sm-12 col-xl-3">
+                            <button type="button" class="btn btn-outline-warning py-3 w-100" onclick="tableToCSV('tbl_plm_to_scr_col', 'Placement_to_screener_bulkup')">Export</button>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <button type="button" class="btn btn-outline-primary py-3 w-100" onclick="showDialog('dialog_bulkup_plm_to_scr_cols')">Bulk-up</button>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3"></div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <input class="btn btn-primary py-3 w-100" type="submit" id="submit_plm_to_scr_cols" value="Submit plm to scr" onclick="fnc_submit('plm_to_scr_cols', false)">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="tab-pane fade {% if tabname in ['structure-plm_to_prod'] %} show active {% endif %}" id="pills-plm_to_prod" role="tabpanel" aria-labelledby="pills-plm_to_prod-tab">
+
+            <!--Placement to product | Dialog-->
+
+            <dialog id="dialog_bulkup_plm_to_prod_cols" class="col-sm-12 col-xl-6">
+
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h5 class="mb-2">Bulk-up placement to product columns</h5>
+                    </div>
+
+                    <form id="form_bulkup_plm_to_prod_cols" action="/msn-prj/update/{{ prj.id }}/structure-plm_to_prod" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" id='output_bulkup_plm_to_prod_cols' name="output">
+
+                        <div class="align-items-center justify-content-between mb-2">
+
+                            <div class="form-floating p-2">
+                                <textarea class="form-control" placeholder="Leave a input here"
+                                    id="floatingTextarea_plm_to_prod_cols" name="detail.plm_to_prod_cols" style="height: 300px"></textarea>
+                                <label for="floatingTextarea_plm_to_prod_cols">Leave an input here</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row g-0 p-0">
+                            <div class="col-sm-12 col-xl-3"></div>
+                            <div class="col-sm-12 col-xl-3"></div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <div class="bg-light rounded h-100 p-2">
+                                    <button type="button" class="btn btn-secondary py-3 w-100" onclick="closeDialog('dialog_bulkup_plm_to_prod_cols')">Close</button>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <div class="bg-light rounded h-100 p-2">
+                                    <input class="btn btn-primary py-3 w-100" type="submit" value="Submit" id="submit_bulkup_plm_to_prod_cols" onclick="fnc_submit('bulkup_plm_to_prod_cols', true)">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </dialog>
+
+            <!--Placement to product | Form-->
+
+            <form id="form_plm_to_prod_cols" action="/msn-prj/update/{{ prj.id }}/structure-plm_to_prod" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" id='output_plm_to_prod_cols' name="output">
+
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" id="tbl_plm_to_prod_col">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th width="5%" scope="col">#</th>
+                                    <th scope="col">Output data column name</th>
+                                    <th scope="col">Rawdata column name</th>
+                                    <th width="15%" scope="col">Type</th>
+                                    <th width="5%" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% if prj.detail.plm_to_prod_cols %}
+
+                                    {% for key, val in prj.detail.plm_to_prod_cols.items() %}
+
+                                        <tr id="detail.plm_to_prod_cols.{{ key }}">
+                                            <td width="5%">{{ key }}</td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.plm_to_prod_cols.{{ key }}.0"
+                                                          name="detail.plm_to_prod_cols.{{ key }}.0" cols="" rows="">{{ val[0] }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <textarea class="form-control" id="detail.plm_to_prod_cols.{{ key }}.1"
+                                                          name="detail.plm_to_prod_cols.{{ key }}.1" cols="" rows="">{{ val[1] }}</textarea>
+
+                                            </td>
+
+                                            <td>
+                                                <select class="form-select" id="detail.plm_to_prod_cols.{{ key }}.2" name="detail.plm_to_prod_cols.{{ key }}.2">
+
+                                                    {% for qre_type in ['NONE', 'OL', 'JR', 'FC', 'SA', 'MA', 'NUM', 'OE', 'OTHER'] %}
+
+                                                        {% if val[2] == qre_type %}
+                                                            <option selected value="{{ qre_type }}">{{ qre_type }}</option>
+                                                        {% else %}
+                                                            <option value="{{ qre_type }}">{{ qre_type }}</option>
+                                                        {% endif %}
+
+                                                    {% endfor %}
+
+                                                </select>
+                                            </td>
+
+                                            <td width="5%"><input type="button" class="btn btn-outline-danger" value="X"
+                                                       onclick="Del_Row('detail.plm_to_prod_cols.{{ key }}', '{{ key }} - {{ val[0] }}');"></td>
+                                        </tr>
+
+                                    {% endfor %}
+
+                                {% else %}
+
+                                    <tr>
+                                        <td>=></td>
+                                        <td>Bulk it up</td>
+                                        <td><=</td>
+                                    </tr>
+
+                                {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="row g-2 p-0">
+
+                        <div class="col-sm-12 col-xl-3">
+                            <button type="button" class="btn btn-outline-warning py-3 w-100" onclick="tableToCSV('tbl_plm_to_prod_col', 'Placement_to_product_bulkup')">Export</button>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <button type="button" class="btn btn-outline-primary py-3 w-100" onclick="showDialog('dialog_bulkup_plm_to_prod_cols')">Bulk-up</button>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3"></div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <input class="btn btn-primary py-3 w-100" type="submit" id="submit_plm_to_prod_cols" value="Submit plm to prod" onclick="fnc_submit('plm_to_prod_cols', false)">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+

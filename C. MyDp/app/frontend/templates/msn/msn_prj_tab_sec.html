@@ -1,0 +1,230 @@
+<form id="form_sections" action="/msn-prj/update/{{ prj.id }}/sec" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" id='output_sections' name="output">
+
+    <div class="bg-light rounded h-100 p-2">
+
+        <div class="row g-2">
+
+            <div class="{% if prj.type == 'HUT' %} col-sm-12 col-xl-6 {% else %} col-sm-12 col-xl-15 {% endif %}">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="join_col" name="detail.join_col" value="{{ prj.detail.join_col }}" placeholder="">
+                    <label for="join_col">RID column</label>
+                </div>
+            </div>
+
+
+            {% if prj.type == 'HUT' %}
+                <div class="col-sm-12 col-xl-6">
+
+                    <div class="form-floating mb-0">
+                        <input type="text" class="form-control" id="order_col" name="detail.order_col" value="{{ prj.detail.order_col }}">
+                        <label for="order_col">Order column (for HUT only)</label>
+                    </div>
+
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="bg-light rounded h-100 p-2">
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+            {% for key, val in prj.detail.sections.items() %}
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if key == '1' %} active {% endif %}" id="section-{{ key }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#section-{{ key }}" type="button" role="tab" aria-controls="section-{{ key }}"
+                        aria-selected="{% if key == '1' %} true {% else %} false {% endif %}">{% if val.name %} {{ val.name }} {% else %} #{{ key }} {% endif %}</button>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+            {% for key, val in prj.detail.sections.items() %}
+
+                <div class="tab-pane fade {% if key == '1' %} show active {% endif %}" id="section-{{ key }}" role="tabpanel" aria-labelledby="section-{{ key }}-tab">
+
+                    <div class="bg-light rounded h-100 p-1">
+
+                        <div class="row g-2">
+
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.name"
+                                           name="detail.sections.{{ key }}.name" value="{{ val.name }}">
+                                    <label for="detail.sections.{{ key }}.name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.filter"
+                                           name="detail.sections.{{ key }}.filter" value="{{ val.filter }}">
+                                    <label for="detail.sections.{{ key }}.filter">Filter</label>
+                                </div>
+                            </div>
+
+                            <h5 class="p-1 mb-0">Rotation</h5>
+
+                            <div class="col-sm-12 col-xl-4">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.rotation.name"
+                                           name="detail.sections.{{ key }}.rotation.name" value="{{ val.rotation.name }}">
+                                    <label for="detail.sections.{{ key }}.rotation.name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-4">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.rotation.lbl"
+                                           name="detail.sections.{{ key }}.rotation.lbl" value="{{ val.rotation.lbl }}">
+                                    <label for="detail.sections.{{ key }}.rotation.lbl">Label</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-4">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.rotation.qres.0"
+                                           name="detail.sections.{{ key }}.rotation.qres.0" value="{{ val.rotation.qres[0] }}">
+                                    <label for="detail.sections.{{ key }}.rotation.qres.0">Get data from</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-12">
+
+                                {% for k_cat, v_cat in val.rotation.cats.items() %}
+
+                                    <div class="input-group mb-1">
+
+                                        <span class="input-group-text">Code {{ k_cat }}</span>
+                                        <input type="text" class="form-control"
+                                               id="detail.sections.{{ key }}.rotation.cats.{{ k_cat }}.0"
+                                               name="detail.sections.{{ key }}.rotation.cats.{{ k_cat }}.0"
+                                               value="{{ v_cat[0] }}">
+
+                                        <span class="input-group-text">get value = </span>
+                                        <input type="text" class="form-control"
+                                               id="detail.sections.{{ key }}.rotation.cats.{{ k_cat }}.1"
+                                               name="detail.sections.{{ key }}.rotation.cats.{{ k_cat }}.1"
+                                               value="{{ v_cat[1] }}">
+
+
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+
+                            <h5 class="p-1 mb-0">Product</h5>
+
+                            <div class="col-sm-12 col-xl-3">
+
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.product.name"
+                                           name="detail.sections.{{ key }}.product.name" value="{{ val.product.name }}">
+                                    <label for="detail.sections.{{ key }}.product.name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-3">
+                                <div class="form-floating mb-0">
+                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.product.lbl"
+                                           name="detail.sections.{{ key }}.product.lbl" value="{{ val.product.lbl }}">
+                                    <label for="detail.sections.{{ key }}.product.lbl">Label</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-6">
+
+                                {% for k_cat, v_cat in val.product.cats.items() %}
+
+                                    <div class="input-group mb-1">
+
+                                        <span class="input-group-text">Code {{ k_cat }}</span>
+                                        <input type="text" class="form-control"
+                                               id="detail.sections.{{ key }}.product.cats.{{ k_cat }}.0"
+                                               name="detail.sections.{{ key }}.product.cats.{{ k_cat }}.0"
+                                               value="{{ v_cat[0] }}">
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+
+                            {% for i in range(2) %}
+                                <div class="col-sm-12 col-xl-6">
+                                    {% if i == 0 %}
+                                        <h6 class="p-2 mb-0">1st product</h6>
+                                    {% else %}
+                                        <h6 class="p-2 mb-0">2nd product</h6>
+                                    {% endif %}
+
+                                    <input type="hidden"
+                                       id='detail.sections.{{ key }}.product.qres.{{ i }}'
+                                       name="detail.sections.{{ key }}.product.qres.{{ i }}"
+                                       value="{{ val.product.qres[i] }}">
+
+                                    <div class="row g-2">
+                                        {% for j in range(5) %}
+
+                                            <div class="{% if j == 0 %} col-sm-12 col-xl-12 {% else %} col-sm-12 col-xl-6 {% endif %}">
+
+                                                <div class="form-floating mb-2">
+                                                    <input type="text" class="form-control" id="detail.sections.{{ key }}.product.qres.{{ i }}.{{ j }}"
+                                                           value="{{ val.product.qres[i].split('|')[j] }}"
+                                                           onchange="section_getData_change('detail.sections.{{ key }}.product.qres.{{ i }}', 5);">
+                                                    <label for="detail.sections.{{ key }}.product.qres.{{ i }}.{{ j }}">{{ j + 1 }}. Get data from</label>
+                                                </div>
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <h5 class="p-1 mb-0">Force choice</h5>
+
+                            <input type="hidden"
+                               id='detail.sections.{{ key }}.force_choice.qres.0' name="detail.sections.{{ key }}.force_choice.qres.0"
+                               value="{{ val.force_choice.qres[0] }}">
+
+
+                            {% for i in range(5) %}
+                                <div class="{% if i == 0 %} col-sm-12 col-xl-12 {% else %} col-sm-12 col-xl-3 {% endif %}">
+                                    <div class="form-floating mb-0">
+                                        <input type="text" class="form-control" id="detail.sections.{{ key }}.force_choice.qres.0.{{ i }}"
+                                               value="{{ val.force_choice.qres[0].split('|')[i] }}"
+                                               onchange="section_getData_change('detail.sections.{{ key }}.force_choice.qres.0', 5);">
+
+                                        <label for="detail.sections.{{ key }}.force_choice.qres.0.{{ i }}">{{ i + 1 }}. Force choice question</label>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="bg-light rounded h-100 p-2">
+        <div class="d-flex align-items-center justify-content-end mb-0">
+            <input class="btn btn-primary py-3 w-25" type="submit" value="Submit sections" onclick="fnc_submit('sections', false)">
+        </div>
+    </div>
+
+</form>
+
+

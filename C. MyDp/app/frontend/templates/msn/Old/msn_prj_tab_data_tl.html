@@ -1,0 +1,143 @@
+<div class="bg-light rounded h-100 p-2">
+
+    {% if prj.sec_topline_exporter %}
+
+        {% if prj.sec_topline_exporter.isErr is defined %}
+
+            <div class="alert alert-danger" role="alert">
+                <h1 class="text-center alert-danger">Processing Error</h1>
+                {{ prj.sec_topline_exporter.errLbl }}
+            </div>
+
+        {% else %}
+
+            {% for key, val in prj.sec_topline_exporter.items()  %}
+
+                <div class="row g-4 p-1">
+
+                    <div class="col-sm-12 col-xl-8">
+
+                        <form id="form_topline_export" action="/msn-prj/topline_export/{{ prj.id }}" method="post" enctype="multipart/form-data">
+
+                            <input type="hidden" value="{{ key }}" name="export_section">
+
+                            <select class="form-select" multiple aria-label="multiple select"
+                                    multiselect-search="true" multiselect-select-all="true"
+                                    multiselect-max-items="5" multiselect-hide-x="false"
+                                    id="export_sheets"
+                                    name="export_sheets">
+
+                                <option selected value="Handcount">Handcount</option>
+                                <option selected value="OL_Summary">OL Summary</option>
+                                <option selected value="JAR_Summary_Callback">JR Summary</option>
+                                <option selected value="Tabulation_Callback">Tabulation</option>
+                                <option selected value="Profile">Profile</option>
+
+                            </select>
+
+                        </form>
+
+                    </div>
+
+                    <div class="col-sm-12 col-xl-4">
+                        <input class="btn btn-primary py-3 w-100 mb-0" type="submit" value="Export topline {{ val }}" form="form_topline_export" onclick="fnc_tl_submit(this, 'form_topline_export', 'Topline');">
+                    </div>
+
+                </div>
+
+
+
+            {% endfor %}
+
+            <div class="bg-light rounded h-100 p-1">
+                <div class="alert alert-warning" role="alert">
+                    For each time you download topline/handcount, you need to click <b>proces</b> them <b>again</b>.
+                </div>
+            </div>
+        {% endif %}
+
+    {% else %}
+
+        <div class="bg-light rounded h-100 p-1">
+            <div class="alert alert-warning" role="alert">
+                Please process topline/handcount first. Choose the <b>topline section</b> -> click <b>process topline</b>.
+            </div>
+        </div>
+
+    {% endif %}
+
+<!--    {% if prj.download_file_name %}-->
+
+<!--        <div class="row g-4 p-1">-->
+<!--            <div class="col-sm-12 col-xl-8">-->
+<!--                <div class="alert alert-success" role="alert">-->
+<!--                    <b>{{ prj.download_file_name }}</b> is ready to download-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-sm-12 col-xl-2">-->
+<!--                <form id="form_topline_download_clear" action="/msn-prj/topline_export/{{ prj.id }}/download-clear" method="post" enctype="multipart/form-data">-->
+<!--                    <input class="btn btn-outline-danger py-3 w-100 mb-0" type="submit" value="Clear" onclick="fnc_tl_submit(this, 'form_topline_download_clear', 'Topline');">-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--            <div class="col-sm-12 col-xl-2">-->
+<!--                <form id="form_topline_download" action="/msn-prj/topline_export/{{ prj.id }}/download" method="post" enctype="multipart/form-data">-->
+<!--                    <input class="btn btn-primary py-3 w-100 mb-0" type="submit" value="Download" onclick="fnc_tl_submit(this, 'form_topline_download', 'Topline');">-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    {% endif %}-->
+
+</div>
+
+
+<!--<input id="tl_export_wait_secs_val" type="hidden" value="{{ wait_secs }}">-->
+
+<!--&lt;!&ndash;class="col-sm-12 col-xl-6"&ndash;&gt;-->
+<!--<dialog id="dialog_tl_export_waiting">-->
+
+<!--    <div class="container-xxl position-relative bg-white d-flex p-0">-->
+
+<!--        &lt;!&ndash; Processing Start &ndash;&gt;-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="row h-20 align-items-center justify-content-center" style="min-height: 20vh;">-->
+<!--                <div class="col-sm-12 col-xl-12">-->
+
+<!--                    <div class="bg-light rounded h-100 p-4 text-center">-->
+<!--                        <h6 class="mb-4">Data exporting in <span id="export_counter">{{ wait_secs }}</span> second(s).</h6>-->
+
+<!--                        <div id="spinner2" class="show">-->
+<!--                            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">-->
+<!--                                <span class="sr-only">Loading...</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Processing End &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <script type="text/javascript">-->
+<!--        function export_countdown() {-->
+<!--            var counter = document.getElementById('export_counter');-->
+
+<!--            if (parseInt(counter.innerHTML)<=0) {-->
+<!--                location.href = '/msn-prj/{{ prj.id }}/data-export-topline' ;-->
+<!--            }-->
+
+<!--            if (parseInt(counter.innerHTML)!=0) {-->
+<!--                counter.innerHTML = parseInt(counter.innerHTML)-1;-->
+<!--            }-->
+<!--        }-->
+<!--        setInterval(function(){ export_countdown(); }, 1000);-->
+
+<!--    </script>-->
+
+<!--</dialog>-->

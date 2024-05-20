@@ -1,0 +1,174 @@
+<div class="alert alert-warning" role="alert">
+    This function is not available now
+</div>
+
+{% set lst_oe_qres = [] %}
+
+{% if prj.detail.scr_cols %}
+    {% for key, val in prj.detail.scr_cols.items() %}
+        {% if val[2] in ['OE'] %}
+            {% set _ = lst_oe_qres.append(val[0]) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if prj.detail.plm_to_scr_cols %}
+    {% for key, val in prj.detail.plm_to_scr_cols.items() %}
+        {% if val[2] in ['OE'] %}
+            {% set _ = lst_oe_qres.append(val[0]) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if prj.detail.plm_to_prod_cols %}
+    {% for key, val in prj.detail.plm_to_prod_cols.items() %}
+        {% if val[2] in ['OE'] %}
+            {% set _ = lst_oe_qres.append(val[0]) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if prj.detail.product_cols %}
+    {% for key, val in prj.detail.product_cols.items() %}
+        {% if val[3] in ['OE'] %}
+            {% set _ = lst_oe_qres.append(val[0]) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if prj.detail.fc_cols %}
+    {% for key, val in prj.detail.fc_cols.items() %}
+        {% if val[2] in ['OE'] %}
+            {% set _ = lst_oe_qres.append(val[0]) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<form id="form_create_codeframe" action="/msn-prj/openend/{{ prj.id }}/create_codeframe" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" id='output_create_codeframe' name="output">
+
+    <div class="p-1">
+        <table class="table text-start align-middle table-bordered table-hover mb-0" id="cf_tbl">
+
+            <thead>
+                <tr class="text-dark">
+                    <th scope="col" width="5%">#</th>
+                    <th scope="col" width="30%">Name</th>
+                    <th scope="col">Questions</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody id="cf_tbl_body">
+
+                {% if prj.codeframes %}
+
+                    {% for key, val in prj.codeframes.items() %}
+
+                        <tr id="codeframes.{{ key }}">
+                            <td>{{ key }}</td>
+
+                            <td>
+                                <textarea class="form-control" id="codeframes.{{ key }}.name"
+                                          name="codeframes.{{ key }}.name"
+                                          cols="" rows="1">{{ val.name }}</textarea>
+                            </td>
+
+                            <td>
+                                <input type="hidden" id="codeframes.{{ key }}.qres" name="codeframes.{{ key }}.qres" value="{{ val.qres }}">
+
+                                <select class="form-select" multiple aria-label="multiple select"
+                                        multiselect-search="true" multiselect-select-all="true"
+                                        multiselect-max-items="5" multiselect-hide-x="false"
+                                        id="codeframes.{{ key }}.mul_sel"
+                                        onchange="func_topline_header_secs(this, 'codeframes.{{ key }}.qres');">
+
+                                    {% for qre in lst_oe_qres %}
+
+                                        {% if qre in val.qres.split(',') %}
+                                            <option selected value="{{ qre }}">{{ qre }}</option>
+                                        {% else %}
+                                            <option value="{{ qre }}">{{ qre }}</option>
+                                        {% endif %}
+5
+                                    {% endfor %}
+
+                                </select>
+
+                            </td>
+
+                            <td width="5%">
+                                <button type="button" class="btn btn-outline-danger" id="cf_tbl_body_row_{{ key }}_del_btn"
+                                onclick="Del_Row('codeframes.{{ key }}', '{{ key }}');">X</button>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr id="codeframes.1">
+                        <td>1</td>
+
+                        <td>
+                            <textarea class="form-control" id="codeframes.1.name"
+                                      name="codeframes.1.name"
+                                      cols="" rows="1">input here</textarea>
+                        </td>
+
+                        <td>
+                            <input type="hidden" id="codeframes.1.qres" name="codeframes.1.qres" value="">
+
+                            <select class="form-select" multiple aria-label="multiple select"
+                                    multiselect-search="true" multiselect-select-all="true"
+                                    multiselect-max-items="5" multiselect-hide-x="false"
+                                    id="codeframes.1.mul_sel"
+                                    onchange="func_topline_header_secs(this, 'codeframes.1.qres');">
+
+                                {% for qre in lst_oe_qres %}
+
+                                    <option value="{{ qre }}">{{ qre }}</option>
+5
+                                {% endfor %}
+
+                            </select>
+
+                        </td>
+
+                        <td width="5%">
+                            <button type="button" class="btn btn-outline-danger" id="cf_tbl_body_row_1_del_btn"
+                            onclick="Del_Row('codeframes.1', '1');">X</button>
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="bg-light rounded h-100 p-1">
+        <div class="row g-2">
+
+            <div class="col-sm-12 col-xl-1">
+                <button type="button" class="btn btn-outline-warning py-2 w-100" id="btn_add_new_cf_row"
+                onclick="Copy_last_table_row('cf_tbl_body', {{ lst_oe_qres }})">+</button>
+            </div>
+
+            <div class="col-sm-12 col-xl-8">
+
+            </div>
+
+            <div class="col-sm-12 col-xl-3">
+                <button type="submit" class="btn btn-primary py-3 w-100" onclick="fnc_submit('create_codeframe', false)">Save</button>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+
+<script src="{{ url_for('static', path='/js/multiselect-dropdown.js') }}" ></script>

@@ -1,0 +1,193 @@
+{% if prj.type == 'HUT' %}
+    <div class="bg-light rounded h-100 p-2">
+
+        <form id="form_callback_export_option" action="/msn-prj/update/{{ prj.id }}/data-export-raw" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" id='output_callback_export_option' name="output">
+
+            <input type="hidden" id='detail.split_callback.is_split_callback' name="detail.split_callback.is_split_callback" value="{{ prj.detail.split_callback.is_split_callback }}">
+
+            <div class="col-sm-12 col-xl-4">
+
+                <div class="bg-light rounded h-100 p-1">
+
+                    <div class="form-check form-switch">
+
+                        <input class="form-check-input" type="checkbox" role="switch"
+                                   id="cbx_is_split_callback" onclick="cbxClick(this, 'detail.split_callback.is_split_callback');">
+
+                        <label class="form-check-label" for="cbx_is_split_callback">Split callback data file</label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-sm-12 col-xl-8">
+
+                    <input type="hidden"
+                       id="detail.split_callback.split_with_cols"
+                       name="detail.split_callback.split_with_cols" value="{{ prj.detail.split_callback.split_with_cols }}">
+
+                    <select class="form-select" multiple aria-label="multiple select"
+                            multiselect-search="true" multiselect-select-all="true"
+                            multiselect-max-items="10" multiselect-hide-x="false"
+                            id="split_callback_with_cols"
+                            onchange="func_topline_header_secs(this, 'detail.split_callback.split_with_cols');">
+
+                            {% for key, val in prj.detail.scr_cols.items() %}
+
+                                {% if val[0] in prj.detail.split_callback.split_with_cols %}
+                                    <option selected value="{{ val[0] }}">{{ key }}. {{ val[0] }}</option>
+                                {% else %}
+                                    <option value="{{ val[0] }}">{{ key }}. {{ val[0] }}</option>
+                                {% endif %}
+
+                            {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="col-sm-12 col-xl-4">
+                    <input class="btn btn-outline-primary py-3 w-100 mb-2" type="submit" value="Save" onclick="fnc_submit('callback_export_option', false)">
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <hr>
+{% endif %}
+
+
+<div class="bg-light rounded h-100 p-2">
+    <form id="form_data_export" action="/msn-prj/data_export/{{ prj.id }}" method="post" enctype="multipart/form-data">
+
+        <h6>Please select the section to export data(Excel file & stack sav & unstack sav) or codeframe</h6>
+
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-4">
+                <div class="form-floating mb-2">
+
+                    <select class="form-select" id="export_section"
+                        aria-label="Floating label select example"
+                        name="export_section">
+
+                        <option selected value="-1">Select section</option>
+
+                        {% for key, val in prj.detail.sections.items() %}
+                            <option value="{{ key }}">{{ val.name }}</option>
+                        {% endfor %}
+
+                    </select>
+
+                    <label for="export_section">Please select the data section</label>
+
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+<!--                 <div class="form-check form-switch">-->
+<!--                     <input class="form-check-input" type="checkbox" role="switch" id="is_codeframe" name="is_codeframe" value="True">-->
+<!--                     <label class="form-check-label" for="is_codeframe">Export codeframe</label>-->
+<!--                 </div>-->
+
+                <div class="form-floating mb-2">
+
+                    <select class="form-select" id="export_option" name="export_option" aria-label="Floating label select example">
+                        <option selected value="general">General</option>
+                        <option value="screener_only">Screener only</option>
+                        <option value="codeframe">Codeframe</option>
+                    </select>
+
+                    <label for="export_option">Please select the option</label>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <input class="btn btn-primary py-3 w-100 mb-2" type="submit" value="Export" onclick="submit_export_data('form_data_export');">
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+{% if tabname == 'data-export-raw' and wait_secs > 0 %}
+    <div class="row g-2 p-2">
+        <div class="col-sm-12 col-xl-12">
+            <div id="spinner_processing_rawdata" class="show text-center">
+                <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span>Processing rawdata, please wait...</span>
+            </div>
+        </div>
+
+        <div id="div_prj_data_export_processing" class="col-sm-12 col-xl-12">
+        </div>
+    </div>
+
+    <script>
+        fnc_get_prj_data_export_processing = function() {
+            $('#spinner_processing_rawdata').show();
+
+            $.ajax({
+                url: '/msn-prj/data_export/{{ prj.id }}/processing',
+                type: 'GET',
+                success: function(response) {
+                    var $div_prj_data_export_processing = $('#div_prj_data_export_processing');
+
+                    if(response.isRunning == false){
+
+                        clearInterval(get_prj_data_export_processing_interval);
+                        $('#spinner_processing_rawdata').hide();
+
+                        if(response.isSuccess == true){
+                            clearInterval(get_prj_data_export_processing_interval);
+                            console.log('downloaded ' + response.zipName);
+                            $div_prj_data_export_processing.html('<div>Downloaded ' + response.zipName + '</div>');
+<!--                            $(location).prop('href', '')-->
+                            $div_prj_data_export_processing.html('<a href="/msn-prj/data_export/{{ prj.id }}/download/' + response.zipName + '">' +  response.zipName + '</a>');
+                        }
+
+                        if(response.isSuccess == false){
+                            clearInterval(get_prj_data_export_processing_interval);
+                            console.log('Error ' + response.strErr);
+                            $div_prj_data_export_processing.html('<div>' + response.strErr + '</div>');
+                        }
+                    }
+                    else if(response.isRunning == null)
+                    {
+                        clearInterval(get_prj_data_export_processing_interval);
+                        $('#spinner_processing_rawdata').hide();
+                        $div_prj_data_export_processing.html('<div>Do nothing</div>');
+                        console.log('Do nothing');
+                    }
+                    else {
+                        $div_prj_data_export_processing.append('<div>Processing, please wait</div>');
+                        console.log('Processing, please wait');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    clearInterval(get_prj_data_export_processing_interval);
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                }
+            });
+        }
+
+        var get_prj_data_export_processing_interval = setInterval(fnc_get_prj_data_export_processing, 5000);
+
+    </script>
+{% endif %}

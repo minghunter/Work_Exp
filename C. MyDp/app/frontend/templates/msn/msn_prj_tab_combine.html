@@ -1,0 +1,139 @@
+<dialog id="dialog_bulkup_oe_combine" class="col-sm-12 col-xl-6">
+
+    <div class="bg-light rounded h-100 p-4">
+
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <h5 class="mb-2">Bulk-up OE Combine</h5>
+        </div>
+
+        <form id="form_bulkup_oe_combine" action="/msn-prj/update/{{ prj.id }}/structure-combine" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" id='output_bulkup_oe_combine' name="output">
+
+            <div class="align-items-center justify-content-between mb-2">
+
+                <div class="form-floating p-2">
+                    <textarea class="form-control" placeholder="Leave a input here"
+                        id="floatingTextarea_oe_combine" name="detail.oe_combine_cols" style="height: 300px"></textarea>
+                    <label for="floatingTextarea_oe_combine">Leave an input here</label>
+                </div>
+
+            </div>
+
+            <div class="row g-0 p-0">
+                <div class="col-sm-12 col-xl-3"></div>
+                <div class="col-sm-12 col-xl-3"></div>
+
+                <div class="col-sm-12 col-xl-3">
+                    <div class="bg-light rounded h-100 p-2">
+                        <button type="button" class="btn btn-secondary py-3 w-100" onclick="closeDialog('dialog_bulkup_oe_combine')">Close</button>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12 col-xl-3">
+                    <div class="bg-light rounded h-100 p-2">
+                        <input class="btn btn-primary py-3 w-100" type="submit" value="Submit" id="submit_bulkup_oe_combine" onclick="fnc_submit('bulkup_oe_combine', true)">
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</dialog>
+
+
+<div class="bg-light rounded h-100 p-1 mt-2 mb-0">
+    <form id="form_oe_combine" action="/msn-prj/update/{{ prj.id }}/structure-combine" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" id='output_oe_combine' name="output">
+
+        <div class="table-responsive mb-3">
+
+            <table class="table text-start align-middle table-bordered table-hover mb-0" id="tbl_combine_col">
+
+                <thead>
+                    <tr class="text-dark">
+                        <th width="5%" scope="col">#</th>
+                        <th scope="col">Combined name</th>
+                        <th scope="col">1st column name</th>
+                        <th scope="col">2nd column name</th>
+                        <th width="5%" scope="col"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% if prj.detail.oe_combine_cols %}
+
+                        {% for key, val in prj.detail.oe_combine_cols.items() %}
+
+                            <tr id="detail.oe_combine_cols.{{ key }}">
+
+                                <td width="5%">{{ key }}</td>
+
+                                <td>
+                                    <textarea class="form-control" id="detail.oe_combine_cols.{{ key }}.0"
+                                              name="detail.oe_combine_cols.{{ key }}.0" cols="" rows="">{{ val[0] }}</textarea>
+
+                                </td>
+
+                                <td>
+                                    <textarea class="form-control" id="detail.oe_combine_cols.{{ key }}.1"
+                                              name="detail.oe_combine_cols.{{ key }}.1" cols="" rows="">{{ val[1] }}</textarea>
+                                </td>
+
+                                <td>
+                                    <textarea class="form-control" id="detail.oe_combine_cols.{{ key }}.2"
+                                              name="detail.oe_combine_cols.{{ key }}.2" cols="" rows="">{{ val[2] }}</textarea>
+
+                                </td>
+
+                                <td width="5%">
+                                    <input type="button" class="btn btn-outline-danger" value="X"
+                                           onclick="Del_Row('detail.oe_combine_cols.{{ key }}', '{{ key }} - {{ val[0] }}');">
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <tr>
+                            <td></td>
+                            <td>=></td>
+                            <td>Bulk it up</td>
+                            <td><=</td>
+                        </tr>
+
+                    {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="row g-1 mb-0">
+
+            <div class="col-sm-12 col-xl-3">
+                <button type="button" class="btn btn-outline-warning py-3 w-100" onclick="tableToCSV('tbl_combine_col', 'Combine_bulkup')">Export</button>
+            </div>
+
+            <div class="col-sm-12 col-xl-3">
+                <button type="button" class="btn btn-outline-primary py-3 w-100" onclick="showDialog('dialog_bulkup_oe_combine')">Bulk-up</button>
+            </div>
+
+            <div class="col-sm-12 col-xl-3"></div>
+
+            <div class="col-sm-12 col-xl-3">
+                <input class="btn btn-primary py-3 w-100" type="submit" id="submit_oe_combine" value="Submit OE combine" onclick="fnc_submit('oe_combine', false)">
+            </div>
+
+        </div>
+
+    </form>
+</div>

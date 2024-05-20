@@ -1,0 +1,81 @@
+<div class="bg-light rounded h-100 p-4">
+
+    <ul class="nav nav-pills mb-0" id="structure-pills-tab" role="tablist">
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {% if tabname == 'structure-combine' %} active {% endif %}" id="nav-oe_combine-tab" data-bs-toggle="pill"
+                data-bs-target="#nav-oe_combine" type="button" role="tab" aria-controls="nav-oe_combine"
+                aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/structure-combine'">OE combine</button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {% if tabname == 'structure-scr' %} active {% endif %}" id="nav-scr-tab" data-bs-toggle="pill"
+                data-bs-target="#nav-scr" type="button" role="tab" aria-controls="nav-scr"
+                aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/structure-scr'">Screener</button>
+        </li>
+
+        {% if prj.type == 'HUT' %}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {% if tabname in ['structure-plm_to_scr', 'structure-plm_to_prod'] %} active {% endif %}" id="nav-plm-tab" data-bs-toggle="pill"
+                    data-bs-target="#nav-plm" type="button" role="tab" aria-controls="nav-plm"
+                    aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/structure-plm_to_scr'">Placement</button>
+            </li>
+        {% endif %}
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {% if tabname == 'structure-prod' %} active {% endif %}" id="nav-pro-tab" data-bs-toggle="pill"
+                data-bs-target="#nav-pro" type="button" role="tab" aria-controls="nav-pro"
+                aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/structure-prod'">Product</button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {% if tabname == 'structure-fc' %} active {% endif %}" id="nav-fc-tab" data-bs-toggle="pill"
+                data-bs-target="#nav-fc" type="button" role="tab" aria-controls="nav-fc"
+                aria-selected="false" onclick="location.href='/msn-prj/{{ prj.id }}/structure-fc'">Force choice</button>
+        </li>
+    </ul>
+
+
+    <div class="tab-content" id="tl-pills-tabContent">
+
+        <div class="tab-pane fade {% if tabname == 'structure-combine' %} show active {% endif %}" id="nav-oe_combine" role="tabpanel" aria-labelledby="nav-oe_combine-tab">
+            {% if tabname == 'structure-combine' %}
+                {% include 'msn/msn_prj_tab_combine.html' %}
+            {% endif %}
+        </div>
+
+        <div class="tab-pane fade {% if tabname == 'structure-scr' %} show active {% endif %}" id="nav-scr" role="tabpanel" aria-labelledby="nav-scr-tab">
+            {% if tabname == 'structure-scr' %}
+                {% include 'msn/msn_prj_tab_scr.html' %}
+            {% endif %}
+        </div>
+
+        {% if prj.type == 'HUT' %}
+            <div class="tab-pane fade {% if tabname in ['structure-plm_to_scr', 'structure-plm_to_prod'] %} show active {% endif %}" id="nav-plm" role="tabpanel" aria-labelledby="nav-plm-tab">
+                {% if tabname in ['structure-plm_to_scr', 'structure-plm_to_prod'] %}
+                    {% include 'msn/msn_prj_tab_plm.html' %}
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="tab-pane fade {% if tabname == 'structure-prod' %} show active {% endif %}" id="nav-pro" role="tabpanel" aria-labelledby="nav-pro-tab">
+            {% if tabname == 'structure-prod' %}
+                {% include 'msn/msn_prj_tab_prod.html' %}
+            {% endif %}
+        </div>
+
+        <div class="tab-pane fade {% if tabname == 'structure-fc' %} show active {% endif %}" id="nav-fc" role="tabpanel" aria-labelledby="nav-fc-tab">
+            {% if tabname == 'structure-fc' %}
+                {% include 'msn/msn_prj_tab_fc.html' %}
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% block js_files %}
+    <script src="{{ url_for('static', path='/js/multiselect-dropdown.js') }}" ></script>
+{% endblock %}

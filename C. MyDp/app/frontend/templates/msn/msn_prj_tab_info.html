@@ -1,0 +1,151 @@
+<form id="form_info" action="/msn-prj/update/{{ prj.id }}/info" method="post" enctype="multipart/form-data">
+    <input type="hidden" id='output_info' name="output">
+
+    <div class="row g-0 p-2">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="internal_id"
+                           name="internal_id" value="{{ prj.internal_id }}" placeholder="">
+                    <label for="internal_id">Internal ID</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="prj_name"
+                           name="name" value="{{ prj.name }}" placeholder="">
+                    <label for="prj_name">Name</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="prj_cat"
+                           name="categorical" value="{{ prj.categorical }}" placeholder="">
+                    <label for="prj_cat">Category</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-0">
+
+                    <select class="form-select" id="floatingSelect_type"
+                        aria-label="Floating label select example"
+                        name="type">
+
+                        {% for stt in ['CLT', 'HUT'] %}
+
+                            {% if prj.type == stt %}
+                                <option selected value="{{ stt }}">{{ stt }}</option>
+                            {% else %}
+                                <option value="{{ stt }}">{{ stt }}</option>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </select>
+                    <label for="floatingSelect_type">Type</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-0">
+
+                    <select class="form-select" id="floatingSelect_status"
+                        aria-label="Floating label select example"
+                        name="status">
+
+                        {% for stt in ['Completed', 'On Going', 'Pending', 'Cancel'] %}
+
+                            {% if prj.status == stt %}
+                                <option selected value="{{ stt }}">{{ stt }}</option>
+                            {% else %}
+                                <option value="{{ stt }}">{{ stt }}</option>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </select>
+                    <label for="floatingSelect_status">Status</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% if user_info.role != 'Guest' and user_info.role != '' %}
+    <div class="row g-0 p-2">
+
+        <h6 class="bg-light rounded h-100 p-1">THÔNG TIN DỰ ÁN</h6>
+
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="prj_info.1" name="prj.detail.prj_info.1.val" value="{{ prj.detail.prj_info['1'].val }}">
+                    <label for="prj_info.1">{{ prj.detail.prj_info['1'].name }}</label>
+                </div>
+            </div>
+        </div>
+
+        {% for i in ['2_1', '2_2', '2_3', '2_4'] %}
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-1">
+                    <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="prj_info.{{ i }}" name="prj.detail.prj_info.{{ i }}.val" value="{{ prj.detail.prj_info[i].val }}">
+                        <label for="prj_info.{{ i }}">{{ prj.detail.prj_info[i].name }}</label>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-1">
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="prj_info.3" name="prj.detail.prj_info.3.val" value="{{ prj.detail.prj_info['3'].val }}">
+                    <label for="prj_info.3">{{ prj.detail.prj_info['3'].name }}</label>
+                </div>
+            </div>
+        </div>
+
+        {% for j in ['4', '5'] %}
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-1">
+                    <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="prj_info.{{ j }}" name="prj.detail.prj_info.{{ j }}.val" value="{{ prj.detail.prj_info[j].val }}">
+                        <label for="prj_info.{{ j }}">{{ prj.detail.prj_info[j].name }}</label>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% for k in ['6_1', '6_2', '6_3', '6_4'] %}
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-1">
+                    <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="prj_info.{{ k }}" name="prj.detail.prj_info.{{ k }}.val" value="{{ prj.detail.prj_info[k].val }}">
+                        <label for="prj_info.{{ k }}">{{ prj.detail.prj_info[k].name }}</label>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+
+    <div class="bg-light rounded h-100 p-2">
+        <div class="d-flex align-items-center justify-content-end mb-0">
+            <input class="btn btn-primary py-3 w-25" type="submit" value="Submit info" onclick="fnc_submit('info', false)">
+        </div>
+    </div>
+</form>
