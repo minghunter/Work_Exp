@@ -1,0 +1,38 @@
+{% set lst_all_tab = ['Info', 'Rawdata', 'PyScript', 'DTables', 'Logging'] %}
+
+<nav>
+    <div id="anlz-prj-nav-tab" class="nav nav-tabs" role="tablist">
+
+        {% for tab in lst_all_tab %}
+            {% set str_tab_name = tab.lower() %}
+            {% set arr_tab_name = tab_name.split('/') %}
+
+            <button id="nav-tab-{{ str_tab_name }}" data-bs-toggle="tab"
+                    data-bs-target="#nav-tab-{{ str_tab_name }}-content"
+                    type="button" role="tab"
+                    aria-controls="nav-tab-{{ str_tab_name }}-content"
+                    class="{% if str_tab_name in arr_tab_name %}nav-link active{% else %}nav-link{% endif %}"
+                    aria-selected="{% if str_tab_name in arr_tab_name %}true{% else %}false{% endif %}"
+                    onclick="{% if str_tab_name == 'pyscript' %} location.href='/anlz/{{ prj.id }}/tab/pyscript/pre_processing' {% else %} location.href='/anlz/{{ prj.id }}/tab/{{ str_tab_name }}' {% endif %}">
+                {{ tab }}
+            </button>
+        {% endfor %}
+
+    </div>
+</nav>
+
+<div class="tab-content pt-3" id="anlz-prj-nav-tabContent">
+
+    {% for tab in lst_all_tab %}
+        {% set str_tab_name = tab.lower() %}
+        {% set arr_tab_name = tab_name.split('/') %}
+
+        <div id="nav-tab-{{ str_tab_name }}-content" role="tabpanel" aria-labelledby="nav-tab-{{ str_tab_name }}"
+             class="{% if str_tab_name in arr_tab_name %}tab-pane fade show active{% else %}tab-pane fade{% endif %}">
+            {% if str_tab_name in arr_tab_name %}
+                {% include 'anlz/prj_by_id/anlz_prj_tab_' + str_tab_name + '.html' %}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+</div>

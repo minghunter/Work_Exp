@@ -1,0 +1,29 @@
+<form id="form_anlz_prj_py_script_pre_processing" name="anlz_prj_py_script_pre_processing" action="/anlz/{{ prj.id }}/tab/pyscript/pre_processing/update" method="post" enctype="multipart/form-data"
+    onsubmit="return confirm('Do you want to save script?');">
+
+    <div class="row g-1 p-1 bg-dark rounded">
+
+        <div class="col-sm-12 col-xl-10">
+            <h5 id="save_stt" class="text-center text-warning" ></h5>
+        </div>
+
+        <div class="col-sm-12 col-xl-1 hovertext" data-hover="Press Ctrl-S when cursor in scripting frame">
+            <input class="btn btn-outline-primary w-100" type="submit" value="Save">
+        </div>
+
+        <div class="col-sm-12 col-xl-1 hovertext" data-hover="Save before run">
+            <input id="btn_run" class="btn btn-outline-success w-100" form="form_run_anlz_prj_py_script_pre_processing" value="Run" type="submit">
+        </div>
+
+        <div class="col-sm-12 col-xl-12">
+            <textarea id="txt_py_script" name="txt_py_script">{{ prj.txt_pre_processing_script }}</textarea>
+        </div>
+
+    </div>
+
+</form>
+
+<form id="form_run_anlz_prj_py_script_pre_processing" method="get" action="/anlz/{{ prj.id }}/tab/pyscript/pre_processing/run"
+    onsubmit="return confirm('Do you want to run script?');">
+</form>
+

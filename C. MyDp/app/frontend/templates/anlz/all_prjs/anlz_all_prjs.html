@@ -1,0 +1,123 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>Analyzing Projects</title>
+{% endblock %}
+
+{% block bl_user_name %}
+    {% include 'user_bar.html' %}
+{% endblock %}
+
+{% block sidebar_data_anlz %}
+    <a href="\anlz" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Analyze</a>
+{% endblock %}
+
+{% block search_bar %}
+    <div class="hovertext" data-hover="Options: has data | type:xxx">
+        <form id="form_anlz_search" class="d-none d-md-flex ms-4 w-100" action="/anlz/search" method="get" enctype="multipart/form-data">
+            <input class="form-control border-0" name="anlz_search_value" type="search" placeholder="Search" value="{{ anlz_search_value }}">
+        </form>
+    </div>
+{% endblock %}
+
+{% block notification %}{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid pt-4 px-4">
+
+        {% if strErr|trim|length %}
+            <div id="err" class="alert alert-danger" role="alert">{{ strErr }}</div>
+        {% endif %}
+
+        {% if user_info.name == 'Guest' %}
+            <div id="login_warning" class="alert alert-warning" role="alert">Please login to have full permission in <b>'Data Analyze'</b>.</div>
+        {% endif %}
+
+        <div class="bg-light p-4">
+            <div class="row g-1 mb-3">
+                <div class="col-sm-12 col-xl-8"><h4>Data Analyze Projects</h4></div>
+
+                <div class="col-sm-12 col-xl-2">
+                    <button type="button" class="btn btn-outline-primary hovertext w-100" onclick="document.getElementById('dlg_add_anlz_prj').showModal()" data-hover="Add new analyze project">Add</button>
+                </div>
+
+                <div class="col-sm-12 col-xl-1">
+                    <button id="copy_anlz_prj" disabled type="button" class="btn btn-outline-warning hovertext w-100" onclick="document.getElementById('dlg_copy_anlz_prj').showModal()" data-hover="Copy existed project">Copy</button>
+                </div>
+
+                <div class="col-sm-12 col-xl-1">
+                    <button id="del_anlz_prj" disabled type="button" class="btn btn-outline-danger hovertext w-100" onclick="document.getElementById('dlg_del_anlz_prj').showModal()" data-hover="Delete existed project">Delete</button>
+                </div>
+            </div>
+
+            {% include 'anlz/all_prjs/anlz_all_prjs_table.html' %}
+
+            {% if page_count > 1 %}
+                {% include 'anlz/all_prjs/anlz_all_prjs_pagination.html' %}
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% include 'anlz/all_prjs/anlz_all_prjs_dialog_add.html' %}
+    {% include 'anlz/all_prjs/anlz_all_prjs_dialog_delete.html' %}
+    {% include 'anlz/all_prjs/anlz_all_prjs_dialog_copy.html' %}
+
+{% endblock %}
+
+{% block js_files %}
+    <script src="{{ url_for('static', path='/js/anlz_all_prjs.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('input[id^="cbx_"]').change(function () {
+
+                if ($(this).prop('checked')) {
+
+                    id = this.id;
+
+                    $('input[id^="cbx_"]').each(function(index, element) {
+
+                        if(id != element.id){
+                            element.checked = false;
+                        }
+                    });
+
+                    $("#id_to_copy_delete").val(this.value);
+
+                    internal_id = $("#internal_id_" + this.value).prop('innerText');
+                    prj_name = $("#name_" + this.value).prop('innerText');
+
+                    $("#lbl_del_prj_name").text(internal_id + ' - ' + prj_name);
+                    $("#lbl_del_prj_id_asking").text(this.value);
+                    $("#del_anlz_prj").prop('disabled', false);
+
+                    $("#lbl_copy_prj_name").text(internal_id + ' - ' + prj_name);
+                    $("#lbl_copy_prj_id_asking").text(this.value);
+                    $("#copy_anlz_prj").prop('disabled', false);
+
+                }
+                else {
+                    $("#id_to_copy_delete").val('');
+
+                    $("#lbl_del_prj_name").text('');
+                    $("#lbl_del_prj_id_asking").text('');
+                    $("#del_prj_id_confirm").val('');
+                    $("#del_anlz_prj").prop('disabled', true);
+
+                    $("#lbl_copy_prj_name").text('');
+                    $("#lbl_copy_prj_id_asking").text('');
+                    $("#copy_prj_id_confirm").val('');
+                    $("#copy_anlz_prj").prop('disabled', true);
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

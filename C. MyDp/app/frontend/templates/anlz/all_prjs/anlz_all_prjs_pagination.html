@@ -1,0 +1,45 @@
+<div class="bg-light rounded mt-4 mb-0">
+    <div class="btn-toolbar justify-content-end" role="group">
+
+        <form action="/anlz" method="get" enctype="multipart/form-data">
+
+            <!--First button-->
+            <input type="submit" class="btn-check" name="page" id="btnradio_1st" autocomplete="off" value="1">
+            <label class="btn btn-outline-primary" for="btnradio_1st"><<</label>
+
+            <!--Number of page-->
+            {% for i in range(1, page_count + 1) %}
+
+                {% if i == page_sel %}
+
+                    {% for k in range(i - 2, i) %}
+                        {% if k > 0 %}
+                            <input type="submit" class="btn-check" name="page" id="btnradio{{ k }}" autocomplete="off" value="{{ k }}">
+                            <label class="btn btn-outline-primary" for="btnradio{{ k }}">{{ k }}</label>
+                        {% endif %}
+                    {% endfor %}
+
+                    <!--Selected page-->
+                    <input type="submit" class="btn-check" name="page" id="btnradio{{ i }}" autocomplete="off" value="{{ i }}">
+                    <label class="btn btn-primary" for="btnradio{{ i }}">{{ i }}</label>
+                    <!--End Selected page-->
+
+                    {% for j in range(i + 1, i + 3) %}
+                        {% if j <= page_count %}
+                            <input type="submit" class="btn-check" name="page" id="btnradio{{ j }}" autocomplete="off" value="{{ j }}">
+                            <label class="btn btn-outline-primary" for="btnradio{{ j }}">{{ j }}</label>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endfor %}
+            <!--END Number of page-->
+
+            <!--Last button-->
+            <input type="submit" class="btn-check" name="page" id="btnradio_last" autocomplete="off" value="{{ page_count }}">
+            <label class="btn btn-outline-primary" for="btnradio_last">>></label>
+
+        </form>
+    </div>
+</div>

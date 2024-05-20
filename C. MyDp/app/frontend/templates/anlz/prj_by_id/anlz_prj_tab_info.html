@@ -1,0 +1,94 @@
+<form id="form_anlz_info" name="prj_info" action="/anlz/{{ prj.id }}/tab/info/update" method="post" enctype="multipart/form-data"
+    onsubmit="return confirm('Are you sure to update project information?');">
+
+    <div class="row g-2 p-2">
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="internal_id" name="internal_id" value="{{ prj.internal_id }}">
+                <label for="internal_id">Internal ID</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-9">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="prj_name" name="name" value="{{ prj.name }}" oninput="this.value = this.value.toUpperCase()">
+                <label for="prj_name">Name</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="prj_cat" name="categorical" value="{{ prj.categorical }}">
+                <label for="prj_cat">Category</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <select class="form-select" id="prj_type" name="type">
+                    {% for type in lst_anlz_prj_type %}
+                        {% if prj.type == type %}
+                            <option selected value="{{ type }}">{{ type }}</option>
+                        {% else %}
+                            <option value="{{ type }}">{{ type }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label for="prj_type">Type</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <select class="form-select" id="prj_status" name="status">
+                    {% for stt in lst_anlz_prj_status %}
+                        {% if prj.status == stt %}
+                            <option selected value="{{ stt }}">{{ stt }}</option>
+                        {% else %}
+                            <option value="{{ stt }}">{{ stt }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label for="prj_status">Status</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+
+            {% if user_info.role == 'admin' %}
+
+                <div class="form-floating">
+                    <select class="form-select" id="prj_owner" name="owner">
+                        {% for user in lst_users %}
+                            {% if user == prj.owner %}
+                                <option selected value="{{ user }}">{{ user }}</option>
+                            {% else %}
+                                <option value="{{ user }}">{{ user }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <label for="prj_owner">Owner</label>
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-primary" role="alert">
+                    Project Owner: {{ prj.owner }}
+                </div>
+
+                <input type="hidden" name="owner" value="{{ prj.owner }}">
+            {% endif %}
+
+        </div>
+
+        <div class="col-sm-12 col-xl-9"></div>
+
+        <div class="col-sm-12 col-xl-3">
+            <input class="btn btn-outline-primary py-3 w-100" type="submit" value="Update" onclick="">
+        </div>
+    </div>
+
+</form>
+
+
+

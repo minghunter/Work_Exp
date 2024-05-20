@@ -1,0 +1,26 @@
+<dialog id="dlg_copy_anlz_prj" class="col-sm-12 col-xl-6" style="top: -40%">
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h4 class="mt-3">Are you sure to <b class="text-warning">COPY</b> project <span id="lbl_copy_prj_name" class="text-warning"></span>?</h4>
+        <button type="button" class="btn btn-outline-danger w-10" onclick="document.getElementById('dlg_copy_anlz_prj').close()">X</button>
+    </div>
+
+    <form id="form_copy_anlz_prj" action="/anlz/copy" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure?');">
+
+        <div class="bg-light rounded p-2 row g-2 w-100 h-100">
+
+            <div class="col-sm-12 col-xl-10">
+                <label id="lbl_copy_prj_id" for="copy_prj_id_confirm">Please input <b id="lbl_copy_prj_id_asking"></b> to copy this project.</label>
+                <input id="copy_prj_id_confirm" type="text" class="form-control" name="prj_id" value="">
+            </div>
+
+            <div class="col-sm-12 col-xl-2">
+                <input class="btn btn-warning py-3 w-100" type="submit" value="Copy" id="submit_copy_prj" onclick="func_submit_prj_del_copy('form_copy_anlz_prj');">
+            </div>
+
+        </div>
+
+    </form>
+
+
+</dialog>

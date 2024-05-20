@@ -1,0 +1,85 @@
+<div class="container-fluid px-4">
+
+    <div class="row g-2 p-2">
+        <div class="col-sm-12 col-xl-8">
+            <div id="spinner_logging" class="show">
+                <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span>Please waiting for processing complete</span>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <button class="btn btn-outline-warning w-100" onclick="fnc_get_log();">Refresh</button>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <button class="btn btn-outline-danger w-100" onclick="alert('Clear!');">Clear</button>
+        </div>
+
+        <div class="col-sm-12 col-xl-12">
+            <div id="process_logging" class="bg-white" style="overflow-y: auto; height:520px; padding: 10px;">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+
+        fnc_get_log = function() {
+            $('#spinner_logging').show();
+
+            $.ajax({
+                url: '/anlz/{{ prj.id }}/log',
+                type: 'GET',
+                success: function(response) {
+
+                    var $process_logging = $('#process_logging');
+
+                    str_div = "";
+                    for(i=0; i < response.lst_logging.length; i++)
+                    {
+                        var log_val = response.lst_logging[i];
+
+                        if(log_val[0] == 'Error'){
+                            str_class = 'text-danger';
+                        }
+                        else{
+                            str_class = 'text-success';
+                        }
+
+                        var str_timenow = log_val[1];
+                        var str_logging = log_val[2].replaceAll('\n', '<br/><br/>');
+
+                        str_div += "<div class='"+ str_class + "'>" + str_timenow + " - <b>" + str_logging + "</b></div>"
+
+                        //str_div += response.lst_logging[i].replaceAll('\n', '<br/><br/>')
+                        //console.log(response.lst_logging[i]);
+                    }
+
+                    $process_logging.html(str_div);
+                    $process_logging.scrollTop($process_logging.prop("scrollHeight"));
+
+                    if(response.is_running == false)
+                    {
+                        clearInterval(pre_processing_log_interval);
+                        $('#spinner_logging').hide();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    clearInterval(pre_processing_log_interval);
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                }
+            });
+        }
+
+        var pre_processing_log_interval = setInterval(fnc_get_log, 2000);
+    });
+</script>

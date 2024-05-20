@@ -1,0 +1,46 @@
+<div class="p-2">
+    {% set lst_all_tab_pyscript = ['Pre Processing', 'Define Structure', 'Main Processing'] %}
+
+    <nav>
+        <div id="anlz-prj-pyscript-nav-tab" class="nav nav-tabs" role="tablist">
+
+            {% for tab in lst_all_tab_pyscript %}
+                {% set str_tab_name = tab.lower().replace(' ', '_') %}
+                {% set arr_tab_name = tab_name.split('/') %}
+
+                <button id="nav-tab-{{ str_tab_name }}" data-bs-toggle="tab"
+                        data-bs-target="#nav-tab-{{ str_tab_name }}-content"
+                        type="button" role="tab"
+                        aria-controls="nav-tab-{{ str_tab_name }}-content"
+                        class="{% if str_tab_name in arr_tab_name %}nav-link active{% else %}nav-link{% endif %}"
+                        aria-selected="{% if str_tab_name in arr_tab_name %}true{% else %}false{% endif %}"
+                        onclick="location.href='/anlz/{{ prj.id }}/tab/pyscript/{{ str_tab_name }}'">
+                    {{ tab }}
+                </button>
+            {% endfor %}
+
+        </div>
+    </nav>
+
+    <div class="tab-content pt-3" id="anlz-prj-pyscript-nav-tabContent">
+
+        {% for tab in lst_all_tab_pyscript %}
+            {% set str_tab_name = tab.lower().replace(' ', '_') %}
+            {% set arr_tab_name = tab_name.split('/') %}
+
+            <div id="nav-tab-{{ str_tab_name }}-content" role="tabpanel" aria-labelledby="nav-tab-{{ str_tab_name }}"
+                 class="{% if str_tab_name in arr_tab_name %}tab-pane fade show active{% else %}tab-pane fade{% endif %}">
+                {% if str_tab_name in arr_tab_name %}
+                    {% include 'anlz/prj_by_id/anlz_prj_tab_pyscript_' + str_tab_name + '.html' %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+<link rel="stylesheet" href="https://codemirror.net/5/theme/darcula.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/python/python.min.js"></script>
+<script src="{{ url_for('static', path='/js/anlz_prj_codeMirror.js') }}"></script>

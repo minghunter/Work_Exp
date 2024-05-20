@@ -1,0 +1,102 @@
+<form id="form_anlz_prj_upload_rawdata" name="anlz_prj_upload_rawdata" action="/anlz/{{ prj.id }}/tab/rawdata/upload" method="post" enctype="multipart/form-data"
+    onsubmit="return confirm('Are you sure to upload new rawdata? Old rawdata cannot recover!')">
+
+    <div class="row g-4 p-2">
+
+        <div class="col-sm-12 col-xl-6">
+            <label for="xlsxFile" class="form-label">Choose <b>xlsx data</b> files</label>
+            <input class="form-control" type="file" id="xlsxFile" name="lst_file_rawdata" multiple data-max="6" accept=".xlsx, .sav" value="">
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <fieldset>
+                <legend class="col-form-label pt-0"><b>MR Set</b></legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_md" id="MC" value=false {% if prj.is_md == False or not prj.is_md %} checked {% endif %}>
+                    <label class="form-check-label" for="MC">MC</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_md" id="MD" value=true {% if prj.is_md == True %} checked {% endif %}>
+                    <label class="form-check-label" for="MD">MD</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <fieldset>
+                <legend class="col-form-label pt-0"><b>Data Type</b></legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_qme" id="qme" value=true checked>
+                    <label class="form-check-label" for="qme">Q&Me</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_qme" id="pandas" value=false>
+                    <label class="form-check-label" for="pandas">Pandas</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <input class="btn btn-outline-primary py-3 w-100 mt-4" type="submit" value="Upload Rawdata">
+        </div>
+
+    </div>
+
+</form>
+
+<div class="row g-4 p-2">
+
+    <div class="col-sm-12 col-xl-12">
+        <table class="table text-start align-middle table-hover mb-0">
+            <thead>
+                <tr class="text-dark text-center">
+                    <th scope="col" colspan="2">Rawdata Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="50%">Date upload</td>
+                    <td>{{ prj.date_upload }}</td>
+                </tr>
+
+                <tr>
+                    <td width="50%">Number of row</td>
+                    <td>{{ prj.num_of_row }}</td>
+                </tr>
+
+                <tr>
+                    <td width="50%">Number of column</td>
+                    <td>{{ prj.num_of_col }}</td>
+                </tr>
+
+                <tr>
+                    <td width="50%">MR Set</td>
+                    <td>{% if prj.is_md == True %} MD {% elif prj.is_md == False %} MC {% else %} None {% endif %}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-12 col-xl-8"></div>
+
+    <div class="col-sm-12 col-xl-2">
+        {% if prj.num_of_row > 0 and prj.num_of_col > 0 %}
+            <form id="form_anlz_prj_download_rawdata" name="anlz_prj_download_rawdata" action="/anlz/{{ prj.id }}/tab/rawdata/download" method="get" enctype="multipart/form-data"
+                onsubmit="return confirm('Do you want to download rawdata file');">
+                <input class="btn btn-outline-success py-3 w-100" type="submit" value="Download">
+            </form>
+        {% endif %}
+    </div>
+
+    <div class="col-sm-12 col-xl-2">
+        {% if prj.num_of_row > 0 and prj.num_of_col > 0 %}
+            <form id="form_anlz_prj_del_rawdata" name="anlz_prj_del_rawdata" action="/anlz/{{ prj.id }}/tab/rawdata/delete" method="post" enctype="multipart/form-data"
+                onsubmit="return confirm('Rawdata cannot recover. Are you sure?');">
+                <input class="btn btn-outline-danger py-3 w-100" type="submit" value="Delete Rawdata">
+            </form>
+        {% endif %}
+    </div>
+
+</div>
+

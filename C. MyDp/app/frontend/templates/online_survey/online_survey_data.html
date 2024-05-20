@@ -1,0 +1,202 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>Online Survey Data</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block sidebar_tool %}
+    {% include 'sidebar_tool.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid pt-4 px-4">
+        <div class="row bg-light rounded mx-0">
+
+            <div class="d-flex align-items-center justify-content-center">
+                <h4 class="mt-4">Online Survey Data</h4>
+            </div>
+
+            <div class="bg-light rounded h-100 p-4">
+
+                <form id="uploadform" action="/online-survey-data" method="post" enctype="multipart/form-data">
+
+                    <div class="row g-4 p-1">
+
+                        <div class="col-sm-12 col-xl-6">
+
+                            <div class="form-floating mb-0">
+
+                                <select class="form-select" id="prj_choose" aria-label="Select project" name="prj_choose">
+
+                                    <option selected value="-1">--Select project--</option>
+<!--                                    <option value="VN8168_TVC_testing_v1">VN8168_TVC_testing_v1</option>-->
+<!--                                    <option value="VN8168_TVC_testing_v2">VN8168_TVC_testing_v2</option>-->
+<!--                                    <option value="VN8186_ED">VN8186_ED</option>-->
+<!--                                    <option value="KKM_DAI">KKM Đại</option>-->
+<!--                                    <option value="VN8191_TVC_WINMART">VN8191_TVC WINMART</option>-->
+<!--                                    <option value="VN8194_Unilever_PS">VN8194_Unilever - P/S promotion</option>-->
+<!--                                    <option value="Masan_Lagom_ED_CLT_HCM">Masan Lagom ED CLT HCM</option>-->
+<!--                                    <option value="VN8212_Masan_ED_Packaging_test">VN8212 - Masan ED - Packaging test (6 files)</option>-->
+<!--                                    <option value="VN8194_Unilever_PS_v2">VN8194_Unilever - P/S promotion - v2</option>-->
+<!--                                    <option value="VN8216_Cooking_Sauce">VN8216 - Cooking Sauce</option>-->
+<!--                                    <option value="VN8226_Lapental">VN8226 - Lapental</option>-->
+<!--                                    <option value="VN8231_Bon_Bon_1">VN8231 - Bon Bon 1</option>-->
+<!--                                    <option value="VN9999_TrueID">TrueID</option>-->
+<!--                                    <option value="VN8228_Wakeup">VN8228 - WU coffee concept</option>-->
+<!--                                    <option value="VN8247_Rice_RTB">VN8247 - Rice - RTB Check</option>-->
+<!--                                    <option value="VN8161_Aurora_VN">VN8161 - Aurora VN</option>-->
+<!--                                    <option value="Online_shopping_behavior">Online shopping behavior</option>-->
+<!--                                    <option value="VN8263_Lapental">VN8263 - Lapental</option>-->
+<!--                                    <option value="VN8274_McKinsey_VN_SME">VN8274 - McKinsey - VN SME</option>-->
+<!--                                    <option value="VN8189_Acecook">VN8189 - Acecook</option>-->
+<!--                                    <option value="VN8280_Noodle_STB_Test">VN8280 - Noodle STB Test</option>-->
+<!--                                    <option value="VN8286_Crust_CLT">VN8286 - Crust CLT Mì</option>-->
+<!--                                    <option value="VN8306_MKT_Activities_Mi">VN8306 - MKT Activities Mì</option>-->
+<!--                                    <option value="VN8303_MKT_Activities_Pho">VN8303 - MKT Activities Pho</option>-->
+<!--                                    <option value="VN8307_Rakan_CLT">VN8307 - Rakan CLT</option>-->
+<!--                                    <option value="VN8314_MKT_Activities_Mi_R2">VN8314 - MKT Activities Mi Round 2</option>-->
+                                    <option value="VN8319_TvcMixTest_Intercept">VN8319 - Tvc Mix Test - Intercept</option>
+                                    <option value="VN8324_Lapental">VN8324 - Lapental</option>
+                                    <option value="VN8326_TVC_Test_R2">VN8326 - TVC Test R2</option>
+                                    <option value="VN8332_TOKYO_3">VN8332 - TOKYO 3</option>
+                                    <option value="VN8333_Charity_F1">VN8333 - Charity F1</option>
+                                    <option value="VN8313_Customer_Understanding">VN8313 - Customer Understanding</option>
+
+                                </select>
+                                <label for="prj_choose">Select project</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="xlsxFile" class="form-label">Choose <b>xlsx data</b> files</label>
+                            <input class="form-control" type="file" id="xlsxFile" name="files" multiple data-max="6" accept=".xlsx, .sav" value="">
+                        </div>
+
+<!--                        <div class="col-sm-12 col-xl-6">-->
+<!--                            <label for="pyScriptFile" class="form-label">Choose <b>python script</b> file</label>-->
+<!--                            <input class="form-control" type="file" id="pyScriptFile" name="py_script_file" multiple data-max="1" accept=".py" value="">-->
+<!--                        </div>-->
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="txtTablesFormat" class="form-label">Choose <b>txt tables format</b> file</label>
+                            <input class="form-control" type="file" id="txtTablesFormat" name="tables_format_file" multiple data-max="1" accept=".txt" value="">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="txtCodelistFile" class="form-label">Choose <b>txt codelist</b> file</label>
+                            <input class="form-control" type="file" id="txtCodelistFile" name="codelist_file" multiple data-max="1" accept=".txt" value="">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="txtCodingFile" class="form-label">Choose <b>txt coding</b> file</label>
+                            <input class="form-control" type="file" id="txtCodingFile" name="coding_file" multiple data-max="1" accept=".txt" value="">
+                        </div>
+
+                    </div>
+
+                    <div class="row g-4 p-1">
+
+                        <div class="col-sm-12 col-xl-4"></div>
+
+                        <div class="col-sm-12 col-xl-4"></div>
+
+                        <div class="col-sm-12 col-xl-4">
+                            <input class="btn btn-primary py-3 w-100" type="submit" value="Export">
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            {% if strErr|trim|length %}
+                <div id="err" class="alert alert-danger" role="alert">
+                    {{ strErr }}
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <input id="online_survey_wait_secs_val" type="hidden" value="{{ wait_secs }}">
+
+    <dialog id="dialog_online_survey_waiting" class="bg-light rounded p-4 text-center">
+
+        <h6 class="mb-4">Data processing in <span id="counter">{{ wait_secs }}</span> second(s).</h6>
+
+        <div id="spinner2" class="show">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            function countdown() {
+                var counter = document.getElementById('counter');
+
+                count_val = parseInt(counter.innerHTML);
+
+                if (count_val == 0) {
+                    counter.innerHTML = count_val-1;
+                    location.href = '/online-survey-data/download/{{ file_name }}';
+                    document.getElementById('dialog_online_survey_waiting').close();
+                }
+
+                if (count_val == -1) {
+                    counter.innerHTML = count_val-1;
+                    location.href = '/online-survey-data';
+                }
+
+                if (parseInt(counter.innerHTML)!=0) {
+                    counter.innerHTML = count_val-1;
+                }
+
+            }
+
+            setInterval(function(){ countdown(); }, 1000);
+
+        </script>
+
+    </dialog>
+
+{% endblock %}
+
+{% block js_files %}
+    <script>
+        window.addEventListener('load', function() {
+
+            var input_online_survey_wait_secs_val = document.getElementById('online_survey_wait_secs_val');
+
+            if(input_online_survey_wait_secs_val != null){
+
+                var online_survey_wait_secs_val = parseInt(input_online_survey_wait_secs_val.value);
+
+                if(online_survey_wait_secs_val > 0){
+
+                    document.getElementById('dialog_online_survey_waiting').addEventListener('cancel', (event) => {
+                        event.preventDefault();
+                    });
+                    showDialog('dialog_online_survey_waiting');
+                }
+            }
+
+        });
+
+        function showDialog(strID) {
+            document.getElementById(strID).showModal();
+        };
+    </script>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,238 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>Online Survey Data</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block sidebar_tool %}
+    {% include 'sidebar_tool.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid pt-4 px-4">
+        <div class="row bg-light rounded mx-0">
+
+            <div class="d-flex align-items-center justify-content-center">
+                <h4 class="mt-4">Online Survey Data</h4>
+            </div>
+
+            <div class="bg-light rounded h-100 p-4">
+
+                <form id="uploadform" action="/online-survey-data" method="post" enctype="multipart/form-data">
+
+                    <div class="row g-4 p-1">
+
+                        <div class="col-sm-12 col-xl-6">
+
+                            <div class="form-floating mb-0">
+
+                                <select class="form-select" id="prj_choose" aria-label="Select project" name="prj_choose">
+
+                                    <option selected value="-1">--Select project--</option>
+<!--                                    <option value="VN8168_TVC_testing_v1">VN8168_TVC_testing_v1</option>-->
+<!--                                    <option value="VN8168_TVC_testing_v2">VN8168_TVC_testing_v2</option>-->
+<!--                                    <option value="VN8186_ED">VN8186_ED</option>-->
+<!--                                    <option value="KKM_DAI">KKM Đại</option>-->
+<!--                                    <option value="VN8191_TVC_WINMART">VN8191_TVC WINMART</option>-->
+<!--                                    <option value="VN8194_Unilever_PS">VN8194_Unilever - P/S promotion</option>-->
+<!--                                    <option value="Masan_Lagom_ED_CLT_HCM">Masan Lagom ED CLT HCM</option>-->
+<!--                                    <option value="VN8212_Masan_ED_Packaging_test">VN8212 - Masan ED - Packaging test (6 files)</option>-->
+<!--                                    <option value="VN8194_Unilever_PS_v2">VN8194_Unilever - P/S promotion - v2</option>-->
+<!--                                    <option value="VN8216_Cooking_Sauce">VN8216 - Cooking Sauce</option>-->
+<!--                                    <option value="VN8226_Lapental">VN8226 - Lapental</option>-->
+<!--                                    <option value="VN8231_Bon_Bon_1">VN8231 - Bon Bon 1</option>-->
+<!--                                    <option value="VN9999_TrueID">TrueID</option>-->
+<!--                                    <option value="VN8228_Wakeup">VN8228 - WU coffee concept</option>-->
+<!--                                    <option value="VN8247_Rice_RTB">VN8247 - Rice - RTB Check</option>-->
+<!--                                    <option value="VN8161_Aurora_VN">VN8161 - Aurora VN</option>-->
+<!--                                    <option value="Online_shopping_behavior">Online shopping behavior</option>-->
+<!--                                    <option value="VN8263_Lapental">VN8263 - Lapental</option>-->
+<!--                                    <option value="VN8274_McKinsey_VN_SME">VN8274 - McKinsey - VN SME</option>-->
+<!--                                    <option value="VN8189_Acecook">VN8189 - Acecook</option>-->
+<!--                                    <option value="VN8280_Noodle_STB_Test">VN8280 - Noodle STB Test</option>-->
+<!--                                    <option value="VN8286_Crust_CLT">VN8286 - Crust CLT Mì</option>-->
+<!--                                    <option value="VN8306_MKT_Activities_Mi">VN8306 - MKT Activities Mì</option>-->
+<!--                                    <option value="VN8303_MKT_Activities_Pho">VN8303 - MKT Activities Pho</option>-->
+<!--                                    <option value="VN8307_Rakan_CLT">VN8307 - Rakan CLT</option>-->
+<!--                                    <option value="VN8314_MKT_Activities_Mi_R2">VN8314 - MKT Activities Mi Round 2</option>-->
+<!--                                    <option value="VN8319_TvcMixTest_Intercept">VN8319 - Tvc Mix Test - Intercept</option>-->
+<!--                                    <option value="VN8324_Lapental">VN8324 - Lapental</option>-->
+                                    <option value="VN8326_TVC_Test_R2">VN8326 - TVC Test R2</option>
+<!--                                    <option value="VN8332_TOKYO_3">VN8332 - TOKYO 3</option>-->
+<!--                                    <option value="VN8333_Charity_F1">VN8333 - Charity F1</option>-->
+
+<!--                                    <option value="VN8313_Customer_Understanding">VN8313 - Customer Understanding</option>-->
+<!--                                    <option value="INT0002_Pricing_Change">Internal - Pricing change</option>-->
+<!--                                    <option value="VN8256_KEWPIE">VN8256 - KEWPIE</option>-->
+<!--                                    <option value="VN8347_PS_Promotion">VN8347 - PS Promotion</option>-->
+<!--                                    <option value="VN8053_Promind_Mosquito_2022">VN8053 - Promind Mosquito 2022</option>-->
+<!--                                    <option value="VN8346_Personal_Care">VN8346 - Personal Care</option>-->
+<!--                                    <option value="VN8363_Shampoo">VN8363 - Shampoo</option>-->
+                                    <option value="VN8378_TVC_Test">VN8378 - TVC Test</option>
+                                    <option value="VN8374_Deodorant_Women">VN8374 - Deodorant Women</option>
+                                    <option value="VN8387_Chili_Sauce">VN8387 - Chili Sauce</option>
+                                    <option value="VN8383_Oral_Skin">VN8383 - Oral & Skin</option>
+                                    <option value="VN8352_Promind_Femskin_2023">VN8352 - Promind Femskin 2023</option>
+                                    <option value="VN8393_Pantene">VN8393 - Pantene</option>
+                                    <option value="VN8394_Shampoo">VN8394 - Shampoo</option>
+                                    <option value="VN8383_Oral_Skin_v2">VN8383 - Oral & Skin - v2</option>
+                                    <option value="VN8413_Red_Ruby">VN8413 - Red Ruby</option>
+                                    <option value="INT0003_Tiktok_Shopping">INT0003 - Tiktok Shopping</option>
+                                    <option value="VN8327_Etika">VN8327 - Etika</option>
+                                    <option value="VN8420_Tet_Storyboard">VN8420 - Tet Storyboard</option>
+                                    <option value="VN8384_Battery">VN8384 - Battery</option>
+                                </select>
+                                <label for="prj_choose">Select project</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="xlsxFile" class="form-label">Choose <b>xlsx data</b> files</label>
+                            <input class="form-control" type="file" id="xlsxFile" name="files" multiple data-max="6" accept=".xlsx, .sav" value="">
+                        </div>
+
+<!--                        <div class="col-sm-12 col-xl-6">-->
+<!--                            <label for="pyScriptFile" class="form-label">Choose <b>python script</b> file</label>-->
+<!--                            <input class="form-control" type="file" id="pyScriptFile" name="py_script_file" multiple data-max="1" accept=".py" value="">-->
+<!--                        </div>-->
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="txtTablesFormat" class="form-label">Choose <b>txt tables format</b> file</label>
+                            <input class="form-control" type="file" id="txtTablesFormat" name="tables_format_file" multiple data-max="1" accept=".txt" value="">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="txtCodelistFile" class="form-label">Choose <b>txt codelist</b> file</label>
+                            <input class="form-control" type="file" id="txtCodelistFile" name="codelist_file" multiple data-max="1" accept=".txt" value="">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-6">
+                            <label for="txtCodingFile" class="form-label">Choose <b>txt coding</b> file</label>
+                            <input class="form-control" type="file" id="txtCodingFile" name="coding_file" multiple data-max="1" accept=".txt" value="">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <a id="btn_refresh" class="btn btn-outline-primary py-3 w-100" href="/online-survey-data">Refresh</a>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <input id="btn_submit" class="btn btn-primary py-3 w-100" type="submit" value="Process">
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-4 px-4">
+        {% if strErr|trim|length %}
+            <div id="err" class="alert alert-danger" role="alert">
+                {{ strErr }}
+            </div>
+        {% endif %}
+
+        {% if wait_secs > 0 %}
+            <div class="bg-light rounded h-100 p-4">
+                <div class="row g-4 p-1">
+                    <div id="spinner_get_onl_data_file" class="col-sm-12 col-xl-12">
+                        <div class="show text-center">
+                            <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status">
+                                <span class="sr-only">Processing...</span>
+                            </div>
+                            <span>Processing, please wait</span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xl-12">
+                        <div id="get_onl_data_file"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                $('#btn_submit').hide();
+                $('#btn_refresh').hide();
+
+                $(document).ready(function(){
+
+                    fnc_get_onl_data_file = function() {
+                        $('#spinner_get_onl_data_file').show();
+
+                        $.ajax({
+                            url: '/online-survey-data/isexist/{{ file_name }}',
+                            type: 'GET',
+                            success: function(response) {
+
+                                var $get_onl_data_file = $('#get_onl_data_file');
+
+                                if(response.isexist == 1)
+                                {
+                                    clearInterval(get_onl_data_file_interval);
+                                    $('#spinner_get_onl_data_file').hide();
+                                    $('#btn_submit').show();
+                                    $('#btn_refresh').show();
+
+                                    $(location).prop('href', '/online-survey-data/download/' + response.str_result)
+
+                                    // $get_onl_data_file.html('<a class="btn btn-outline-success py-3 w-100" href="/online-survey-data/download/' + response.str_result + '">' + response.str_result + '</a>');
+
+                                }
+                                else if(response.isexist == -1)
+                                {
+                                    clearInterval(get_onl_data_file_interval);
+                                    $('#spinner_get_onl_data_file').hide();
+                                    $('#btn_submit').show();
+                                    $('#btn_refresh').show();
+
+                                    str_err = "";
+                                    for(a in response.str_result){
+                                        console.log(response.str_result[a]);
+                                        str_err += '<br/>' + response.str_result[a]
+                                    }
+
+                                    $get_onl_data_file.html('<div class="alert alert-danger" role="alert">' + str_err + '</div>');
+                                }
+                                else {
+                                    date_now = new Date();
+                                    console.log(date_now);
+                                    $('#spinner_get_onl_data_file').append('<div class="show text-center">' + date_now + ' - ' + response.str_result + '</div>');
+                                }
+
+                            },
+                            error: function(xhr, status, error) {
+                                clearInterval(get_onl_data_file_interval);
+                                console.log(xhr);
+                                console.log(status);
+                                console.log(error);
+                            }
+                        });
+                    }
+
+                    var get_onl_data_file_interval = setInterval(fnc_get_onl_data_file, 30000);
+                });
+            </script>
+
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+

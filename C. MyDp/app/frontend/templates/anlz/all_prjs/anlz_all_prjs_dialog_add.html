@@ -1,0 +1,78 @@
+<dialog id="dlg_add_anlz_prj" class="col-sm-12 col-xl-6" style="top: -40%">
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h4 class="mt-3">Add Analyzing Project</h4>
+        <button type="button" class="btn btn-outline-danger w-10" onclick="document.getElementById('dlg_add_anlz_prj').close()">X</button>
+    </div>
+
+    <form id="form_add_anlz_prj" action="/anlz/add" method="post" enctype="multipart/form-data">
+
+        <div class="bg-light rounded p-2 row g-2 w-100 h-100">
+
+            <div class="col-sm-12 col-xl-4">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="internal_id" name="internal_id" value="">
+                    <label for="internal_id">Internal ID</label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="prj_name" name="name" value="" oninput="this.value = this.value.toUpperCase()">
+                    <label for="prj_name">Name</label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <div class="form-floating mb-0">
+                    <input type="text" class="form-control" id="prj_cat" name="categorical" value="">
+                    <label for="prj_cat">Category</label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <div class="form-floating mb-0">
+                    <select class="form-select" id="prj_type" name="type">
+                        {% for type in lst_anlz_prj_type %}
+                            <option value="{{ type }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="prj_type">Type</label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <div class="form-floating mb-0">
+                    <select class="form-select" id="prj_status" name="status">
+                        {% for stt in lst_anlz_prj_status %}
+                            {% if stt == 'OnGoing' %}
+                                <option selected value="{{ stt }}">{{ stt }}</option>
+                            {% else %}
+                                <option value="{{ stt }}">{{ stt }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <label for="prj_status">Status</label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4">
+                <div class="alert alert-primary" role="alert">
+                    Project Owner: {{ user_info.name }}
+                </div>
+
+                <input type="hidden" id="prj_owner" name="owner" value="{{ user_info.name }}">
+            </div>
+
+            <div class="col-sm-12 col-xl-8"></div>
+
+            <div class="col-sm-12 col-xl-4">
+                <input class="btn btn-outline-primary py-3 w-100" type="submit" value="Submit" id="submit_add_prj" onclick="func_submit_add_prj('form_add_anlz_prj');">
+            </div>
+
+        </div>
+
+    </form>
+
+
+</dialog>
