@@ -1,0 +1,60 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>Price Tracking</title>
+{% endblock %}
+
+{% block bl_user_name %}
+    {% include 'user_bar.html' %}
+{% endblock %}
+
+{% block sidebar_price_tracking %}
+    <a href="\price-tracking" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Price Tracking</a>
+{% endblock %}
+
+{% block search_bar %}{% endblock %}
+
+{% block notification %}{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid pt-4 px-4">
+
+        {% if strErr|trim|length %}
+            <div id="err" class="alert alert-danger" role="alert">{{ strErr }}</div>
+        {% endif %}
+
+        {% if user_info.name == 'Guest' %}
+            <div id="login_warning" class="alert alert-warning" role="alert">Please login to have full permission in <b>'Price Tracking'</b>.</div>
+        {% endif %}
+
+        <div class="bg-light p-4">
+            <div class="row g-1 mb-3">
+                <div class="col-sm-12 col-xl-8"><h4>Price Tracking Projects</h4></div>
+            </div>
+
+            {% include 'price_tracking/all_prjs/price_all_prjs_table.html' %}
+
+            {% if page_count > 1 %}
+                {% include 'anlz/all_prjs/anlz_all_prjs_pagination.html' %}
+            {% endif %}
+
+        </div>
+
+
+
+<!--        <div class="bg-light p-4">-->
+<!--            <div class="row g-1 mb-3">-->
+<!--                <div class="col-sm-12 col-xl-2">-->
+<!--                    <button type="button" class="btn btn-outline-primary w-100" onClick="window.location.href='/price-tracking/64756373ad690dbabee0be95/tab/info';">VN8309 - KAITO</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+
+{% endblock %}
+
+{% block js_files %}
+
+{% endblock %}

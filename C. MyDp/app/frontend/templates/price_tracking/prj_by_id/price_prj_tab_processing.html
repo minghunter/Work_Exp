@@ -1,0 +1,59 @@
+
+<form id="form_price_prj_export_data" name="price_prj_export_data" action="/price-tracking/{{ prj.id }}/tab/processing/export/data" method="post" enctype="multipart/form-data"
+    onsubmit="return confirm('Do you want to export data?')">
+
+    <div class="row g-2 p-2">
+
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <select class="form-select" id="is_to_client" name="is_to_client">
+                    <option value=False>Internal checking</option>
+                    <option value=True>Deliver to Client</option>
+                </select>
+                <label for="is_to_client">Formatting</label>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <select class="form-select" id="data_week" name="week">
+                    {% for w in range(prj.current_week, prj.current_week + 1) %}
+                        {% if w == prj.current_week %}
+                            <option selected value="{{ w }}">{{ w }}</option>
+                        {% else %}
+
+                        {% endif %}
+                    {% endfor %}
+
+                </select>
+                <label for="data_week">Week</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <div class="form-floating">
+                <select class="form-select" id="is_to_ggdrive" name="is_to_ggdrive">
+                    <option value=False>No</option>
+                    <option value=True>Yes</option>
+                </select>
+                <label for="is_to_ggdrive">Upload to Google Drive</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <input class="btn btn-outline-primary py-3 w-100" type="submit" value="Export Data">
+        </div>
+
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+

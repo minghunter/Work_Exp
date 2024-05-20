@@ -1,0 +1,345 @@
+<div class="p-3 mb-2 bg-white rounded">
+    <div class="row">
+        <label for="sel_store" class="col-sm-1 col-form-label">Store</label>
+        <div id="div_sel_store" class="col-sm-11">
+            <select id="sel_store" name="sel_store" class="form-select"
+                    multiple aria-label="multiple select" multiselect-search="true"
+                    multiselect-select-all="true" multiselect-max-items="2" multiselect-hide-x="false" onchange="fnc_sel_store_change();">
+            </select>
+        </div>
+
+        <label for="sel_cate" class="col-sm-1 col-form-label">Category</label>
+        <div id="div_sel_cate" class="col-sm-11">
+            <select id="sel_cate" name="sel_cate" class="form-select"
+                    multiple aria-label="multiple select" multiselect-search="true"
+                    multiselect-select-all="true" multiselect-max-items="5" multiselect-hide-x="false" onchange="fnc_sel_cate_change();">
+            </select>
+        </div>
+
+        <label for="sel_brand" class="col-sm-1 col-form-label">Brand</label>
+        <div id="div_sel_brand" class="col-sm-11">
+            <select id="sel_brand" name="sel_brand" class="form-select"
+                    multiple aria-label="multiple select" multiselect-search="true"
+                    multiselect-select-all="true" multiselect-max-items="5" multiselect-hide-x="false" onchange="fnc_sel_brand_change();">
+            </select>
+        </div>
+        
+        <label for="sel_sku" class="col-sm-1 col-form-label">SKU</label>
+        <div id="div_sel_sku" class="col-sm-11">
+            <select id="sel_sku" name="sel_sku" class="form-select"
+                    multiple aria-label="multiple select" multiselect-search="true"
+                    multiselect-select-all="true" multiselect-max-items="5" multiselect-hide-x="false">
+            </select>
+        </div>
+
+        <label for="sel_week" class="col-sm-1 col-form-label">Week</label>
+        <div id="div_sel_week" class="col-sm-11">
+            <select id="sel_week" name="sel_week" class="form-select"
+                    multiple aria-label="multiple select" multiselect-search="true"
+                    multiselect-select-all="true" multiselect-max-items="5" multiselect-hide-x="false">
+            </select>
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-1">
+        <div class="col-sm-12 col-xl-3"></div>
+
+        <div class="col-sm-12 col-xl-6">
+            <div id="spinner_display_dashboard" class="show text-center py-3">
+                <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span>Please wait...</span>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-3">
+            <button id="btn_submit" class="btn btn-outline-primary py-3 w-100" onclick="fnc_display_dashboard();">Submit</button>
+        </div>
+    </div>
+</div>
+
+<div id="display_dashboard" class="row g-2 p-2"></div>
+
+<script src="{{ url_for('static', path='/js/multiselect-dropdown.js') }}"></script>
+
+<script>
+
+    let obj_sku_info = new Object();
+
+    $(document).ready(function(){
+
+        $.ajax({
+            type: 'GET',
+            url: '/price-tracking/{{ prj.id }}/tab/dashboard/get_sku_info',
+            success: function(response) {
+
+                $('#div_sel_store').find('.multiselect-dropdown').remove();
+                $('#sel_store').find('option').remove();
+
+                $('#div_sel_cate').find('.multiselect-dropdown').remove();
+                $('#sel_cate').find('option').remove();
+
+                $('#div_sel_brand').find('.multiselect-dropdown').remove();
+                $('#sel_brand').find('option').remove();
+
+                $('#div_sel_sku').find('.multiselect-dropdown').remove();
+                $('#sel_sku').find('option').remove();
+
+                $('#div_sel_week').find('.multiselect-dropdown').remove();
+                $('#sel_week').find('option').remove();
+
+                $.each(response['sku_info'], function(key, value) {
+                    $('#sel_store').append(new Option(key, key));
+                });
+
+                $.each(response['week'], function(key, value) {
+                    $('#sel_week').append(new Option(value, key));
+                });
+
+                MultiselectDropdown(window.MultiselectDropdownOptions, "sel_store");
+                MultiselectDropdown(window.MultiselectDropdownOptions, "sel_week");
+
+                obj_sku_info = response['sku_info'];
+
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+
+        $('#spinner_display_dashboard').hide();
+        $('#display_dashboard').hide();
+    });
+
+
+    fnc_sel_store_change = function() {
+
+        var $get_sel_store = $('#sel_store');
+
+        $('#div_sel_cate').find('.multiselect-dropdown').remove();
+        $('#sel_cate').find('option').remove();
+
+        $('#div_sel_brand').find('.multiselect-dropdown').remove();
+        $('#sel_brand').find('option').remove();
+
+        $('#div_sel_sku').find('.multiselect-dropdown').remove();
+        $('#sel_sku').find('option').remove();
+
+        var arr_added = new Array();
+
+        $.each(obj_sku_info, function(key_store, val_store) {
+
+            if($get_sel_store.val().includes(key_store)) {
+
+                $.each(val_store, function(key_cate, val_cate) {
+
+                    if(!arr_added.includes(key_cate)) {
+                        $('#sel_cate').append(new Option(key_cate, key_cate));
+                        arr_added.push(key_cate);
+                    }
+                });
+            }
+        });
+
+        MultiselectDropdown(window.MultiselectDropdownOptions, "sel_cate");
+    };
+
+
+    fnc_sel_cate_change = function() {
+
+        var $get_sel_store = $('#sel_store');
+        var $get_sel_cate = $('#sel_cate');
+
+        $('#div_sel_brand').find('.multiselect-dropdown').remove();
+        $('#sel_brand').find('option').remove();
+
+        $('#div_sel_sku').find('.multiselect-dropdown').remove();
+        $('#sel_sku').find('option').remove();
+
+        var arr_added = new Array();
+
+        $.each(obj_sku_info, function(key_store, val_store) {
+
+            if($get_sel_store.val().includes(key_store)) {
+
+                $.each(val_store, function(key_cate, val_cate) {
+
+                    if($get_sel_cate.val().includes(key_cate)) {
+
+                        $.each(val_cate, function(key_brand, val_brand) {
+
+                            if(!arr_added.includes(key_brand)) {
+                                $('#sel_brand').append(new Option(key_brand, key_brand));
+                                arr_added.push(key_brand);
+                            }
+
+                        });
+                    }
+
+                });
+            }
+        });
+
+        MultiselectDropdown(window.MultiselectDropdownOptions, "sel_brand");
+    };
+
+
+    fnc_sel_brand_change = function() {
+
+        var $get_sel_store = $('#sel_store');
+        var $get_sel_cate = $('#sel_cate');
+        var $get_sel_brand = $('#sel_brand');
+
+        $('#div_sel_sku').find('.multiselect-dropdown').remove();
+        $('#sel_sku').find('option').remove();
+
+
+
+        var arr_added = new Array();
+
+        $.each(obj_sku_info, function(key_store, val_store) {
+
+            if($get_sel_store.val().includes(key_store)) {
+
+                $.each(val_store, function(key_cate, val_cate) {
+
+                    if($get_sel_cate.val().includes(key_cate)) {
+
+                        $.each(val_cate, function(key_brand, val_brand) {
+
+                            if($get_sel_brand.val().includes(key_brand)) {
+
+                                $.each(val_brand, function(key_sku, val_sku) {
+                                    if(!arr_added.includes(val_sku)) {
+                                        $('#sel_sku').append(new Option(val_sku, key_sku));
+                                        arr_added.push(val_sku);
+                                    }
+                                });
+
+                            }
+
+
+
+                        });
+                    }
+
+                });
+            }
+        });
+
+        MultiselectDropdown(window.MultiselectDropdownOptions, "sel_sku");
+    };
+
+
+    fnc_display_dashboard = function() {
+        $('#btn_submit').hide();
+        $('#spinner_display_dashboard').show();
+        $('#display_dashboard').hide();
+
+        var $get_sel_sku = $('#sel_sku');
+        var $get_sel_week = $('#sel_week');
+
+
+        if($get_sel_sku.val().length == 0 || $get_sel_week.val().length == 0){
+            $('#display_dashboard').html(`<div class="alert alert-warning" role="alert">Please select SKU and Week!</div>`);
+
+            setTimeout(() => {
+                $('#spinner_display_dashboard').hide();
+                $('#display_dashboard').show();
+                $('#btn_submit').show();
+            }, 200);
+
+            return 0;
+        }
+
+        var model_price_dashboard = {"lst_sku": $get_sel_sku.val(), "lst_week": $get_sel_week.val()};
+
+        $.ajax({
+            type: 'POST',
+            url: '/price-tracking/{{ prj.id }}/tab/dashboard/display/tables',
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(model_price_dashboard),
+            processData : false,
+            success: function(response) {
+
+                var $display_dashboard = $('#display_dashboard');
+
+                var obj_response = response;
+
+                $display_dashboard.html("");
+
+                $.each(obj_response, function(key, val) {
+
+                    str_html = new String();
+                    str_html = `
+                    <div class="col-sm-12 col-xl-6 bg-light rounded">
+                        <div class="bg-white rounded h-100 p-3">
+                            <h6 class="mb-4">${val['Competitor']} - ${val['STT']}. ${val['Product Description']}</h6>
+
+                            <canvas id="${val['Competitor']}-${val['STT']}"></canvas>
+                        </div>
+                    </div>`;
+
+                    $display_dashboard.append(str_html);
+
+                    var arr_chart_labels = new Array();
+                    var arr_chart_data = new Array();
+
+                    $.each(val['Week_data'], function(k_week, price_week) {
+                        arr_chart_labels.push(k_week);
+                        arr_chart_data.push(price_week);
+                    });
+
+                    var ctx3 = $(`#${val['Competitor']}-${val['STT']}`).get(0).getContext("2d");
+                    var myChart3 = new Chart(ctx3, {
+                        type: "line",
+                        data: {
+                            labels: arr_chart_labels,
+                            datasets: [{
+                                label: "Price",
+                                fill: true,
+                                backgroundColor: "rgba(0, 156, 255, .3)",
+                                data: arr_chart_data
+                            }]
+                        },
+                        options: {
+                            responsive: true
+                        }
+                    });
+
+                });
+
+                setTimeout(() => {
+                    $('#spinner_display_dashboard').hide();
+                    $('#display_dashboard').show();
+                    $('#btn_submit').show();
+                }, 1000);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+
+
+
+    };
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+

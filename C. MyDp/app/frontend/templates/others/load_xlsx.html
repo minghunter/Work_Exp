@@ -1,0 +1,83 @@
+{% extends 'master_page.html' %}
+
+{% block page_title %}
+    <title>Convert SAV</title>
+{% endblock %}
+
+{% block bl_user_name %}
+
+    {% include 'user_bar.html' %}
+
+{% endblock %}
+
+{% block sidebar_tool %}
+    {% include 'sidebar_tool.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid pt-4 px-4">
+        <div class="row bg-light rounded mx-0">
+
+            <div class="d-flex align-items-center justify-content-center">
+                <h4 class="mt-4">Convert to SAV</h4>
+            </div>
+
+            <form id="uploadform" action="/convert-sav" method="post" enctype="multipart/form-data">
+
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="row g-4 p-1">
+
+                        <div class="col-sm-12 col-xl-8">
+                            <label for="xlsxFile" class="form-label">Choose xlsx file</label>
+                            <input class="form-control" type="file" id="xlsxFile" name="files" multiple data-max="1" accept=".xlsx" value="">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-4">
+                            <div class="form-check form-switch mt-4">
+
+                                <input class="form-check-input" type="checkbox" role="switch" id="is_md" name="is_md" value="False">
+                                <label class="form-check-label" for="is_md">MR set by categories(MC)</label>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-8">
+
+                        </div>
+
+                        <div class="col-sm-12 col-xl-4">
+                            <input class="btn btn-primary py-3 w-100" type="submit" value="Convert">
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </form>
+
+            {% if strErr|trim|length %}
+                <div id="err" class="alert alert-danger" role="alert">
+                    {{ strErr }}
+                </div>
+            {% endif %}
+
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+
+{% block js_files %}
+    <script>
+<!--        setTimeout(() => {-->
+<!--            const err = document.getElementById('err');-->
+<!--            if(err != null)-->
+<!--            {-->
+<!--                err.style.display = 'none';-->
+<!--            }-->
+<!--    &lt;!&ndash;        err.style.visibility = 'hidden';&ndash;&gt;-->
+<!--        }, 30000);-->
+    </script>
+{% endblock %}

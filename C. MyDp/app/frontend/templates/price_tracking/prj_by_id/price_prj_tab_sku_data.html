@@ -1,0 +1,177 @@
+<form id="form_price_prj_upload_sku_data_ext" name="price_prj_upload_sku_data_ext" action="/price-tracking/{{ prj.id }}/tab/sku_data/upload" method="post" enctype="multipart/form-data"
+    onsubmit="return confirm('Are you sure to upload new SKU Data? Old SKU Data cannot recover!')">
+
+    <div class="row g-2 p-2">
+
+        <div class="col-sm-12 col-xl-6">
+            <label for="xlsxFile" class="form-label">Choose <b>xlsx data</b> file</label>
+            <input class="form-control" type="file" id="xlsxFile" name="upload_file" multiple data-max="1" accept=".xlsx, .csv" value="">
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <div class="form-floating mt-3">
+                <select class="form-select" id="is_qme" name="is_qme">
+                    <option selected value=True>Q&Me data file</option>
+<!--                    <option value=False>External data final</option>-->
+                </select>
+                <label for="is_qme">Data type</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+            <div class="form-floating mt-3">
+                <select class="form-select" id="is_bhx" name="is_bhx">
+                    <option selected value=True>BHX</option>
+                    <option value=False>Watsons</option>
+                </select>
+                <label for="is_bhx">Store</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-2">
+
+<!--            [1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 19, 20]-->
+
+            <div class="form-floating mt-3">
+                <select class="form-select" id="data_week" name="week">
+                    {% for w in range(prj.current_week, prj.current_week + 1) %}
+
+                        {% if w == prj.current_week %}
+                            <option selected value="{{ w }}">{{ w }}</option>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </select>
+                <label for="data_week">Week</label>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-10"></div>
+
+        <div class="col-sm-12 col-xl-2">
+            <input class="btn btn-outline-primary py-3 w-100" type="submit" value="Upload SKU Data">
+        </div>
+
+    </div>
+
+</form>
+
+<div class="row g-2 p-2">
+    <div class="col-sm-12 col-xl-12">
+        <div id="spinner_get_sku_data_err" class="show text-center">
+            <div class="spinner-border text-primary" style="width: 1.5rem; height: 1.5rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <span>Please waiting</span>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xl-12">
+        <div id="get_sku_data_err" class="bg-light" style="overflow-y: auto; padding: 10px;">
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+
+        fnc_get_sku_data_err = function() {
+            $('#spinner_get_sku_data_err').show();
+            $.ajax({
+                url: '/price-tracking/{{ prj.id }}/tab/sku_data/errors/{{ prj.current_week }}',
+                type: 'GET',
+                success: function(response) {
+
+                    var $get_sku_data_err = $('#get_sku_data_err');
+
+                    var str_html = "";
+                    if (response.indexOf('class="dataframe"') > 0){
+                        str_html += '<button id="btn_export_tbl_to_csv" class="btn btn-outline-secondary mb-2" type="button" onclick="tableToCSV()">Download CSV Table</button>'
+                    }
+                    str_html += response.replaceAll('class="dataframe"', 'class="bg-white table align-middle table-hover table-bordered"');
+
+                    $get_sku_data_err.html(str_html);
+                    $('#spinner_get_sku_data_err').hide();
+
+                },
+                error: function(xhr, status, error) {
+                    clearInterval(get_sku_data_err_interval);
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+
+                }
+            });
+        }
+
+        var get_sku_data_err_interval = setTimeout(fnc_get_sku_data_err, 3000);
+
+    });
+
+    function tableToCSV() {
+
+        // Variable to store the final csv data
+        var csv_data = [];
+
+        // Get each row data
+        var rows = document.getElementsByTagName('tr');
+        for (var i = 0; i < rows.length; i++) {
+
+            // Get each column data
+            var cols = rows[i].querySelectorAll('td,th');
+
+            // Stores each csv row data
+            var csvrow = [];
+            for (var j = 0; j < cols.length; j++) {
+
+                // Get the text data of each cell
+                // of a row and push it to csvrow
+                csvrow.push(cols[j].innerHTML);
+            }
+
+            // Combine each column value with comma
+            csv_data.push(csvrow.join(","));
+        }
+
+        // Combine each row data with new line character
+        csv_data = csv_data.join('\n');
+
+        // Call this function to download csv file
+        downloadCSVFile(csv_data);
+
+    }
+
+    function downloadCSVFile(csv_data) {
+
+        // Create CSV file object and feed
+        // our csv_data into it
+        CSVFile = new Blob([csv_data], {
+            type: "text/csv"
+        });
+
+        // Create to temporary link to initiate
+        // download process
+        var temp_link = document.createElement('a');
+
+        // Download csv file
+        temp_link.download = "Price_Tracking_Errors.csv";
+        var url = window.URL.createObjectURL(CSVFile);
+        temp_link.href = url;
+
+        // This link should not be displayed
+        temp_link.style.display = "none";
+        document.body.appendChild(temp_link);
+
+        // Automatically click the link to
+        // trigger download
+        temp_link.click();
+        document.body.removeChild(temp_link);
+    }
+
+</script>
+
+
