@@ -1,0 +1,1868 @@
+{
+    "T0": {
+        "tbl_name": "Demo table",
+        "tbl_filter": "Ma_YT > 0",
+        "is_count": 0,
+        "is_pct_sign": 1,
+        "is_hide_oe_zero_cats": 1,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+
+            {"qre_name": "Main_Q1_Y_tuong_nho_nhat", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_Q2_Y_tuong_phu_hop_nhat", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - YT 1", "qre_filter": "(Ma_YT == 1 & Main_Q1_Y_tuong_nho_nhat == 1)"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - YT 2", "qre_filter": "(Ma_YT == 2 & Main_Q1_Y_tuong_nho_nhat == 2)"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - YT 3", "qre_filter": "(Ma_YT == 3 & Main_Q1_Y_tuong_nho_nhat == 3)"}
+
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S4_KV_sinh_song",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HCM",
+                        "1": "HN"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S3_Gioi_tinh",
+                    "qre_lbl": "GIỚI TÍNH",
+                    "cats": {
+                        "2": "Nữ",
+                        "1": "Nam"
+                    }
+                }
+            ]
+        ]
+    },
+
+    "VN8231_Total": {
+        "tbl_name": "Total(HCM&HN) - Main",
+        "tbl_filter": "Ma_san_pham > 0 & Recruit_S1_Thanh_pho > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "rel",
+            "sig_cols": [["A", "B"], ["A", "C"], ["A", "D"], ["A", "E"]],
+            "lst_sig_lvl": [90, 95]
+        },
+        "lst_side_qres": [
+            {"qre_name": "Main_NC1_OL_Mui_huong"},
+            {"qre_name": "Main_NC1_OL_Mui_huong_Group"},
+            {"qre_name": "Main_NC1_OL_Mui_huong_Mean"},
+            {"qre_name": "Main_NC3_JAR_Do_manh"},
+            {"qre_name": "Main_NC3_JAR_Do_manh_Group"},
+            {"qre_name": "Main_NC3_JAR_Do_manh_Mean"},
+            {"qre_name": "Main_NC4_So_sanh_BUMO"},
+            {"qre_name": "Main_NC6_Ranking_Mui_huong"},
+            {"qre_name": "Main_NC7_Ranking_Concept"},
+            {"qre_name": "Main_PL1_OL_Mui_huong"},
+            {"qre_name": "Main_PL1_OL_Mui_huong_Group"},
+            {"qre_name": "Main_PL1_OL_Mui_huong_Mean"},
+            {"qre_name": "Main_PL1a_Do_phu_hop"},
+            {"qre_name": "Main_PL1a_Do_phu_hop_Group"},
+            {"qre_name": "Main_PL1a_Do_phu_hop_Mean"},
+            {"qre_name": "Main_PL2_JAR_Do_manh"},
+            {"qre_name": "Main_PL2_JAR_Do_manh_Group"},
+            {"qre_name": "Main_PL2_JAR_Do_manh_Mean"},
+            {"qre_name": "Main_PL3_Ranking_mui_huong"},
+            {"qre_name": "Main_PL4_Ranking_Concept"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_san_pham",
+                    "qre_lbl": "Mã SP",
+                    "cats": {
+                        "1": "361",
+                        "2": "387",
+                        "3": "499",
+                        "4": "515",
+                        "5": "789"
+
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_HN": {
+        "tbl_name": "HN - Main",
+        "tbl_filter": "Ma_san_pham > 0 & Recruit_S1_Thanh_pho == 2",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "rel",
+            "sig_cols": [["A", "B"], ["A", "C"], ["A", "D"], ["A", "E"]],
+            "lst_sig_lvl": [90, 95]
+        },
+        "lst_side_qres": [
+            {"qre_name": "Main_NC1_OL_Mui_huong"},
+            {"qre_name": "Main_NC1_OL_Mui_huong_Group"},
+            {"qre_name": "Main_NC1_OL_Mui_huong_Mean"},
+            {"qre_name": "Main_NC3_JAR_Do_manh"},
+            {"qre_name": "Main_NC3_JAR_Do_manh_Group"},
+            {"qre_name": "Main_NC3_JAR_Do_manh_Mean"},
+            {"qre_name": "Main_NC4_So_sanh_BUMO"},
+            {"qre_name": "Main_NC6_Ranking_Mui_huong"},
+            {"qre_name": "Main_NC7_Ranking_Concept"},
+            {"qre_name": "Main_PL1_OL_Mui_huong"},
+            {"qre_name": "Main_PL1_OL_Mui_huong_Group"},
+            {"qre_name": "Main_PL1_OL_Mui_huong_Mean"},
+            {"qre_name": "Main_PL1a_Do_phu_hop"},
+            {"qre_name": "Main_PL1a_Do_phu_hop_Group"},
+            {"qre_name": "Main_PL1a_Do_phu_hop_Mean"},
+            {"qre_name": "Main_PL2_JAR_Do_manh"},
+            {"qre_name": "Main_PL2_JAR_Do_manh_Group"},
+            {"qre_name": "Main_PL2_JAR_Do_manh_Mean"},
+            {"qre_name": "Main_PL3_Ranking_mui_huong"},
+            {"qre_name": "Main_PL4_Ranking_Concept"}],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_san_pham",
+                    "qre_lbl": "Mã SP",
+                    "cats": {
+                        "1": "361",
+                        "2": "387",
+                        "3": "499",
+                        "4": "515",
+                        "5": "789"
+
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_HCM": {
+        "tbl_name": "HCM - Main",
+        "tbl_filter": "Ma_san_pham > 0 & Recruit_S1_Thanh_pho == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "rel",
+            "sig_cols": [["A", "B"], ["A", "C"], ["A", "D"], ["A", "E"]],
+            "lst_sig_lvl": [90, 95]
+        },
+        "lst_side_qres": [
+            {"qre_name": "Main_NC1_OL_Mui_huong"},
+            {"qre_name": "Main_NC1_OL_Mui_huong_Group"},
+            {"qre_name": "Main_NC1_OL_Mui_huong_Mean"},
+            {"qre_name": "Main_NC3_JAR_Do_manh"},
+            {"qre_name": "Main_NC3_JAR_Do_manh_Group"},
+            {"qre_name": "Main_NC3_JAR_Do_manh_Mean"},
+            {"qre_name": "Main_NC4_So_sanh_BUMO"},
+            {"qre_name": "Main_NC6_Ranking_Mui_huong"},
+            {"qre_name": "Main_NC7_Ranking_Concept"},
+            {"qre_name": "Main_PL1_OL_Mui_huong"},
+            {"qre_name": "Main_PL1_OL_Mui_huong_Group"},
+            {"qre_name": "Main_PL1_OL_Mui_huong_Mean"},
+            {"qre_name": "Main_PL1a_Do_phu_hop"},
+            {"qre_name": "Main_PL1a_Do_phu_hop_Group"},
+            {"qre_name": "Main_PL1a_Do_phu_hop_Mean"},
+            {"qre_name": "Main_PL2_JAR_Do_manh"},
+            {"qre_name": "Main_PL2_JAR_Do_manh_Group"},
+            {"qre_name": "Main_PL2_JAR_Do_manh_Mean"},
+            {"qre_name": "Main_PL3_Ranking_mui_huong"},
+            {"qre_name": "Main_PL4_Ranking_Concept"}],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_san_pham",
+                    "qre_lbl": "Mã SP",
+                    "cats": {
+                        "1": "361",
+                        "2": "387",
+                        "3": "499",
+                        "4": "515",
+                        "5": "789"
+
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_Scr_UA": {
+        "tbl_name": "Screener & U&A",
+        "tbl_filter": "Ma_san_pham == 1 & Recruit_S1_Thanh_pho > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "Recruit_S1_Thanh_pho"},
+            {"qre_name": "Recruit_S2_Gioi_tinh"},
+            {"qre_name": "Recruit_S3_Do_tuoi"},
+            {"qre_name": "$Recruit_S4_Nganh_cam"},
+            {"qre_name": "Recruit_S5_Nghe_nghiep_hien_tai"},
+            {"qre_name": "Recruit_S6_Thu_nhap_HGD"},
+            {"qre_name": "Recruit_S7_Trinh_do_hoc_van"},
+            {"qre_name": "Recruit_S8_Tinh_trang_hon_nhan"},
+            {"qre_name": "Recruit_S9_Tham_gia_NCTT"},
+            {"qre_name": "Recruit_S10_Quyet_dinh"},
+            {"qre_name": "$Recruit_S11_Nhan_biet"},
+            {"qre_name": "$Recruit_S12_Nhan_hieu_su_dung"},
+            {"qre_name": "Recruit_S13_BUMO"},
+            {"qre_name": "$Recruit_S14a_SKU"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_01"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_02"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_03"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_04"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_05"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_06"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_07"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_08"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_09"},
+            {"qre_name": "Recruit_S14b_Tan_suat_su_dung_10"},
+            {"qre_name": "Recruit_S15_Suc_khoe"},
+            {"qre_name": "Recruit_S16_Roi_thanh_pho"},
+            {"qre_name": "Main_Q1_Tan_suat_rua_mat"},
+            {"qre_name": "$Main_Q2_Thoi_gian_rua_mat"},
+            {"qre_name": "Main_Q3_Nuoc_rua_mat"},
+            {"qre_name": "$Main_Q4a_Dung_truoc_SRM_buoi_sang"},
+            {"qre_name": "$Main_Q4a_Dung_truoc_SRM_buoi_toi"},
+            {"qre_name": "$Main_Q5a_Dung_sau_SRM_buoi_sang"},
+            {"qre_name": "$Main_Q5b_Dung_sau_SRM_buoi_toi"},
+            {"qre_name": "Main_Q6_pH_level"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S1_Thanh_pho",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HN",
+                        "1": "HCM"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_Total_OE": {
+        "tbl_name": "Total(HCM&HN) - Main OE",
+        "tbl_filter": "Ma_san_pham > 0 & Recruit_S1_Thanh_pho > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Y1"},
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Y2"},
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Total"},
+
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Y1"},
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Y2"},
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Total"},
+
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Y1"},
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Y2"},
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Total"},
+
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Y1"},
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Y2"},
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Total"}
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_san_pham",
+                    "qre_lbl": "Mã SP",
+                    "cats": {
+                        "1": "361",
+                        "2": "387",
+                        "3": "499",
+                        "4": "515",
+                        "5": "789"
+
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_HN_OE": {
+        "tbl_name": "HN - Main OE",
+        "tbl_filter": "Ma_san_pham > 0 & Recruit_S1_Thanh_pho == 2",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Y1"},
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Y2"},
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Total"},
+
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Y1"},
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Y2"},
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Total"},
+
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Y1"},
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Y2"},
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Total"},
+
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Y1"},
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Y2"},
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Total"}
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_san_pham",
+                    "qre_lbl": "Mã SP",
+                    "cats": {
+                        "1": "361",
+                        "2": "387",
+                        "3": "499",
+                        "4": "515",
+                        "5": "789"
+
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_HCM_OE": {
+        "tbl_name": "HCM - Main OE",
+        "tbl_filter": "Ma_san_pham > 0 & Recruit_S1_Thanh_pho == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Y1"},
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Y2"},
+            {"qre_name": "$Main_NC2a_OE_Ly_do_thich_1_Total"},
+
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Y1"},
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Y2"},
+            {"qre_name": "$Main_NC2b_OE_Ly_do_khong_thich_Total"},
+
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Y1"},
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Y2"},
+            {"qre_name": "$Main_NC5a_OE_Ly_do_thich_BUMO_Total"},
+
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Y1"},
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Y2"},
+            {"qre_name": "$Main_NC5b_OE_Ly_do_thich_SP_test_Total"}
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_san_pham",
+                    "qre_lbl": "Mã SP",
+                    "cats": {
+                        "1": "361",
+                        "2": "387",
+                        "3": "499",
+                        "4": "515",
+                        "5": "789"
+
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8231_Scr_UA_OE": {
+        "tbl_name": "Screener & U&A OE",
+        "tbl_filter": "Ma_san_pham == 1 & Recruit_S1_Thanh_pho > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "$Main_Q7_OE_Diem_khong_thich_BUMO_Y1"},
+            {"qre_name": "$Main_Q7_OE_Diem_khong_thich_BUMO_Y2"},
+            {"qre_name": "$Main_Q7_OE_Diem_khong_thich_BUMO_Total"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S1_Thanh_pho",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HN",
+                        "1": "HCM"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S3_Do_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "2": "25 – 34 tuổi",
+                        "3": "35 – 45 tuổi"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Thu_nhap_HGD",
+                    "qre_lbl": "MHI",
+                    "cats": {
+                        "3": "7.5M - 13.5M",
+                        "2": "13.5M- 22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "Main_NC4_So_sanh_BUMO",
+                    "qre_lbl": "SP THÍCH HƠN",
+                    "cats": {
+                        "2": "THÍCH SP THỬ HƠN",
+                        "1": "THÍCH BUMO HƠN"
+                    }
+                }
+            ]
+        ]
+    },
+
+    "VN8228_Scr": {
+        "tbl_name": "Screener",
+        "tbl_filter": "MaConcept == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "S1"},
+            {"qre_name": "S2"},
+            {"qre_name": "S3_Recode"},
+            {"qre_name": "S4"},
+            {"qre_name": "S5"},
+            {"qre_name": "S6"},
+            {"qre_name": "$S7"},
+            {"qre_name": "S8"},
+            {"qre_name": "S8_Mean"},
+            {"qre_name": "S9"},
+            {"qre_name": "S10"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "S2",
+                    "qre_lbl": "Giới tính",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "Nam",
+                        "2": "Nữ"
+                    }
+                },
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                },
+                {
+                    "qre_name": "S3_Recode",
+                    "qre_lbl": "Tuổi",
+                    "cats": {
+                        "1": "18 - 24",
+                        "2": "25 - 30"
+                    }
+                },
+                {
+                    "qre_name": "S4",
+                    "qre_lbl": "Thu nhập hộ gia đình",
+                    "cats": {
+                        "3": "7.5M-13.5M",
+                        "2": "13.5M-22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "@S5",
+                    "qre_lbl": "Nghề nghiệp",
+                    "cats": {
+                        "S5.isin([6, 12, 13])": "Blue",
+                        "S5.isin([7, 8, 9, 10, 11])": "White",
+                        "S5.isin([4])": "University student",
+                        "S5.isin([2])": "House wife"
+                    }
+                },
+                {
+                    "qre_name": "@S8",
+                    "qre_lbl": "Tần suất sử dụng cà phê/ cà phê sữa",
+                    "cats": {
+                        "S8.isin([4])": "Light",
+                        "S8.isin([5, 6])": "Medium",
+                        "S8.isin([7, 8])": "Heavy"
+                    }
+                },
+                {
+                    "qre_name": "Q11",
+                    "qre_lbl": "Concept thích nhất",
+                    "cats": {
+                        "1": "Concept 1",
+                        "2": "Concept 2",
+                        "3": "Concept 3"
+                    }
+                },
+                {
+                    "qre_name": "@Q4",
+                    "qre_lbl": "Loại cà phê thường xuyên nhất",
+                    "cats": {
+                        "Q4.isin([3, 4, 5])": "Cà phê hòa tan",
+                        "Q4.isin([1, 2, 7, 8])": "Cà phê rang xay",
+                        "Q4.isin([6])": "Cà phê uống liền",
+                        "Q4.isin([2])": "Cà phê pha tại quán",
+                        "Q4.isin([8])": "Cà phê mua ven đường",
+                        "Q4.isin([2, 8])": "Cà phê pha tại quán + Ven đường"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8228_Main": {
+        "tbl_name": "Main",
+        "tbl_filter": "MaConcept == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "$Q1"},
+
+            {"qre_name": "$Q2_Net_CFHT"},
+            {"qre_name": "$Q2_Net_CFRX"},
+
+            {"qre_name": "Q2_01"},
+            {"qre_name": "Q2_02"},
+            {"qre_name": "Q2_03"},
+            {"qre_name": "Q2_04"},
+            {"qre_name": "Q2_05"},
+            {"qre_name": "Q2_06"},
+            {"qre_name": "Q2_07"},
+            {"qre_name": "Q2_08"},
+            {"qre_name": "Q2_09"},
+
+            {"qre_name": "Q3_Net_CFHT"},
+            {"qre_name": "Q3_Net_CFRX"},
+
+            {"qre_name": "Q3_01_o2"},
+            {"qre_name": "Q3_02_o2"},
+            {"qre_name": "Q3_03_o2"},
+            {"qre_name": "Q3_04_o2"},
+            {"qre_name": "Q3_05_o2"},
+            {"qre_name": "Q3_06_o2"},
+            {"qre_name": "Q3_07_o2"},
+            {"qre_name": "Q3_08_o2"},
+            {"qre_name": "Q3_09_o2"},
+            {"qre_name": "Q4"},
+
+            {"qre_name": "Q5_Concept_1"},
+            {"qre_name": "Q5_Concept_1_Group"},
+            {"qre_name": "Q5_Concept_1_Mean"},
+            {"qre_name": "Q7_Concept_1"},
+            {"qre_name": "Q7_Concept_1_Group"},
+            {"qre_name": "Q7_Concept_1_Mean"},
+            {"qre_name": "Q8_Concept_1"},
+            {"qre_name": "Q8_Concept_1_Group"},
+            {"qre_name": "Q8_Concept_1_Mean"},
+            {"qre_name": "Q9_Concept_1"},
+            {"qre_name": "Q9_Concept_1_Group"},
+            {"qre_name": "Q9_Concept_1_Mean"},
+            {"qre_name": "Q10_Concept_1"},
+            {"qre_name": "Q10_Concept_1_Group"},
+            {"qre_name": "Q10_Concept_1_Mean"},
+
+            {"qre_name": "Q5_Concept_2"},
+            {"qre_name": "Q5_Concept_2_Group"},
+            {"qre_name": "Q5_Concept_2_Mean"},
+            {"qre_name": "Q7_Concept_2"},
+            {"qre_name": "Q7_Concept_2_Group"},
+            {"qre_name": "Q7_Concept_2_Mean"},
+            {"qre_name": "Q8_Concept_2"},
+            {"qre_name": "Q8_Concept_2_Group"},
+            {"qre_name": "Q8_Concept_2_Mean"},
+            {"qre_name": "Q9_Concept_2"},
+            {"qre_name": "Q9_Concept_2_Group"},
+            {"qre_name": "Q9_Concept_2_Mean"},
+            {"qre_name": "Q10_Concept_2"},
+            {"qre_name": "Q10_Concept_2_Group"},
+            {"qre_name": "Q10_Concept_2_Mean"},
+
+            {"qre_name": "Q5_Concept_3"},
+            {"qre_name": "Q5_Concept_3_Group"},
+            {"qre_name": "Q5_Concept_3_Mean"},
+            {"qre_name": "Q7_Concept_3"},
+            {"qre_name": "Q7_Concept_3_Group"},
+            {"qre_name": "Q7_Concept_3_Mean"},
+            {"qre_name": "Q8_Concept_3"},
+            {"qre_name": "Q8_Concept_3_Group"},
+            {"qre_name": "Q8_Concept_3_Mean"},
+            {"qre_name": "Q9_Concept_3"},
+            {"qre_name": "Q9_Concept_3_Group"},
+            {"qre_name": "Q9_Concept_3_Mean"},
+            {"qre_name": "Q10_Concept_3"},
+            {"qre_name": "Q10_Concept_3_Group"},
+            {"qre_name": "Q10_Concept_3_Mean"},
+
+            {"qre_name": "Q11"},
+            {"qre_name": "$Q13_Concept_1"},
+            {"qre_name": "$Q13_Concept_2"},
+            {"qre_name": "$Q13_Concept_3"},
+            {"qre_name": "Q14"},
+            {"qre_name": "Q15"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "S2",
+                    "qre_lbl": "Giới tính",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "Nam",
+                        "2": "Nữ"
+                    }
+                },
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                },
+                {
+                    "qre_name": "S3_Recode",
+                    "qre_lbl": "Tuổi",
+                    "cats": {
+                        "1": "18 - 24",
+                        "2": "25 - 30"
+                    }
+                },
+                {
+                    "qre_name": "S4",
+                    "qre_lbl": "Thu nhập hộ gia đình",
+                    "cats": {
+                        "3": "7.5M-13.5M",
+                        "2": "13.5M-22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "@S5",
+                    "qre_lbl": "Nghề nghiệp",
+                    "cats": {
+                        "S5.isin([6, 12, 13])": "Blue",
+                        "S5.isin([7, 8, 9, 10, 11])": "White",
+                        "S5.isin([4])": "University student",
+                        "S5.isin([2])": "House wife"
+                    }
+                },
+                {
+                    "qre_name": "@S8",
+                    "qre_lbl": "Tần suất sử dụng cà phê/ cà phê sữa",
+                    "cats": {
+                        "S8.isin([4])": "Light",
+                        "S8.isin([5, 6])": "Medium",
+                        "S8.isin([7, 8])": "Heavy"
+                    }
+                },
+                {
+                    "qre_name": "Q11",
+                    "qre_lbl": "Concept thích nhất",
+                    "cats": {
+                        "1": "Concept 1",
+                        "2": "Concept 2",
+                        "3": "Concept 3"
+                    }
+                },
+                {
+                    "qre_name": "@Q4",
+                    "qre_lbl": "Loại cà phê thường xuyên nhất",
+                    "cats": {
+                        "Q4.isin([3, 4, 5])": "Cà phê hòa tan",
+                        "Q4.isin([1, 2, 7, 8])": "Cà phê rang xay",
+                        "Q4.isin([6])": "Cà phê uống liền",
+                        "Q4.isin([2])": "Cà phê pha tại quán",
+                        "Q4.isin([8])": "Cà phê mua ven đường",
+                        "Q4.isin([2, 8])": "Cà phê pha tại quán + Ven đường"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8228_KPI": {
+        "tbl_name": "KPI",
+        "tbl_filter": "MaConcept > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "rel",
+            "sig_cols": [],
+            "lst_sig_lvl": [90, 95]
+        },
+        "lst_side_qres": [
+            {"qre_name": "Q5"},
+            {"qre_name": "Q5_Group"},
+            {"qre_name": "Q5_Mean"},
+            {"qre_name": "Q7"},
+            {"qre_name": "Q7_Group"},
+            {"qre_name": "Q7_Mean"},
+            {"qre_name": "Q8"},
+            {"qre_name": "Q8_Group"},
+            {"qre_name": "Q8_Mean"},
+            {"qre_name": "Q9"},
+            {"qre_name": "Q9_Group"},
+            {"qre_name": "Q9_Mean"},
+            {"qre_name": "Q10"},
+            {"qre_name": "Q10_Group"},
+            {"qre_name": "Q10_Mean"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "S2",
+                    "qre_lbl": "TOTAL",
+                    "cats": {
+                        "TOTAL": "TOTAL"
+                    }
+                },
+                {
+                    "qre_name": "@S8",
+                    "qre_lbl": "Tần suất sử dụng cà phê/ cà phê sữa",
+                    "cats": {
+                        "S8.isin([4])": "Light",
+                        "S8.isin([5, 6])": "Medium",
+                        "S8.isin([7, 8])": "Heavy"
+                    }
+                },
+                {
+                    "qre_name": "@Q4",
+                    "qre_lbl": "Loại cà phê thường xuyên nhất",
+                    "cats": {
+                        "Q4.isin([3, 4, 5])": "Cà phê hòa tan",
+                        "Q4.isin([1, 2, 7, 8])": "Cà phê rang xay",
+                        "Q4.isin([6])": "Cà phê uống liền",
+                        "Q4.isin([2])": "Cà phê pha tại quán",
+                        "Q4.isin([8])": "Cà phê mua ven đường",
+                        "Q4.isin([2, 8])": "Cà phê pha tại quán + Ven đường"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "MaConcept",
+                    "qre_lbl": "Mã Concept",
+                    "cats": {
+                        "1": "Concept 1",
+                        "2": "Concept 2",
+                        "3": "Concept 3"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8228_OE": {
+        "tbl_name": "OE",
+        "tbl_filter": "MaConcept == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "$Q6a1_OE_Concept_1"},
+            {"qre_name": "$Q6b_OE_Concept_1"},
+            {"qre_name": "$Q12_OE_Concept_1"},
+
+            {"qre_name": "$Q6a1_OE_Concept_2"},
+            {"qre_name": "$Q6b_OE_Concept_2"},
+            {"qre_name": "$Q12_OE_Concept_2"},
+
+            {"qre_name": "$Q6a1_OE_Concept_3"},
+            {"qre_name": "$Q6b_OE_Concept_3"},
+            {"qre_name": "$Q12_OE_Concept_3"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "S2",
+                    "qre_lbl": "Giới tính",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "Nam",
+                        "2": "Nữ"
+                    }
+                },
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                },
+                {
+                    "qre_name": "S3_Recode",
+                    "qre_lbl": "Tuổi",
+                    "cats": {
+                        "1": "18 - 24",
+                        "2": "25 - 30"
+                    }
+                },
+                {
+                    "qre_name": "S4",
+                    "qre_lbl": "Thu nhập hộ gia đình",
+                    "cats": {
+                        "3": "7.5M-13.5M",
+                        "2": "13.5M-22.5M",
+                        "1": ">22.5M"
+                    }
+                },
+                {
+                    "qre_name": "@S5",
+                    "qre_lbl": "Nghề nghiệp",
+                    "cats": {
+                        "S5.isin([6, 12, 13])": "Blue",
+                        "S5.isin([7, 8, 9, 10, 11])": "White",
+                        "S5.isin([4])": "University student",
+                        "S5.isin([2])": "House wife"
+                    }
+                },
+                {
+                    "qre_name": "@S8",
+                    "qre_lbl": "Tần suất sử dụng cà phê/ cà phê sữa",
+                    "cats": {
+                        "S8.isin([4])": "Light",
+                        "S8.isin([5, 6])": "Medium",
+                        "S8.isin([7, 8])": "Heavy"
+                    }
+                },
+                {
+                    "qre_name": "Q11",
+                    "qre_lbl": "Concept thích nhất",
+                    "cats": {
+                        "1": "Concept 1",
+                        "2": "Concept 2",
+                        "3": "Concept 3"
+                    }
+                },
+                {
+                    "qre_name": "@Q4",
+                    "qre_lbl": "Loại cà phê thường xuyên nhất",
+                    "cats": {
+                        "Q4.isin([3, 4, 5])": "Cà phê hòa tan",
+                        "Q4.isin([1, 2, 7, 8])": "Cà phê rang xay",
+                        "Q4.isin([6])": "Cà phê uống liền",
+                        "Q4.isin([2])": "Cà phê pha tại quán",
+                        "Q4.isin([8])": "Cà phê mua ven đường",
+                        "Q4.isin([2, 8])": "Cà phê pha tại quán + Ven đường"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8228_Extra": {
+        "tbl_name": "Extra Request",
+        "tbl_filter": "MaConcept == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+
+            {"qre_name": "S1"},
+            {"qre_name": "S2"},
+            {"qre_name": "S3_Recode"},
+            {"qre_name": "S4"},
+            {"qre_name": "S5"},
+            {"qre_name": "S6"},
+            {"qre_name": "$S7"},
+            {"qre_name": "S8"},
+            {"qre_name": "S8_Mean"},
+            {"qre_name": "S9"},
+            {"qre_name": "S10"},
+
+            {"qre_name": "$Q1"},
+
+            {"qre_name": "$Q2_Net_CFHT"},
+            {"qre_name": "$Q2_Net_CFRX"},
+
+            {"qre_name": "Q2_01"},
+            {"qre_name": "Q2_02"},
+            {"qre_name": "Q2_03"},
+            {"qre_name": "Q2_04"},
+            {"qre_name": "Q2_05"},
+            {"qre_name": "Q2_06"},
+            {"qre_name": "Q2_07"},
+            {"qre_name": "Q2_08"},
+            {"qre_name": "Q2_09"},
+
+            {"qre_name": "Q3_Net_CFHT"},
+            {"qre_name": "Q3_Net_CFRX"},
+
+            {"qre_name": "Q3_01_o2"},
+            {"qre_name": "Q3_02_o2"},
+            {"qre_name": "Q3_03_o2"},
+            {"qre_name": "Q3_04_o2"},
+            {"qre_name": "Q3_05_o2"},
+            {"qre_name": "Q3_06_o2"},
+            {"qre_name": "Q3_07_o2"},
+            {"qre_name": "Q3_08_o2"},
+            {"qre_name": "Q3_09_o2"},
+            {"qre_name": "Q4"},
+
+            {"qre_name": "Q5_Concept_1"},
+            {"qre_name": "Q5_Concept_1_Group"},
+            {"qre_name": "Q5_Concept_1_Mean"},
+            {"qre_name": "$Q6a1_OE_Concept_1"},
+            {"qre_name": "$Q6b_OE_Concept_1"},
+            {"qre_name": "Q7_Concept_1"},
+            {"qre_name": "Q7_Concept_1_Group"},
+            {"qre_name": "Q7_Concept_1_Mean"},
+            {"qre_name": "Q8_Concept_1"},
+            {"qre_name": "Q8_Concept_1_Group"},
+            {"qre_name": "Q8_Concept_1_Mean"},
+            {"qre_name": "Q9_Concept_1"},
+            {"qre_name": "Q9_Concept_1_Group"},
+            {"qre_name": "Q9_Concept_1_Mean"},
+            {"qre_name": "Q10_Concept_1"},
+            {"qre_name": "Q10_Concept_1_Group"},
+            {"qre_name": "Q10_Concept_1_Mean"},
+
+            {"qre_name": "Q5_Concept_2"},
+            {"qre_name": "Q5_Concept_2_Group"},
+            {"qre_name": "Q5_Concept_2_Mean"},
+            {"qre_name": "$Q6a1_OE_Concept_2"},
+            {"qre_name": "$Q6b_OE_Concept_2"},
+            {"qre_name": "Q7_Concept_2"},
+            {"qre_name": "Q7_Concept_2_Group"},
+            {"qre_name": "Q7_Concept_2_Mean"},
+            {"qre_name": "Q8_Concept_2"},
+            {"qre_name": "Q8_Concept_2_Group"},
+            {"qre_name": "Q8_Concept_2_Mean"},
+            {"qre_name": "Q9_Concept_2"},
+            {"qre_name": "Q9_Concept_2_Group"},
+            {"qre_name": "Q9_Concept_2_Mean"},
+            {"qre_name": "Q10_Concept_2"},
+            {"qre_name": "Q10_Concept_2_Group"},
+            {"qre_name": "Q10_Concept_2_Mean"},
+
+            {"qre_name": "Q5_Concept_3"},
+            {"qre_name": "Q5_Concept_3_Group"},
+            {"qre_name": "Q5_Concept_3_Mean"},
+            {"qre_name": "$Q6a1_OE_Concept_3"},
+            {"qre_name": "$Q6b_OE_Concept_3"},
+            {"qre_name": "Q7_Concept_3"},
+            {"qre_name": "Q7_Concept_3_Group"},
+            {"qre_name": "Q7_Concept_3_Mean"},
+            {"qre_name": "Q8_Concept_3"},
+            {"qre_name": "Q8_Concept_3_Group"},
+            {"qre_name": "Q8_Concept_3_Mean"},
+            {"qre_name": "Q9_Concept_3"},
+            {"qre_name": "Q9_Concept_3_Group"},
+            {"qre_name": "Q9_Concept_3_Mean"},
+            {"qre_name": "Q10_Concept_3"},
+            {"qre_name": "Q10_Concept_3_Group"},
+            {"qre_name": "Q10_Concept_3_Mean"},
+
+            {"qre_name": "Q11"},
+            {"qre_name": "$Q12_OE_Concept_1"},
+            {"qre_name": "$Q12_OE_Concept_2"},
+            {"qre_name": "$Q12_OE_Concept_3"},
+            {"qre_name": "$Q13_Concept_1"},
+            {"qre_name": "$Q13_Concept_2"},
+            {"qre_name": "$Q13_Concept_3"},
+            {"qre_name": "Q14"},
+            {"qre_name": "Q15"}
+
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "S1",
+                    "qre_lbl": "Khu vực",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "1": "HCM",
+                        "2": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "@Q10",
+                    "qre_lbl": "Q10_Ý Định Mua",
+                    "cats": {
+                        "Q10_Concept_1.isin([4, 5])": "Q10_Ý Định Mua_Concept 1_T2B",
+                        "Q10_Concept_2.isin([4, 5])": "Q10_Ý Định Mua_Concept 2_T2B",
+                        "Q10_Concept_3.isin([4, 5])": "Q10_Ý Định Mua_Concept 3_T2B"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "@S8",
+                    "qre_lbl": "Tần suất sử dụng cà phê/ cà phê sữa",
+                    "cats": {
+                        "S1 > 0": "TOTAL",
+                        "S8.isin([7, 8])": "Heavy",
+                        "S8.isin([5, 6])": "Medium",
+                        "S8.isin([4])": "Light"
+                    }
+                }
+            ]
+        ]
+    },
+
+    "VN8247_Scr": {
+        "tbl_name": "Screener",
+        "tbl_filter": "Ma_YT == 1",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "is_hide_oe_zero_cats": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+            {"qre_name": "Recruit_S3_Gioi_tinh"},
+            {"qre_name": "Recruit_S4_KV_sinh_song"},
+            {"qre_name": "Recruit_S5_Thu_nhap_HGD"},
+            {"qre_name": "Recruit_S6_Nhom_tuoi"},
+            {"qre_name": "Recruit_S7_Tan_suat_an_01"},
+            {"qre_name": "Recruit_S7_Tan_suat_an_02"},
+            {"qre_name": "Recruit_S7_Tan_suat_an_03"},
+            {"qre_name": "Recruit_S8_Brand_thuong_an_nhat"},
+            {"qre_name": "$Recruit_S9_Nghe_nghiep"},
+            {"qre_name": "Recruit_S10_Nguoi_quyet_dinh"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S4_KV_sinh_song",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HCM",
+                        "1": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Recruit_S3_Gioi_tinh",
+                    "qre_lbl": "GIỚI TÍNH",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "Nữ",
+                        "1": "Nam"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Nhom_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "3": "26 – 30",
+                        "4": "31 - 35"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S8_Brand_thuong_an_nhat",
+                    "qre_lbl": "BUMO",
+                    "cats": {
+                        "1": "Cung Đình",
+                        "2": "Đệ Nhất",
+                        "3": "Vifon",
+                        "4": "Khác"
+                    }
+                },
+                {
+                    "qre_name": "RTB_Thu_Truoc",
+                    "qre_lbl": "RTB HỎI TRƯỚC",
+                    "cats": {
+                        "1": "RTB 1 HỎI TRƯỚC",
+                        "2": "RTB 2 HỎI TRƯỚC",
+                        "3": "RTB 3 HỎI TRƯỚC"
+                    }
+                },
+                {
+                    "qre_name": "Main_Q1_Y_tuong_nho_nhat",
+                    "qre_lbl": "RTB NHỚ & THÍCH HƠN",
+                    "cats": {
+                        "1": "NHỚ & THÍCH RTB 1 HƠN",
+                        "2": "NHỚ & THÍCH RTB 2 HƠN",
+                        "3": "NHỚ & THÍCH RTB 3 HƠN",
+                        "4": "KHÔNG CÓ RTB NÀO KỂ TRÊN"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8247_Main": {
+        "tbl_name": "Main - RTB",
+        "tbl_filter": "Ma_YT > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "is_hide_oe_zero_cats": 0,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+
+            {"qre_name": "Main_Q1_Y_tuong_nho_nhat", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_Q2_Y_tuong_phu_hop_nhat", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "(Ma_YT == 1 & Main_Q1_Y_tuong_nho_nhat == 1)"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "(Ma_YT == 2 & Main_Q1_Y_tuong_nho_nhat == 2)"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "(Ma_YT == 3 & Main_Q1_Y_tuong_nho_nhat == 3)"}
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S4_KV_sinh_song",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HCM",
+                        "1": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Recruit_S3_Gioi_tinh",
+                    "qre_lbl": "GIỚI TÍNH",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "Nữ",
+                        "1": "Nam"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Nhom_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "3": "26 – 30",
+                        "4": "31 - 35"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S8_Brand_thuong_an_nhat",
+                    "qre_lbl": "BUMO",
+                    "cats": {
+                        "1": "Cung Đình",
+                        "2": "Đệ Nhất",
+                        "3": "Vifon",
+                        "4": "Khác"
+                    }
+                },
+                {
+                    "qre_name": "RTB_Thu_Truoc",
+                    "qre_lbl": "RTB HỎI TRƯỚC",
+                    "cats": {
+                        "1": "RTB 1 HỎI TRƯỚC",
+                        "2": "RTB 2 HỎI TRƯỚC",
+                        "3": "RTB 3 HỎI TRƯỚC"
+                    }
+                },
+                {
+                    "qre_name": "Main_Q1_Y_tuong_nho_nhat",
+                    "qre_lbl": "RTB NHỚ & THÍCH HƠN",
+                    "cats": {
+                        "1": "NHỚ & THÍCH RTB 1 HƠN",
+                        "2": "NHỚ & THÍCH RTB 2 HƠN",
+                        "3": "NHỚ & THÍCH RTB 3 HƠN",
+                        "4": "KHÔNG CÓ RTB NÀO KỂ TRÊN"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8247_Sig": {
+        "tbl_name": "Main - RTB - Sig95",
+        "tbl_filter": "Ma_YT > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "is_hide_oe_zero_cats": 0,
+        "sig_test_info": {
+            "sig_type": "rel",
+            "sig_cols": [],
+            "lst_sig_lvl": [95]
+        },
+        "lst_side_qres": [
+            {"qre_name": "Main_R1_OL"},
+            {"qre_name": "Main_R1_OL_Group"},
+            {"qre_name": "Main_R1_OL_Mean"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean"},
+            {"qre_name": "Main_Q1_Y_tuong_nho_nhat_New"},
+            {"qre_name": "Main_Q2_Y_tuong_phu_hop_nhat_New"},
+            {"qre_name": "Main_Q4_Ten_SP_New"}
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S4_KV_sinh_song",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HCM",
+                        "1": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Recruit_S3_Gioi_tinh",
+                    "qre_lbl": "GIỚI TÍNH",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "Nữ",
+                        "1": "Nam"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Nhom_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "3": "26 – 30",
+                        "4": "31 - 35"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S8_Brand_thuong_an_nhat",
+                    "qre_lbl": "BUMO",
+                    "cats": {
+                        "1": "Cung Đình",
+                        "2": "Đệ Nhất",
+                        "3": "Vifon",
+                        "4": "Khác"
+                    }
+                },
+                {
+                    "qre_name": "RTB_Thu_Truoc",
+                    "qre_lbl": "RTB HỎI TRƯỚC",
+                    "cats": {
+                        "1": "RTB 1 HỎI TRƯỚC",
+                        "2": "RTB 2 HỎI TRƯỚC",
+                        "3": "RTB 3 HỎI TRƯỚC"
+                    }
+                },
+                {
+                    "qre_name": "Main_Q1_Y_tuong_nho_nhat",
+                    "qre_lbl": "RTB NHỚ & THÍCH HƠN",
+                    "cats": {
+                        "1": "NHỚ & THÍCH RTB 1 HƠN",
+                        "2": "NHỚ & THÍCH RTB 2 HƠN",
+                        "3": "NHỚ & THÍCH RTB 3 HƠN",
+                        "4": "KHÔNG CÓ RTB NÀO KỂ TRÊN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Ma_YT",
+                    "qre_lbl": "Mã ý tưởng",
+                    "cats": {
+                        "1": "Ý tưởng 1",
+                        "2": "Ý tưởng 2",
+                        "3": "Ý tưởng 3"
+                    }
+                }
+            ]
+        ]
+    },
+    "VN8247_OE": {
+        "tbl_name": "OE",
+        "tbl_filter": "Ma_YT > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "is_hide_oe_zero_cats": 1,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - Ý tưởng 1", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - Ý tưởng 2", "qre_filter": "Ma_YT == 2"},
+
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - Ý tưởng 3", "qre_filter": "Ma_YT == 3"}
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S4_KV_sinh_song",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HCM",
+                        "1": "HN"
+                    }
+                }
+            ],
+            [
+                {
+                    "qre_name": "Recruit_S3_Gioi_tinh",
+                    "qre_lbl": "GIỚI TÍNH",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "Nữ",
+                        "1": "Nam"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S6_Nhom_tuoi",
+                    "qre_lbl": "ĐỘ TUỔI",
+                    "cats": {
+                        "3": "26 – 30",
+                        "4": "31 - 35"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S8_Brand_thuong_an_nhat",
+                    "qre_lbl": "BUMO",
+                    "cats": {
+                        "1": "Cung Đình",
+                        "2": "Đệ Nhất",
+                        "3": "Vifon",
+                        "4": "Khác"
+                    }
+                },
+                {
+                    "qre_name": "RTB_Thu_Truoc",
+                    "qre_lbl": "RTB HỎI TRƯỚC",
+                    "cats": {
+                        "1": "RTB 1 HỎI TRƯỚC",
+                        "2": "RTB 2 HỎI TRƯỚC",
+                        "3": "RTB 3 HỎI TRƯỚC"
+                    }
+                },
+                {
+                    "qre_name": "Main_Q1_Y_tuong_nho_nhat",
+                    "qre_lbl": "RTB NHỚ & THÍCH HƠN",
+                    "cats": {
+                        "1": "NHỚ & THÍCH RTB 1 HƠN",
+                        "2": "NHỚ & THÍCH RTB 2 HƠN",
+                        "3": "NHỚ & THÍCH RTB 3 HƠN",
+                        "4": "KHÔNG CÓ RTB NÀO KỂ TRÊN"
+                    }
+                }
+            ]
+        ]
+    },
+
+    "VN8247_Main_v2": {
+        "tbl_name": "Main v2 - RTB",
+        "tbl_filter": "Ma_YT > 0",
+        "is_count": 0,
+        "is_pct_sign": 0,
+        "is_hide_oe_zero_cats": 1,
+        "sig_test_info": {
+            "sig_type": "",
+            "sig_cols": [],
+            "lst_sig_lvl": []
+        },
+        "lst_side_qres": [
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+
+            {"qre_name": "Main_R1_OL", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1_OL_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1_OL_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "$Main_R1a_Thich_OE", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "$Main_R1b_Khong_thich_OE", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1c_PI_Y_dinh_mua_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1d_Muc_do_phu_hop_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1e_Muc_do_dang_tin_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Group", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+            {"qre_name": "Main_R1f_Muc_do_moila_khacbiet_Mean", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+
+            {"qre_name": "Main_Q1_Y_tuong_nho_nhat", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_Q2_Y_tuong_phu_hop_nhat", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - YT 1", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - YT 2", "qre_filter": "Ma_YT == 2"},
+            {"qre_name": "$Main_Q3_Cai_thien_New_OE", "qre_lbl": "{lbl} - YT 3", "qre_filter": "Ma_YT == 3"},
+
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl}", "qre_filter": "Ma_YT == 1"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - YT 1", "qre_filter": "(Ma_YT == 1 & Main_Q1_Y_tuong_nho_nhat == 1)"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - YT 2", "qre_filter": "(Ma_YT == 2 & Main_Q1_Y_tuong_nho_nhat == 2)"},
+            {"qre_name": "Main_Q4_Ten_SP", "qre_lbl": "{lbl} - YT 3", "qre_filter": "(Ma_YT == 3 & Main_Q1_Y_tuong_nho_nhat == 3)"}
+
+
+        ],
+        "lst_header_qres": [
+            [
+                {
+                    "qre_name": "Recruit_S4_KV_sinh_song",
+                    "qre_lbl": "KHU VỰC",
+                    "cats": {
+                        "TOTAL": "TOTAL",
+                        "2": "HCM",
+                        "1": "HN"
+                    }
+                },
+                {
+                    "qre_name": "Recruit_S3_Gioi_tinh",
+                    "qre_lbl": "GIỚI TÍNH",
+                    "cats": {
+                        "2": "Nữ",
+                        "1": "Nam"
+                    }
+                },
+                {
+                    "qre_name": "$Recruit_S9_Nghe_nghiep",
+                    "qre_lbl": "NGHỀ NGHIỆP",
+                    "cats": {
+                        "1": "Quảng cáo/ Marketing/ Nghiên cứu thị trường/ Phát triển sản phẩm",
+                        "2": "Quan hệ công chúng/ Tổ chức sự kiện, khuyến mãi/ Phát thanh/ Báo chí/ Truyền hình",
+                        "3": "Sản xuất/ Phân phối/ Bán sỉ, bán lẻ nước tương, nước mắm, dầu hào, hạt nêm mì gói/phở gói/hủ tiếu gói",
+                        "4": "Làm việc trong bếp tại các nhà hàng, khách sạn, quán ăn, dịch vụ nấu đám tiệc",
+                        "5": "Không có ngành nào kể trên"
+                    }
+                }
+            ]
+        ]
+    }
+}

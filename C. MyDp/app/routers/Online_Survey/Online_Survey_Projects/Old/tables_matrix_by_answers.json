@@ -1,0 +1,87 @@
+{
+    "MT01": {
+        "tbl_name": "BD11 > BE2",
+        "is_count": 0,
+        "tbl_filter": "",
+        "side_qres": "BD11|(1, 23)|(1, 14)",
+        "base_qre": "BE2|(1, 12)",
+        "fil_cats": [1, 2, 3, 4, 5, 6, 7],
+        "header": {
+            "Total": {"label": "Total|Total", "header_query": ""},
+            "CITY_1": {"label": "CITY|HCM", "header_query": "CITY == 1"},
+            "CITY_2": {"label": "CITY|HN", "header_query": "CITY == 2"},
+            "CITY_3": {"label": "CITY|Da Nang", "header_query": "CITY == 3"},
+            "AGE3_1": {"label": "AGE3|20-35", "header_query": "AGE3 == 1"},
+            "AGE3_2": {"label": "AGE3|36-45", "header_query": "AGE3 == 2"},
+            "AGE3_3": {"label": "AGE3|46-55", "header_query": "AGE3 == 3"}
+        }
+    },
+    "MT02": {
+        "tbl_name": "BD11TV(TOTAL) > BE2TV",
+        "is_count": 0,
+        "tbl_filter": "",
+        "side_qres": "BD11TV|(1, 33)|(1, 15)",
+        "base_qre": "BE2TV|(1, 13)",
+        "fil_cats": [1, 2, 3, 4, 5, 6, 7, 8],
+        "header": {
+            "Total": {"label": "Total|Total", "header_query": ""},
+            "CITY_1": {"label": "CITY|HCM", "header_query": "CITY == 1"},
+            "CITY_2": {"label": "CITY|HN", "header_query": "CITY == 2"},
+            "CITY_3": {"label": "CITY|Da Nang", "header_query": "CITY == 3"},
+            "AGE3_1": {"label": "AGE3|20-35", "header_query": "AGE3 == 1"},
+            "AGE3_2": {"label": "AGE3|36-45", "header_query": "AGE3 == 2"},
+            "AGE3_3": {"label": "AGE3|46-55", "header_query": "AGE3 == 3"}
+        }
+    },
+    "MT03": {
+        "tbl_name": "BD11TV(PURCHASER) > BE2TV",
+        "is_count": 0,
+        "tbl_filter": "(User_1 == 1 | User_2 == 1 | User_3 == 1)",
+        "side_qres": "BD11TV|(1, 33)|(1, 15)",
+        "base_qre": "BE2TV|(1, 13)",
+        "fil_cats": [1, 2, 3, 4, 5, 6, 7, 8],
+        "header": {
+            "Total": {"label": "Total|Total", "header_query": ""},
+            "CITY_1": {"label": "CITY|HCM", "header_query": "CITY == 1"},
+            "CITY_2": {"label": "CITY|HN", "header_query": "CITY == 2"},
+            "CITY_3": {"label": "CITY|Da Nang", "header_query": "CITY == 3"},
+            "AGE3_1": {"label": "AGE3|20-35", "header_query": "AGE3 == 1"},
+            "AGE3_2": {"label": "AGE3|36-45", "header_query": "AGE3 == 2"},
+            "AGE3_3": {"label": "AGE3|46-55", "header_query": "AGE3 == 3"}
+        }
+    },
+    "MT04": {
+        "tbl_name": "BD11TV(INTENDER) > BE2TV",
+        "is_count": 0,
+        "tbl_filter": "(User_1 == 2 | User_2 == 2 | User_3 == 2)",
+        "side_qres": "BD11TV|(1, 33)|(1, 15)",
+        "base_qre": "BE2TV|(1, 13)",
+        "fil_cats": [1, 2, 3, 4, 5, 6, 7, 8],
+        "header": {
+            "Total": {"label": "Total|Total", "header_query": ""},
+            "CITY_1": {"label": "CITY|HCM", "header_query": "CITY == 1"},
+            "CITY_2": {"label": "CITY|HN", "header_query": "CITY == 2"},
+            "CITY_3": {"label": "CITY|Da Nang", "header_query": "CITY == 3"},
+            "AGE3_1": {"label": "AGE3|20-35", "header_query": "AGE3 == 1"},
+            "AGE3_2": {"label": "AGE3|36-45", "header_query": "AGE3 == 2"},
+            "AGE3_3": {"label": "AGE3|46-55", "header_query": "AGE3 == 3"}
+        }
+    },
+    "MT05": {
+        "tbl_name": "BD11TV_INT2 > BE2TV",
+        "is_count": 0,
+        "tbl_filter": "(User_1 == 2 | User_2 == 2 | User_3 == 2)",
+        "side_qres": "BD11TV_INT2|(1, 11)|(1, 13)",
+        "base_qre": "BE2TV|(1, 13)",
+        "fil_cats": [1, 2, 3, 4, 5, 6, 7, 8],
+        "header": {
+            "Total": {"label": "Total|Total", "header_query": ""},
+            "CITY_1": {"label": "CITY|HCM", "header_query": "CITY == 1"},
+            "CITY_2": {"label": "CITY|HN", "header_query": "CITY == 2"},
+            "CITY_3": {"label": "CITY|Da Nang", "header_query": "CITY == 3"},
+            "AGE3_1": {"label": "AGE3|20-35", "header_query": "AGE3 == 1"},
+            "AGE3_2": {"label": "AGE3|36-45", "header_query": "AGE3 == 2"},
+            "AGE3_3": {"label": "AGE3|46-55", "header_query": "AGE3 == 3"}
+        }
+    }
+}
