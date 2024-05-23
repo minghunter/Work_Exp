@@ -1,0 +1,5 @@
+VARSTOCASES
+/make Main_1 from Main_TH1_1 Main_TH2_1 Main_TH3_1
+/make Main_1_o1 from Main_TH1_1_o1 Main_TH2_1_o1 Main_TH3_1_o1
+/index = ROTATION(3)
+/keep = all.

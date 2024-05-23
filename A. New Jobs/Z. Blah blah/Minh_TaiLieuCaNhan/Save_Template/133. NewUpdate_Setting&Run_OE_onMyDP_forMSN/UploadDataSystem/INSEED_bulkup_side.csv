@@ -1,0 +1,125 @@
+﻿group_lbl,name,lbl,type,t2b,b2b,mean,ma_cats,hidden_cats,is_count,is_corr,is_ua
+PRODUCT,Main_P1_OL_Chung,P1. Mức độ YÊU THÍCH NÓI CHUNG,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P2_OL_Ngoai_quan,P2. Mức độ YÊU THÍCH về NGOẠI QUAN,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P3_OL_Soi_mi,P3. Mức độ YÊU THÍCH NÓI CHUNG về SỢI MÌ,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P4_OL_Mau_soi_mi,P4. Mức độ YÊU THÍCH về MÀU SỢI MÌ,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P5_OL_Cam_giac_nhai,P5. Mức độ YÊU THÍCH về CẢM GIÁC KHI NHAI SỢI MÌ,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P7_OL_Nuoc_dung,P7. Mức độ YÊU THÍCH NÓI CHUNG về NƯỚC DÙNG,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P8_OL_Mui_nuoc_dung,P8. Mức độ YÊU THÍCH về MÙI NƯỚC DÙNG,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P9_OL_Vi,P9. Mức độ YÊU THÍCH về VỊ,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P11_PI_Y_dinh_mua,P11. Ý ĐỊNH MUA KHÔNG GIÁ,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+PRODUCT,Main_P12_Intensity_Matching,P12. Mức độ PHÙ HỢP của SẢN PHẨM,OL,TRUE,TRUE,TRUE,,,FALSE,FALSE,FALSE
+FC,Main_Recall_P100_thich_hon,P100. Sản phẩm thích hơn (Count),FC,FALSE,FALSE,FALSE,,0,TRUE,FALSE,FALSE
+FC,Main_Recall_P100_thich_hon,P100. Sản phẩm thích hơn (%),FC,FALSE,FALSE,FALSE,,0,FALSE,FALSE,FALSE
+OE,Main_P6a_Thich_Y1_OE,P6a. Lí do thích - Y1,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P6a_Thich_Y2_OE,P6a. Lí do thích - Y2,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P6a_Thich_Total_OE,P6a. Lí do thích - TT,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P6b_Khong_Thich_Y1_OE,P6b. Lí do không thích - Y1,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P6b_Khong_Thich_Y2_OE,P6b. Lí do không thích - Y2,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P6b_Khong_Thich_Total_OE,P6b. Lí do không thích - TT,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P10a_Thich_Nuoc_dung_OE,P10a. Lí do thích nước dùng,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P10b_Khong_Thich_Nuoc_dung_OE,P10b. Lí do không thích nước dùng,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P100a_Y1_OE,P100a. Lí do thích hơn - Y1,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P100a_Y2_OE,P100a. Lí do thích hơn - Y2,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+OE,Main_P100a_Total_OE,P100a. Lí do thích hơn - TT,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,FALSE
+SCREENER,QC_S0_Thanh_pho,S0. Nơi sinh sống,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S0e_Tham_gia_NCTT_P3M,S0e. Có tham gia bất kì cuộc nghiên cứu thị trường trong vòng 3 tháng qua không?,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,Recruit_S1_Nganh_cam,S1. Ngành cấm,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,TRUE
+SCREENER,QC_S2_Gioi_tinh,S2. Giới tính,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S3b_khoang_tuoi,S3b. Khoảng tuổi,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S4_Nghe_nghiep_hien_tai,S4. Nghề nghiệp hiện tại,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S5_Thu_nhap_HGD,S5. Thu nhập trung bình hàng tháng của hộ gia đình,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S6_Nguoi_quyet_dinh_chinh,S6. Người quyết định mua sắm chính,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S7_Loai_mi_su_dung,S7. Sử dụng loại mì ăn liền nào trong vòng 3 tháng qua?,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S8_Nhan_biet,S8. Mì nước ăn liền DẠNG GÓI có biết đến/từng nghe tới?,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,TRUE
+SCREENER,QC_S9_su_dung_P3M,S9. Mì nước ăn liền DẠNG GÓI nào đã và đang dùng trong 3 tháng qua?,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_01,S11. Tần suất sử dụng Hảo Hảo Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_02,S11. Tần suất sử dụng Hảo Hảo Mì Gà Vàng trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_03,S11. Tần suất sử dụng Hảo Hảo Sa Tế Hành Tím trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_04,S11. Tần suất sử dụng Hảo Hảo Sườn Heo Tỏi Phi trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_05,S11. Tần suất sử dụng Hảo Hảo Mì Chay Rau Nấm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_06,S11. Tần suất sử dụng Hảo Hảo Mì lẩu Kim Chi Hàn Quốc trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_07,S11. Tần suất sử dụng Bốn Phương Lẩu Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_08,S11. Tần suất sử dụng Số Đỏ Mì Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_09,S11. Tần suất sử dụng Omachi Xốt Bò Hầm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_10,S11. Tần suất sử dụng Omachi Sườn Hầm Ngũ Quả trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_11,S11. Tần suất sử dụng Omachi Tôm Chua Cay 5 sao trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_12,S11. Tần suất sử dụng Omachi Special Bò Hầm Xốt Vang trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_13,S11. Tần suất sử dụng Omachi Tôm Phun Lửa trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_14,S11. Tần suất sử dụng Omachi 102 Bò Nấu Dưa Chua trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_15,S11. Tần suất sử dụng Gấu Đỏ Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_16,S11. Tần suất sử dụng Gấu Đỏ Gà Sợi Phở trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_17,S11. Tần suất sử dụng Gấu Đỏ Chay Rau Nấm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_18,S11. Tần suất sử dụng Gấu Đỏ Tôm & Gà Sợi Phở trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_19,S11. Tần suất sử dụng Gấu Đỏ Tôm & Gà trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_20,S11. Tần suất sử dụng Gấu Đỏ Bò Bít Tết trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_21,S11. Tần suất sử dụng Gấu Đỏ Thịt Bằm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_22,S11. Tần suất sử dụng Miliket Mì Tôm Sa Tế trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_23,S11. Tần suất sử dụng Miliket Mì Chay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_24,S11. Tần suất sử dụng Miliket Mì Gà Cao Cấp trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_25,S11. Tần suất sử dụng Kokimi Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_26,S11. Tần suất sử dụng Kokomi Mì Hương Vị Gà Sa Tế trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_27,S11. Tần suất sử dụng A-one Hương Vị Thịt Xào trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_28,S11. Tần suất sử dụng A-one Hương Vị Tương Tàu trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_29,S11. Tần suất sử dụng Cung Đình Lẩu Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_30,S11. Tần suất sử dụng Cung Đình Gà Hầm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_31,S11. Tần suất sử dụng Cung Đình Cua Bể Rau Răm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_32,S11. Tần suất sử dụng Cung Đình Sườn Heo Hầm Măng trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_33,S11. Tần suất sử dụng Cung Đình Thịt Hầm Nấm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_34,S11. Tần suất sử dụng Cung Đình Bò Hầm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_35,S11. Tần suất sử dụng Cung Đình Sườn Hầm Ngũ Quả trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_36,S11. Tần suất sử dụng Đệ Nhất Mì Gia Thịt Bằm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_37,S11. Tần suất sử dụng Hảo 100 Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_38,S11. Tần suất sử dụng Mikochi Gà Nấm Đông Cô trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_39,S11. Tần suất sử dụng Mikochi Lẩu Thái Tôm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_40,S11. Tần suất sử dụng Mikochi Sườn Heo trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_41,S11. Tần suất sử dụng Unif Bò Rau Thơm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_42,S11. Tần suất sử dụng Unif Chay Nấm Đông Cô trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_43,S11. Tần suất sử dụng Reeva Xương Thịt Hầm Rong Biển trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_44,S11. Tần suất sử dụng Reeva Hải Sản Rong Biển trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_45,S11. Tần suất sử dụng Reeva Lẩu Nấm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_46,S11. Tần suất sử dụng Reeva Bò Nấm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_47,S11. Tần suất sử dụng 3 Miền Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_48,S11. Tần suất sử dụng 3 Miền Tôm Hùm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_49,S11. Tần suất sử dụng 3 Miền Bò Sợi Phở trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_50,S11. Tần suất sử dụng 3 Miền Gold Tôm Chua Cay Đặc Biệt trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_51,S11. Tần suất sử dụng 3 Miền Gold Bò Hầm Rau Thơm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_52,S11. Tần suất sử dụng 3 Miền Gold Chua Cay Thái trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_53,S11. Tần suất sử dụng 3 Miền Gold Lẩu Nấm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_54,S11. Tần suất sử dụng Mì Trứng Vàng Lẩu Thái Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_55,S11. Tần suất sử dụng Mì Trứng Vàng Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_56,S11. Tần suất sử dụng Kokomi 90 Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_57,S11. Tần suất sử dụng Kokomi 90 Tôm Chua Cay Thường Ngày trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_58,S11. Tần suất sử dụng Mì Mộc Việt Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_59,S11. Tần suất sử dụng Mì Mộc Việt Bò Hầm Rau Thơm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_60,S11. Tần suất sử dụng Tiến Vua Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_61,S11. Tần suất sử dụng Tiến Vua Bò Hầm Rau Thơm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_62,S11. Tần suất sử dụng Vị Hương Mì Tôm Chua Cay trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_63,S11. Tần suất sử dụng Mì giấy Sate Vị Hương trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_64,S11. Tần suất sử dụng Thế Giới Mì Lẩu Thái Tôm trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_65,S11. Tần suất sử dụng Thế Giới Mì Hoành Thánh trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S11_Tan_suat_su_dung_SKU_66,S11. Tần suất sử dụng Khác (ghi rõ) trong 3 tháng qua,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S12_Tan_suat_mi_nuoc,S12. Tần suất sử dụng MÌ GÓI ĂN LIỀN DẠNG NƯỚC?,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S13_BUMO_thuong_hieu,S13. Thương hiệu mì NƯỚC ăn liền dang gói đáp viên sử dụng nhiều nhất?,SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S14_Mi_premium,"S14. Có sử dụng mì ăn liền dạng gói có giá từ 8,000 đồng trở lên trong 6 tháng qua không?",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S15_Brand_premium,"S15. Cho biết tên gọi của mì ăn liền dạng gói có giá từ 8,000 đồng trở lên là gì?",MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_01,"S16. Tần suất sử dụng mì ăn liền Omachi dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_02,"S16. Tần suất sử dụng mì ăn liền The gioi mi dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_03,"S16. Tần suất sử dụng mì ăn liền De nhat mi gia dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_04,"S16. Tần suất sử dụng mì ăn liền A-One dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_05,"S16. Tần suất sử dụng mì ăn liền Siu Kay dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_06,"S16. Tần suất sử dụng mì ăn liền Indomie dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_07,"S16. Tần suất sử dụng mì ăn liền Koreno dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_08,"S16. Tần suất sử dụng mì ăn liền Reeva dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_09,"S16. Tần suất sử dụng mì ăn liền Wai Wai dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_10,"S16. Tần suất sử dụng mì ăn liền Ottogi dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_11,"S16. Tần suất sử dụng mì ăn liền Cung Dinh dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_12,"S16. Tần suất sử dụng mì ăn liền Samyang dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_13,"S16. Tần suất sử dụng mì ăn liền Udon dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_14,"S16. Tần suất sử dụng mì ăn liền Cung Dinh Kool dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_15,"S16. Tần suất sử dụng mì ăn liền Nong Shim dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_16,"S16. Tần suất sử dụng mì ăn liền Mama dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_17,"S16. Tần suất sử dụng mì ăn liền Omachi 102 dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_18,"S16. Tần suất sử dụng mì ăn liền Hoang Gia dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S16_Tan_suat_mi_premium_19,"S16. Tần suất sử dụng mì ăn liền Other Brands dạng gói có giá từ 8,000 đồng trở lên",SA,FALSE,FALSE,FALSE,,,FALSE,FALSE,TRUE
+SCREENER,QC_S17_Suc_khoe,S17. Tình trạng sức khỏe HIỆN TẠI,MA,FALSE,FALSE,FALSE,1,,FALSE,FALSE,TRUE

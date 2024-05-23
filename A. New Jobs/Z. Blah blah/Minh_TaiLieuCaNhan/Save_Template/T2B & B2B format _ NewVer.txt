@@ -1,0 +1,76 @@
+CLT 
+	1/ Merge Screener + Main 
+	2/ Tạo Variable
+	3/ VarsToCases KEEP ALL NULL=KEEP
+		3.1/ MAKE từng câu hỏi của từng sản phẩm
+		3.2/ CONCAT the ID IF(Rotation & Index)-> Mã_sp
+		3.3/ FC IF(Rotation & Sp_thích_hơn)-> FC
+		3.4/ Export Codeframe OE
+	4/ MRSets
+	5/ Tables CE  
+	6/ Add OE
+	7/ Tables OE 
+
+USE ALL.
+COMPUTE filter_$=([Var] = 1).
+VARIABLE LABELS filter_$ '[Var] = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+
+COUNT F10.0			_Số count
+COLPCT.COUNT PCT10.0		_Số count / total count valid
+COLPCT.RESPONSES.COUNT		_Số Responses / Total count valid
+LAYERCOLPCT.COUNT.RESPONSES	_Số responses / Total responses valid
+LAYERCOLPCT.TOTALN 		_Số count / total count 
+RESPONSES F40.0			_Sô responses
+
+VARSTOCASES
+    /MAKE Q5 FROM Q5_1st Q5_2nd Q5_3rd
+    /MAKE Q7 FROM Q7_1st Q7_2nd Q7_3rd
+    /MAKE Q8 FROM Q8_1st Q8_2nd Q8_3rd
+    /MAKE Q9 FROM Q9_1st Q9_2nd Q9_3rd
+    /MAKE Q10 FROM Q10_1st Q10_2nd Q10_3rd
+    /KEEP 
+    ID Q11 Q12 Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q14 Q15
+    MostUseCoffee_1 MostUseCoffee_2 MostUseCoffee_3 MostUseCoffee_4 MostUseCoffee_5 MostUseCoffee_6
+    TOT Sex City Age Occupation Frequency OL_Concept HHI
+    /NULL=KEEP
+    /INDEX Concept(3)
+.
+
+CTABLES 
+/TABLE
+Q1[c][COLPCT.COUNT PCT40.0, totals[COUNT F40.0]]
++Q2[c][COLPCT.COUNT PCT40.0, totals[COUNT F40.0]]
++Q2[s][MEAN F8.2]
++$Q21_01[COUNT F40.0, totals[COUNT F40.0]]
+BY (Header_1 + Header_2 + Header_3) [c]
+/SLABELS POSITION=ROW VISIBLE=YES
+/CATEGORIES VARIABLES = [All header] ORDER=A KEY=VALUE EMPTY=INCLUDE TOTAL=NO
+/CATEGORIES VARIABLES = [Normal side axis] ORDER=A KEY=VALUE EMPTY=INCLUDE TOTAL=YES POSITION=BEFORE
+/CATEGORIES VARIABLES = [MRSETS] ORDER=D KEY=COUNT EMPTY=EXCLUDE TOTAL=YES POSITION=BEFORE
+/CATEGORIES VARIABLES = [VarList, &PCompute] EMPTY=INCLUDE TOTAL=YES POSITION=BEFORE
+.
+
+***NPS Score***
+/PCOMPUTE &B2B = EXPR([1] + [2])
+/PPROPERTIES &B2B LABEL = "B2B" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+/PCOMPUTE &T2B = EXPR([4] + [5])
+/PPROPERTIES &T2B LABEL = "T2B" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+/PCOMPUTE &T3B = EXPR([3] + [4] + [5])
+/PPROPERTIES &T3B LABEL = "T3B" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+
+/PCOMPUTE &Detractors = EXPR([0] + [1] + [2] + [3] +[4] + [5] + [6])
+/PPROPERTIES &Detractors LABEL = "Detractors" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+/PCOMPUTE &Passives = EXPR([7] + [8])
+/PPROPERTIES &Passives LABEL = "Passives" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+/PCOMPUTE &Promoters = EXPR([9] + [10])
+/PPROPERTIES &Promoters LABEL = "Promoters" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+/PCOMPUTE &NPS = EXPR(([9] + [10])-([0] + [1] + [2] + [3] + [4] + [5] + [6]))
+/PPROPERTIES &NPS LABEL = "NPS" FORMAT=COUNT PCT40.0 HIDESOURCECATS=NO
+----------------------------------------------------------------------------------------------------------
+	/CATEGORIES VARIABLES= [[VarList], 
+        &Detractors, &Passives, &Promoters, &NPS, OTHERNM] EMPTY=INCLUDE TOTAL=YES POSITION=BEFORE
+	/CATEGORIES VARIABLES= [1, 2, 3, 4, 5, &B2B, &T2B, &T3B] EMPTY=INCLUDE TOTAL=YES POSITION=BEFORE

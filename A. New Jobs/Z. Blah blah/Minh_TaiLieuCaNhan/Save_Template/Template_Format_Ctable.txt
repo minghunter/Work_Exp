@@ -1,0 +1,8 @@
+CTABLES /tab
+$Q25FB[c][colpct pct40.0, totals[count f40.0]]
++$Q25SP[c][colpct pct40.0, totals[count f40.0]] +Q19B_recode[s][mean f40.2]
+BY (H1+H2+H3) [c]
+ /slab pos=row/cat var= H1 H2 H3
+$Q25FB
+$Q25SP
+ order=a key=value empty=include total=yes position=before.
